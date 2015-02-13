@@ -1,0 +1,7 @@
+
+State Machine - |carry_ripple16|control:control_unit|cur_state
+Name cur_state.D cur_state.C cur_state.B cur_state.A 
+cur_state.A 0 0 0 0 
+cur_state.B 0 0 1 1 
+cur_state.C 0 1 0 1 
+cur_state.D 1 0 0 1 

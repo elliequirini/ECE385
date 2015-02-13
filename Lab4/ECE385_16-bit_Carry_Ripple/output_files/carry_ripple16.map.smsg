@@ -1,0 +1,2 @@
+Warning (10273): Verilog HDL warning at HexDriver.sv(23): extended using "x" or "z"
+Warning (10268): Verilog HDL information at reg_17.sv(6): always construct contains both blocking and non-blocking assignments

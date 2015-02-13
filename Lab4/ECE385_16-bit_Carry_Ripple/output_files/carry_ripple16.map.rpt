@@ -1,5 +1,5 @@
 Analysis & Synthesis report for carry_ripple16
-Wed Feb 11 14:25:51 2015
+Thu Feb 12 17:35:58 2015
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -13,10 +13,16 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Post-Synthesis Netlist Statistics for Top Partition
- 10. Elapsed Time Per Partition
- 11. Analysis & Synthesis Messages
+  8. State Machine - |carry_ripple16|control:control_unit|cur_state
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Port Connectivity Checks: "carry_ripple_unit:compute_unit"
+ 13. Port Connectivity Checks: "reg_17:reg_unit"
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+ 17. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -43,16 +49,16 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Feb 11 14:25:51 2015      ;
+; Analysis & Synthesis Status        ; Successful - Thu Feb 12 17:35:58 2015      ;
 ; Quartus II 64-Bit Version          ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                      ; carry_ripple16                             ;
 ; Top-level Entity Name              ; carry_ripple16                             ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 32                                         ;
-;     Total combinational functions  ; 32                                         ;
+; Total logic elements               ; 0                                          ;
+;     Total combinational functions  ; 0                                          ;
 ;     Dedicated logic registers      ; 0                                          ;
 ; Total registers                    ; 0                                          ;
-; Total pins                         ; 50                                         ;
+; Total pins                         ; 92                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -158,70 +164,99 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                            ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                        ; Library ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------+---------+
-; full_adder.sv                    ; yes             ; User SystemVerilog HDL File  ; C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/full_adder.sv     ;         ;
-; carry_ripple16.sv                ; yes             ; User SystemVerilog HDL File  ; C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/carry_ripple16.sv ;         ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                    ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------+---------+
+; HexDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/HexDriver.sv         ;         ;
+; full_adder.sv                    ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/full_adder.sv        ;         ;
+; carry_ripple16.sv                ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/carry_ripple16.sv    ;         ;
+; reg_17.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/reg_17.sv            ;         ;
+; control.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/control.sv           ;         ;
+; carry_ripple_unit.sv             ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/carry_ripple_unit.sv ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                      ;
-+---------------------------------------------+--------------------+
-; Resource                                    ; Usage              ;
-+---------------------------------------------+--------------------+
-; Estimated Total logic elements              ; 32                 ;
-;                                             ;                    ;
-; Total combinational functions               ; 32                 ;
-; Logic element usage by number of LUT inputs ;                    ;
-;     -- 4 input functions                    ; 0                  ;
-;     -- 3 input functions                    ; 32                 ;
-;     -- <=2 input functions                  ; 0                  ;
-;                                             ;                    ;
-; Logic elements by mode                      ;                    ;
-;     -- normal mode                          ; 32                 ;
-;     -- arithmetic mode                      ; 0                  ;
-;                                             ;                    ;
-; Total registers                             ; 0                  ;
-;     -- Dedicated logic registers            ; 0                  ;
-;     -- I/O registers                        ; 0                  ;
-;                                             ;                    ;
-; I/O pins                                    ; 50                 ;
-; Embedded Multiplier 9-bit elements          ; 0                  ;
-; Maximum fan-out node                        ; full_adder:FA0|c~0 ;
-; Maximum fan-out                             ; 2                  ;
-; Total fan-out                               ; 163                ;
-; Average fan-out                             ; 1.23               ;
-+---------------------------------------------+--------------------+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+;                                             ;        ;
+; Total combinational functions               ; 0      ;
+; Logic element usage by number of LUT inputs ;        ;
+;     -- 4 input functions                    ; 0      ;
+;     -- 3 input functions                    ; 0      ;
+;     -- <=2 input functions                  ; 0      ;
+;                                             ;        ;
+; Logic elements by mode                      ;        ;
+;     -- normal mode                          ; 0      ;
+;     -- arithmetic mode                      ; 0      ;
+;                                             ;        ;
+; Total registers                             ; 0      ;
+;     -- Dedicated logic registers            ; 0      ;
+;     -- I/O registers                        ; 0      ;
+;                                             ;        ;
+; I/O pins                                    ; 92     ;
+; Embedded Multiplier 9-bit elements          ; 0      ;
+; Maximum fan-out node                        ; Load_B ;
+; Maximum fan-out                             ; 1      ;
+; Total fan-out                               ; 108    ;
+; Average fan-out                             ; 0.59   ;
++---------------------------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                     ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name             ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------+--------------+
-; |carry_ripple16            ; 32 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 50   ; 0            ; |carry_ripple16                 ; work         ;
-;    |full_adder:FA0|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA0  ; work         ;
-;    |full_adder:FA10|       ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA10 ; work         ;
-;    |full_adder:FA11|       ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA11 ; work         ;
-;    |full_adder:FA12|       ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA12 ; work         ;
-;    |full_adder:FA13|       ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA13 ; work         ;
-;    |full_adder:FA14|       ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA14 ; work         ;
-;    |full_adder:FA15|       ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA15 ; work         ;
-;    |full_adder:FA1|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA1  ; work         ;
-;    |full_adder:FA2|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA2  ; work         ;
-;    |full_adder:FA3|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA3  ; work         ;
-;    |full_adder:FA4|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA4  ; work         ;
-;    |full_adder:FA5|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA5  ; work         ;
-;    |full_adder:FA6|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA6  ; work         ;
-;    |full_adder:FA7|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA7  ; work         ;
-;    |full_adder:FA8|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA8  ; work         ;
-;    |full_adder:FA9|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |carry_ripple16|full_adder:FA9  ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; |carry_ripple16            ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 92   ; 0            ; |carry_ripple16     ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------+
+; State Machine - |carry_ripple16|control:control_unit|cur_state      ;
++-------------+-------------+-------------+-------------+-------------+
+; Name        ; cur_state.D ; cur_state.C ; cur_state.B ; cur_state.A ;
++-------------+-------------+-------------+-------------+-------------+
+; cur_state.A ; 0           ; 0           ; 0           ; 0           ;
+; cur_state.B ; 0           ; 0           ; 1           ; 1           ;
+; cur_state.C ; 0           ; 1           ; 0           ; 1           ;
+; cur_state.D ; 1           ; 0           ; 0           ; 1           ;
++-------------+-------------+-------------+-------------+-------------+
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; reg_17:reg_unit|Data_Out[0..15]        ; Stuck at GND due to stuck port data_in ;
+; reg_17:reg_unit|Overflow               ; Stuck at GND due to stuck port data_in ;
+; control:control_unit|cur_state.A       ; Lost fanout                            ;
+; control:control_unit|cur_state.B       ; Lost fanout                            ;
+; control:control_unit|cur_state.C       ; Lost fanout                            ;
+; control:control_unit|cur_state.D       ; Lost fanout                            ;
+; control:control_unit|cur_state~2       ; Lost fanout                            ;
+; control:control_unit|cur_state~3       ; Lost fanout                            ;
+; control:control_unit|cur_state~4       ; Lost fanout                            ;
+; control:control_unit|cur_state~5       ; Lost fanout                            ;
+; Total Number of Removed Registers = 25 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                       ;
++------------------------------+---------------------------+----------------------------------------+
+; Register name                ; Reason for Removal        ; Registers Removed due to This Register ;
++------------------------------+---------------------------+----------------------------------------+
+; reg_17:reg_unit|Data_Out[15] ; Stuck at GND              ; reg_17:reg_unit|Overflow               ;
+;                              ; due to stuck port data_in ;                                        ;
++------------------------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -239,18 +274,36 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
++------------------------------------------------------------+
+; Port Connectivity Checks: "carry_ripple_unit:compute_unit" ;
++------+-------+----------+----------------------------------+
+; Port ; Type  ; Severity ; Details                          ;
++------+-------+----------+----------------------------------+
+; c_in ; Input ; Info     ; Stuck at GND                     ;
++------+-------+----------+----------------------------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "reg_17:reg_unit" ;
++---------+-------+----------+----------------+
+; Port    ; Type  ; Severity ; Details        ;
++---------+-------+----------+----------------+
+; Data_In ; Input ; Info     ; Stuck at GND   ;
++---------+-------+----------+----------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 50                          ;
-; cycloneiii_lcell_comb ; 32                          ;
-;     normal            ; 32                          ;
-;         3 data inputs ; 32                          ;
+; boundary_port         ; 92                          ;
+; cycloneiii_lcell_comb ; 2                           ;
+;     normal            ; 2                           ;
+;         0 data inputs ; 2                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 16.00                       ;
-; Average LUT depth     ; 10.46                       ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
 +-----------------------+-----------------------------+
 
 
@@ -259,7 +312,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -269,26 +322,107 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Wed Feb 11 14:25:48 2015
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off carry_ripple16 -c carry_ripple16
+    Info: Processing started: Thu Feb 12 17:35:56 2015
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Processor -c carry_ripple16
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file hexdriver.sv
+    Info (12023): Found entity 1: HexDriver
 Info (12021): Found 1 design units, including 1 entities, in source file full_adder.sv
     Info (12023): Found entity 1: full_adder
 Info (12021): Found 1 design units, including 1 entities, in source file carry_ripple16.sv
     Info (12023): Found entity 1: carry_ripple16
+Info (12021): Found 1 design units, including 1 entities, in source file reg_17.sv
+    Info (12023): Found entity 1: reg_17
+Info (12021): Found 1 design units, including 1 entities, in source file control.sv
+    Info (12023): Found entity 1: control
+Info (12021): Found 1 design units, including 1 entities, in source file carry_ripple_unit.sv
+    Info (12023): Found entity 1: carry_ripple_unit
 Info (12127): Elaborating entity "carry_ripple16" for the top level hierarchy
-Info (12128): Elaborating entity "full_adder" for hierarchy "full_adder:FA0"
-Info (286030): Timing-Driven Synthesis is running
+Warning (10030): Net "Ofl" at carry_ripple16.sv(18) has no driver or initial value, using a default initial value '0'
+Info (12128): Elaborating entity "reg_17" for hierarchy "reg_17:reg_unit"
+Info (12128): Elaborating entity "carry_ripple_unit" for hierarchy "carry_ripple_unit:compute_unit"
+Info (12128): Elaborating entity "full_adder" for hierarchy "carry_ripple_unit:compute_unit|full_adder:FA0"
+Info (12128): Elaborating entity "control" for hierarchy "control:control_unit"
+Info (12128): Elaborating entity "HexDriver" for hierarchy "HexDriver:HexA0"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "Overflow" is stuck at GND
+    Warning (13410): Pin "Ahex0[0]" is stuck at GND
+    Warning (13410): Pin "Ahex0[1]" is stuck at GND
+    Warning (13410): Pin "Ahex0[2]" is stuck at GND
+    Warning (13410): Pin "Ahex0[3]" is stuck at GND
+    Warning (13410): Pin "Ahex0[4]" is stuck at GND
+    Warning (13410): Pin "Ahex0[5]" is stuck at GND
+    Warning (13410): Pin "Ahex0[6]" is stuck at VCC
+    Warning (13410): Pin "Ahex1[0]" is stuck at GND
+    Warning (13410): Pin "Ahex1[1]" is stuck at GND
+    Warning (13410): Pin "Ahex1[2]" is stuck at GND
+    Warning (13410): Pin "Ahex1[3]" is stuck at GND
+    Warning (13410): Pin "Ahex1[4]" is stuck at GND
+    Warning (13410): Pin "Ahex1[5]" is stuck at GND
+    Warning (13410): Pin "Ahex1[6]" is stuck at VCC
+    Warning (13410): Pin "Ahex2[0]" is stuck at GND
+    Warning (13410): Pin "Ahex2[1]" is stuck at GND
+    Warning (13410): Pin "Ahex2[2]" is stuck at GND
+    Warning (13410): Pin "Ahex2[3]" is stuck at GND
+    Warning (13410): Pin "Ahex2[4]" is stuck at GND
+    Warning (13410): Pin "Ahex2[5]" is stuck at GND
+    Warning (13410): Pin "Ahex2[6]" is stuck at VCC
+    Warning (13410): Pin "Ahex3[0]" is stuck at GND
+    Warning (13410): Pin "Ahex3[1]" is stuck at GND
+    Warning (13410): Pin "Ahex3[2]" is stuck at GND
+    Warning (13410): Pin "Ahex3[3]" is stuck at GND
+    Warning (13410): Pin "Ahex3[4]" is stuck at GND
+    Warning (13410): Pin "Ahex3[5]" is stuck at GND
+    Warning (13410): Pin "Ahex3[6]" is stuck at VCC
+    Warning (13410): Pin "Bhex0[0]" is stuck at GND
+    Warning (13410): Pin "Bhex0[1]" is stuck at GND
+    Warning (13410): Pin "Bhex0[2]" is stuck at GND
+    Warning (13410): Pin "Bhex0[3]" is stuck at GND
+    Warning (13410): Pin "Bhex0[4]" is stuck at GND
+    Warning (13410): Pin "Bhex0[5]" is stuck at GND
+    Warning (13410): Pin "Bhex0[6]" is stuck at VCC
+    Warning (13410): Pin "Bhex1[0]" is stuck at GND
+    Warning (13410): Pin "Bhex1[1]" is stuck at GND
+    Warning (13410): Pin "Bhex1[2]" is stuck at GND
+    Warning (13410): Pin "Bhex1[3]" is stuck at GND
+    Warning (13410): Pin "Bhex1[4]" is stuck at GND
+    Warning (13410): Pin "Bhex1[5]" is stuck at GND
+    Warning (13410): Pin "Bhex1[6]" is stuck at VCC
+    Warning (13410): Pin "Bhex2[0]" is stuck at GND
+    Warning (13410): Pin "Bhex2[1]" is stuck at GND
+    Warning (13410): Pin "Bhex2[2]" is stuck at GND
+    Warning (13410): Pin "Bhex2[3]" is stuck at GND
+    Warning (13410): Pin "Bhex2[4]" is stuck at GND
+    Warning (13410): Pin "Bhex2[5]" is stuck at GND
+    Warning (13410): Pin "Bhex2[6]" is stuck at VCC
+    Warning (13410): Pin "Bhex3[0]" is stuck at GND
+    Warning (13410): Pin "Bhex3[1]" is stuck at GND
+    Warning (13410): Pin "Bhex3[2]" is stuck at GND
+    Warning (13410): Pin "Bhex3[3]" is stuck at GND
+    Warning (13410): Pin "Bhex3[4]" is stuck at GND
+    Warning (13410): Pin "Bhex3[5]" is stuck at GND
+    Warning (13410): Pin "Bhex3[6]" is stuck at VCC
+Info (17049): 8 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/output_files/carry_ripple16.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 82 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 33 input pins
-    Info (21059): Implemented 17 output pins
-    Info (21061): Implemented 32 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "Load_B"
+    Warning (15610): No output dependent on input pin "Run"
+    Warning (15610): No output dependent on input pin "Reset"
+Info (21057): Implemented 92 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 19 input pins
+    Info (21059): Implemented 73 output pins
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 64 warnings
     Info: Peak virtual memory: 525 megabytes
-    Info: Processing ended: Wed Feb 11 14:25:51 2015
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Processing ended: Thu Feb 12 17:35:58 2015
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/output_files/carry_ripple16.map.smsg.
 
 

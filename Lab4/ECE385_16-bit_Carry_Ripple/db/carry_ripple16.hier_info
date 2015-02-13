@@ -1,4 +1,171 @@
 |carry_ripple16
+Reset => reg_17:reg_unit.Reset
+Reset => control:control_unit.Reset
+Load_B => control:control_unit.Load_B
+Run => control:control_unit.Run
+Switches[0] => carry_ripple_unit:compute_unit.A[0]
+Switches[1] => carry_ripple_unit:compute_unit.A[1]
+Switches[2] => carry_ripple_unit:compute_unit.A[2]
+Switches[3] => carry_ripple_unit:compute_unit.A[3]
+Switches[4] => carry_ripple_unit:compute_unit.A[4]
+Switches[5] => carry_ripple_unit:compute_unit.A[5]
+Switches[6] => carry_ripple_unit:compute_unit.A[6]
+Switches[7] => carry_ripple_unit:compute_unit.A[7]
+Switches[8] => carry_ripple_unit:compute_unit.A[8]
+Switches[9] => carry_ripple_unit:compute_unit.A[9]
+Switches[10] => carry_ripple_unit:compute_unit.A[10]
+Switches[11] => carry_ripple_unit:compute_unit.A[11]
+Switches[12] => carry_ripple_unit:compute_unit.A[12]
+Switches[13] => carry_ripple_unit:compute_unit.A[13]
+Switches[14] => carry_ripple_unit:compute_unit.A[14]
+Switches[15] => carry_ripple_unit:compute_unit.A[15]
+Overflow <= reg_17:reg_unit.Overflow
+Ahex0[0] <= HexDriver:HexA0.Out0
+Ahex0[1] <= HexDriver:HexA0.Out0
+Ahex0[2] <= HexDriver:HexA0.Out0
+Ahex0[3] <= HexDriver:HexA0.Out0
+Ahex0[4] <= HexDriver:HexA0.Out0
+Ahex0[5] <= HexDriver:HexA0.Out0
+Ahex0[6] <= HexDriver:HexA0.Out0
+Ahex1[0] <= HexDriver:HexA1.Out0
+Ahex1[1] <= HexDriver:HexA1.Out0
+Ahex1[2] <= HexDriver:HexA1.Out0
+Ahex1[3] <= HexDriver:HexA1.Out0
+Ahex1[4] <= HexDriver:HexA1.Out0
+Ahex1[5] <= HexDriver:HexA1.Out0
+Ahex1[6] <= HexDriver:HexA1.Out0
+Ahex2[0] <= HexDriver:HexA2.Out0
+Ahex2[1] <= HexDriver:HexA2.Out0
+Ahex2[2] <= HexDriver:HexA2.Out0
+Ahex2[3] <= HexDriver:HexA2.Out0
+Ahex2[4] <= HexDriver:HexA2.Out0
+Ahex2[5] <= HexDriver:HexA2.Out0
+Ahex2[6] <= HexDriver:HexA2.Out0
+Ahex3[0] <= HexDriver:HexA3.Out0
+Ahex3[1] <= HexDriver:HexA3.Out0
+Ahex3[2] <= HexDriver:HexA3.Out0
+Ahex3[3] <= HexDriver:HexA3.Out0
+Ahex3[4] <= HexDriver:HexA3.Out0
+Ahex3[5] <= HexDriver:HexA3.Out0
+Ahex3[6] <= HexDriver:HexA3.Out0
+Bhex0[0] <= HexDriver:HexB0.Out0
+Bhex0[1] <= HexDriver:HexB0.Out0
+Bhex0[2] <= HexDriver:HexB0.Out0
+Bhex0[3] <= HexDriver:HexB0.Out0
+Bhex0[4] <= HexDriver:HexB0.Out0
+Bhex0[5] <= HexDriver:HexB0.Out0
+Bhex0[6] <= HexDriver:HexB0.Out0
+Bhex1[0] <= HexDriver:HexB1.Out0
+Bhex1[1] <= HexDriver:HexB1.Out0
+Bhex1[2] <= HexDriver:HexB1.Out0
+Bhex1[3] <= HexDriver:HexB1.Out0
+Bhex1[4] <= HexDriver:HexB1.Out0
+Bhex1[5] <= HexDriver:HexB1.Out0
+Bhex1[6] <= HexDriver:HexB1.Out0
+Bhex2[0] <= HexDriver:HexB2.Out0
+Bhex2[1] <= HexDriver:HexB2.Out0
+Bhex2[2] <= HexDriver:HexB2.Out0
+Bhex2[3] <= HexDriver:HexB2.Out0
+Bhex2[4] <= HexDriver:HexB2.Out0
+Bhex2[5] <= HexDriver:HexB2.Out0
+Bhex2[6] <= HexDriver:HexB2.Out0
+Bhex3[0] <= HexDriver:HexB3.Out0
+Bhex3[1] <= HexDriver:HexB3.Out0
+Bhex3[2] <= HexDriver:HexB3.Out0
+Bhex3[3] <= HexDriver:HexB3.Out0
+Bhex3[4] <= HexDriver:HexB3.Out0
+Bhex3[5] <= HexDriver:HexB3.Out0
+Bhex3[6] <= HexDriver:HexB3.Out0
+Sum[0] <= carry_ripple_unit:compute_unit.S[0]
+Sum[1] <= carry_ripple_unit:compute_unit.S[1]
+Sum[2] <= carry_ripple_unit:compute_unit.S[2]
+Sum[3] <= carry_ripple_unit:compute_unit.S[3]
+Sum[4] <= carry_ripple_unit:compute_unit.S[4]
+Sum[5] <= carry_ripple_unit:compute_unit.S[5]
+Sum[6] <= carry_ripple_unit:compute_unit.S[6]
+Sum[7] <= carry_ripple_unit:compute_unit.S[7]
+Sum[8] <= carry_ripple_unit:compute_unit.S[8]
+Sum[9] <= carry_ripple_unit:compute_unit.S[9]
+Sum[10] <= carry_ripple_unit:compute_unit.S[10]
+Sum[11] <= carry_ripple_unit:compute_unit.S[11]
+Sum[12] <= carry_ripple_unit:compute_unit.S[12]
+Sum[13] <= carry_ripple_unit:compute_unit.S[13]
+Sum[14] <= carry_ripple_unit:compute_unit.S[14]
+Sum[15] <= carry_ripple_unit:compute_unit.S[15]
+
+
+|carry_ripple16|reg_17:reg_unit
+Reset => Data_Out[0]~reg0.ACLR
+Reset => Data_Out[1]~reg0.ACLR
+Reset => Data_Out[2]~reg0.ACLR
+Reset => Data_Out[3]~reg0.ACLR
+Reset => Data_Out[4]~reg0.ACLR
+Reset => Data_Out[5]~reg0.ACLR
+Reset => Data_Out[6]~reg0.ACLR
+Reset => Data_Out[7]~reg0.ACLR
+Reset => Data_Out[8]~reg0.ACLR
+Reset => Data_Out[9]~reg0.ACLR
+Reset => Data_Out[10]~reg0.ACLR
+Reset => Data_Out[11]~reg0.ACLR
+Reset => Data_Out[12]~reg0.ACLR
+Reset => Data_Out[13]~reg0.ACLR
+Reset => Data_Out[14]~reg0.ACLR
+Reset => Data_Out[15]~reg0.ACLR
+Reset => Overflow~reg0.ACLR
+Ld_B => Data_Out[0]~reg0.CLK
+Ld_B => Data_Out[1]~reg0.CLK
+Ld_B => Data_Out[2]~reg0.CLK
+Ld_B => Data_Out[3]~reg0.CLK
+Ld_B => Data_Out[4]~reg0.CLK
+Ld_B => Data_Out[5]~reg0.CLK
+Ld_B => Data_Out[6]~reg0.CLK
+Ld_B => Data_Out[7]~reg0.CLK
+Ld_B => Data_Out[8]~reg0.CLK
+Ld_B => Data_Out[9]~reg0.CLK
+Ld_B => Data_Out[10]~reg0.CLK
+Ld_B => Data_Out[11]~reg0.CLK
+Ld_B => Data_Out[12]~reg0.CLK
+Ld_B => Data_Out[13]~reg0.CLK
+Ld_B => Data_Out[14]~reg0.CLK
+Ld_B => Data_Out[15]~reg0.CLK
+Ld_B => Overflow~reg0.CLK
+Ofl => Overflow~reg0.DATAIN
+Data_In[0] => Data_Out[0]~reg0.DATAIN
+Data_In[1] => Data_Out[1]~reg0.DATAIN
+Data_In[2] => Data_Out[2]~reg0.DATAIN
+Data_In[3] => Data_Out[3]~reg0.DATAIN
+Data_In[4] => Data_Out[4]~reg0.DATAIN
+Data_In[5] => Data_Out[5]~reg0.DATAIN
+Data_In[6] => Data_Out[6]~reg0.DATAIN
+Data_In[7] => Data_Out[7]~reg0.DATAIN
+Data_In[8] => Data_Out[8]~reg0.DATAIN
+Data_In[9] => Data_Out[9]~reg0.DATAIN
+Data_In[10] => Data_Out[10]~reg0.DATAIN
+Data_In[11] => Data_Out[11]~reg0.DATAIN
+Data_In[12] => Data_Out[12]~reg0.DATAIN
+Data_In[13] => Data_Out[13]~reg0.DATAIN
+Data_In[14] => Data_Out[14]~reg0.DATAIN
+Data_In[15] => Data_Out[15]~reg0.DATAIN
+Overflow <= Overflow~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[0] <= Data_Out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[1] <= Data_Out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[2] <= Data_Out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[3] <= Data_Out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[4] <= Data_Out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[5] <= Data_Out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[6] <= Data_Out[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[7] <= Data_Out[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[8] <= Data_Out[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[9] <= Data_Out[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[10] <= Data_Out[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[11] <= Data_Out[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[12] <= Data_Out[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[13] <= Data_Out[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[14] <= Data_Out[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Data_Out[15] <= Data_Out[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|carry_ripple16|carry_ripple_unit:compute_unit
 A[0] => A[0].IN1
 A[1] => A[1].IN1
 A[2] => A[2].IN1
@@ -32,26 +199,26 @@ B[13] => B[13].IN1
 B[14] => B[14].IN1
 B[15] => B[15].IN1
 c_in => c_in.IN1
-S[0] << full_adder:FA0.s
-S[1] << full_adder:FA1.s
-S[2] << full_adder:FA2.s
-S[3] << full_adder:FA3.s
-S[4] << full_adder:FA4.s
-S[5] << full_adder:FA5.s
-S[6] << full_adder:FA6.s
-S[7] << full_adder:FA7.s
-S[8] << full_adder:FA8.s
-S[9] << full_adder:FA9.s
-S[10] << full_adder:FA10.s
-S[11] << full_adder:FA11.s
-S[12] << full_adder:FA12.s
-S[13] << full_adder:FA13.s
-S[14] << full_adder:FA14.s
-S[15] << full_adder:FA15.s
-c_out << full_adder:FA15.c
+S[0] <= full_adder:FA0.s
+S[1] <= full_adder:FA1.s
+S[2] <= full_adder:FA2.s
+S[3] <= full_adder:FA3.s
+S[4] <= full_adder:FA4.s
+S[5] <= full_adder:FA5.s
+S[6] <= full_adder:FA6.s
+S[7] <= full_adder:FA7.s
+S[8] <= full_adder:FA8.s
+S[9] <= full_adder:FA9.s
+S[10] <= full_adder:FA10.s
+S[11] <= full_adder:FA11.s
+S[12] <= full_adder:FA12.s
+S[13] <= full_adder:FA13.s
+S[14] <= full_adder:FA14.s
+S[15] <= full_adder:FA15.s
+c_out <= full_adder:FA15.c
 
 
-|carry_ripple16|full_adder:FA0
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA0
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -65,7 +232,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA1
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA1
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -79,7 +246,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA2
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA2
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -93,7 +260,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA3
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA3
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -107,7 +274,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA4
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA4
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -121,7 +288,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA5
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA5
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -135,7 +302,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA6
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA6
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -149,7 +316,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA7
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA7
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -163,7 +330,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA8
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA8
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -177,7 +344,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA9
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA9
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -191,7 +358,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA10
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA10
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -205,7 +372,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA11
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA11
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -219,7 +386,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA12
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA12
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -233,7 +400,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA13
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA13
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -247,7 +414,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA14
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA14
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -261,7 +428,7 @@ s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|carry_ripple16|full_adder:FA15
+|carry_ripple16|carry_ripple_unit:compute_unit|full_adder:FA15
 x => s.IN0
 x => c.IN0
 x => c.IN0
@@ -273,5 +440,124 @@ z => c.IN1
 z => c.IN1
 s <= s.DB_MAX_OUTPUT_PORT_TYPE
 c <= c.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|carry_ripple16|control:control_unit
+Reset => cur_state~1.DATAIN
+Load_B => Ld_B.DATAB
+Run => ~NO_FANOUT~
+Ld_B <= Ld_B.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|carry_ripple16|HexDriver:HexA0
+In0[0] => Decoder0.IN3
+In0[1] => Decoder0.IN2
+In0[2] => Decoder0.IN1
+In0[3] => Decoder0.IN0
+Out0[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+Out0[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+Out0[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+Out0[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+Out0[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+Out0[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+Out0[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|carry_ripple16|HexDriver:HexA1
+In0[0] => Decoder0.IN3
+In0[1] => Decoder0.IN2
+In0[2] => Decoder0.IN1
+In0[3] => Decoder0.IN0
+Out0[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+Out0[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+Out0[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+Out0[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+Out0[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+Out0[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+Out0[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|carry_ripple16|HexDriver:HexA2
+In0[0] => Decoder0.IN3
+In0[1] => Decoder0.IN2
+In0[2] => Decoder0.IN1
+In0[3] => Decoder0.IN0
+Out0[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+Out0[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+Out0[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+Out0[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+Out0[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+Out0[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+Out0[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|carry_ripple16|HexDriver:HexA3
+In0[0] => Decoder0.IN3
+In0[1] => Decoder0.IN2
+In0[2] => Decoder0.IN1
+In0[3] => Decoder0.IN0
+Out0[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+Out0[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+Out0[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+Out0[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+Out0[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+Out0[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+Out0[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|carry_ripple16|HexDriver:HexB0
+In0[0] => Decoder0.IN3
+In0[1] => Decoder0.IN2
+In0[2] => Decoder0.IN1
+In0[3] => Decoder0.IN0
+Out0[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+Out0[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+Out0[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+Out0[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+Out0[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+Out0[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+Out0[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|carry_ripple16|HexDriver:HexB1
+In0[0] => Decoder0.IN3
+In0[1] => Decoder0.IN2
+In0[2] => Decoder0.IN1
+In0[3] => Decoder0.IN0
+Out0[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+Out0[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+Out0[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+Out0[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+Out0[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+Out0[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+Out0[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|carry_ripple16|HexDriver:HexB2
+In0[0] => Decoder0.IN3
+In0[1] => Decoder0.IN2
+In0[2] => Decoder0.IN1
+In0[3] => Decoder0.IN0
+Out0[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+Out0[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+Out0[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+Out0[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+Out0[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+Out0[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+Out0[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|carry_ripple16|HexDriver:HexB3
+In0[0] => Decoder0.IN3
+In0[1] => Decoder0.IN2
+In0[2] => Decoder0.IN1
+In0[3] => Decoder0.IN0
+Out0[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+Out0[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+Out0[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+Out0[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+Out0[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+Out0[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+Out0[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
 
 
