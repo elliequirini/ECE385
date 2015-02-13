@@ -15,9 +15,9 @@
 
 // VENDOR "Altera"
 // PROGRAM "Quartus II 64-Bit"
-// VERSION "Version 14.1.0 Build 186 12/03/2014 SJ Web Edition"
+// VERSION "Version 14.0.0 Build 200 06/17/2014 SJ Full Version"
 
-// DATE "02/13/2015 03:37:30"
+// DATE "02/13/2015 12:48:36"
 
 // 
 // Device: Altera EP4CE115F29C7 Package FBGA780
@@ -45,21 +45,21 @@ module carry_ripple16 (
 	Bhex2,
 	Bhex3,
 	Sum);
-input 	reg Clk ;
-input 	reg Reset ;
-input 	reg Load_B ;
-input 	reg Run ;
-input 	logic [15:0] Switches ;
-output 	reg Overflow ;
-output 	logic [6:0] Ahex0 ;
-output 	logic [6:0] Ahex1 ;
-output 	logic [6:0] Ahex2 ;
-output 	logic [6:0] Ahex3 ;
-output 	logic [6:0] Bhex0 ;
-output 	logic [6:0] Bhex1 ;
-output 	logic [6:0] Bhex2 ;
-output 	logic [6:0] Bhex3 ;
-output 	logic [15:0] Sum ;
+input 	Clk;
+input 	Reset;
+input 	Load_B;
+input 	Run;
+input 	[15:0] Switches;
+output 	Overflow;
+output 	[6:0] Ahex0;
+output 	[6:0] Ahex1;
+output 	[6:0] Ahex2;
+output 	[6:0] Ahex3;
+output 	[6:0] Bhex0;
+output 	[6:0] Bhex1;
+output 	[6:0] Bhex2;
+output 	[6:0] Bhex3;
+output 	[15:0] Sum;
 
 // Design Ports Information
 // Overflow	=>  Location: PIN_F17,	 I/O Standard: 2.5 V,	 Current Strength: Default

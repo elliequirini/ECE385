@@ -1,6 +1,6 @@
 TimeQuest Timing Analyzer report for carry_ripple16
-Fri Feb 13 03:37:27 2015
-Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
+Fri Feb 13 12:48:30 2015
+Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Full Version
 
 
 ---------------------
@@ -131,28 +131,34 @@ agreement for further details.
 
 
 
-+-------------------------------------------------------------------------+
-; TimeQuest Timing Analyzer Summary                                       ;
-+--------------------+----------------------------------------------------+
-; Quartus II Version ; Version 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
-; Revision Name      ; carry_ripple16                                     ;
-; Device Family      ; Cyclone IV E                                       ;
-; Device Name        ; EP4CE115F29C7                                      ;
-; Timing Models      ; Final                                              ;
-; Delay Model        ; Combined                                           ;
-; Rise/Fall Delays   ; Enabled                                            ;
-+--------------------+----------------------------------------------------+
++--------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                        ;
++--------------------+-----------------------------------------------------+
+; Quartus II Version ; Version 14.0.0 Build 200 06/17/2014 SJ Full Version ;
+; Revision Name      ; carry_ripple16                                      ;
+; Device Family      ; Cyclone IV E                                        ;
+; Device Name        ; EP4CE115F29C7                                       ;
+; Timing Models      ; Final                                               ;
+; Delay Model        ; Combined                                            ;
+; Rise/Fall Delays   ; Enabled                                             ;
++--------------------+-----------------------------------------------------+
 
 
-Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
-+-------------------------------------+
-; Parallel Compilation                ;
-+----------------------------+--------+
-; Processors                 ; Number ;
-+----------------------------+--------+
-; Number detected on machine ; 8      ;
-; Maximum allowed            ; 1      ;
-+----------------------------+--------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.50        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;  16.7%      ;
++----------------------------+-------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -3919,8 +3925,8 @@ No synchronizer chains to report.
 ; 1.353 ; reg_17:Reg|Data_Out[10]~_emulated ; reg_17:Reg|Data_Out[13]~_emulated ; Run          ; Run         ; 0.000        ; 0.035      ; 1.472      ;
 ; 1.353 ; reg_17:Reg|Data_Out[8]~_emulated  ; reg_17:Reg|Data_Out[11]~_emulated ; Run          ; Run         ; 0.000        ; 0.035      ; 1.472      ;
 ; 1.355 ; reg_17:Reg|Data_Out[12]~_emulated ; reg_17:Reg|Data_Out[15]~_emulated ; Run          ; Run         ; 0.000        ; 0.060      ; 1.499      ;
-; 1.356 ; reg_17:Reg|Data_Out[1]~_emulated  ; reg_17:Reg|Data_Out[2]~_emulated  ; Run          ; Run         ; 0.000        ; 0.028      ; 1.468      ;
 ; 1.356 ; reg_17:Reg|Data_Out[10]~_emulated ; reg_17:Reg|Data_Out[14]~_emulated ; Run          ; Run         ; 0.000        ; 0.035      ; 1.475      ;
+; 1.356 ; reg_17:Reg|Data_Out[1]~_emulated  ; reg_17:Reg|Data_Out[2]~_emulated  ; Run          ; Run         ; 0.000        ; 0.028      ; 1.468      ;
 ; 1.365 ; reg_17:Reg|Data_Out[0]~_emulated  ; reg_17:Reg|Data_Out[5]~_emulated  ; Run          ; Run         ; 0.000        ; 0.037      ; 1.486      ;
 ; 1.376 ; reg_17:Reg|Data_Out[0]~_emulated  ; reg_17:Reg|Data_Out[0]~_emulated  ; Run          ; Run         ; 0.000        ; 0.028      ; 1.488      ;
 ; 1.388 ; reg_17:Reg|Data_Out[11]~_emulated ; reg_17:Reg|Overflow               ; Run          ; Run         ; 0.000        ; 0.073      ; 1.545      ;
@@ -3935,8 +3941,8 @@ No synchronizer chains to report.
 ; 1.472 ; reg_17:Reg|Data_Out[6]~_emulated  ; reg_17:Reg|Data_Out[8]~_emulated  ; Run          ; Run         ; 0.000        ; 0.046      ; 1.602      ;
 ; 1.484 ; reg_17:Reg|Data_Out[4]~_emulated  ; reg_17:Reg|Data_Out[6]~_emulated  ; Run          ; Run         ; 0.000        ; 0.171      ; 1.739      ;
 ; 1.485 ; reg_17:Reg|Data_Out[9]~_emulated  ; reg_17:Reg|Data_Out[12]~_emulated ; Run          ; Run         ; 0.000        ; 0.035      ; 1.604      ;
-; 1.490 ; reg_17:Reg|Data_Out[3]~_emulated  ; reg_17:Reg|Data_Out[6]~_emulated  ; Run          ; Run         ; 0.000        ; 0.037      ; 1.611      ;
 ; 1.490 ; reg_17:Reg|Data_Out[8]~_emulated  ; reg_17:Reg|Data_Out[10]~_emulated ; Run          ; Run         ; 0.000        ; 0.027      ; 1.601      ;
+; 1.490 ; reg_17:Reg|Data_Out[3]~_emulated  ; reg_17:Reg|Data_Out[6]~_emulated  ; Run          ; Run         ; 0.000        ; 0.037      ; 1.611      ;
 ; 1.493 ; reg_17:Reg|Data_Out[1]~_emulated  ; reg_17:Reg|Data_Out[4]~_emulated  ; Run          ; Run         ; 0.000        ; -0.094     ; 1.483      ;
 ; 1.494 ; reg_17:Reg|Data_Out[2]~_emulated  ; reg_17:Reg|Data_Out[4]~_emulated  ; Run          ; Run         ; 0.000        ; -0.094     ; 1.484      ;
 ; 1.501 ; reg_17:Reg|Data_Out[7]~_emulated  ; reg_17:Reg|Data_Out[9]~_emulated  ; Run          ; Run         ; 0.000        ; 0.046      ; 1.631      ;
@@ -6835,12 +6841,11 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +------------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
-    Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Fri Feb 13 03:37:23 2015
+    Info: Version 14.0.0 Build 200 06/17/2014 SJ Full Version
+    Info: Processing started: Fri Feb 13 12:48:23 2015
 Info: Command: quartus_sta carry_ripple16 -c carry_ripple16
-Info: qsta_default_script.tcl version: #3
-Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (21077): Core supply voltage is 1.2V
+Info: qsta_default_script.tcl version: #1
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Warning (335093): TimeQuest Timing Analyzer is analyzing 16 combinational loops as latches.
@@ -6952,10 +6957,10 @@ Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):    -3.000              -5.000 Clk 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 687 megabytes
-    Info: Processing ended: Fri Feb 13 03:37:27 2015
-    Info: Elapsed time: 00:00:04
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 649 megabytes
+    Info: Processing ended: Fri Feb 13 12:48:30 2015
+    Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:04
 
 

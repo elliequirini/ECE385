@@ -1,9 +1,0 @@
-module mux21_4 (input select, input[3:0] n,c, output [3:0] q);
-
-	if(select)
-		assign q <= c;
-	else
-		assign q <= n;
-	
-endmodule
-	

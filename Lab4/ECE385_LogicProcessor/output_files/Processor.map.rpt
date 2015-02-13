@@ -1,6 +1,6 @@
 Analysis & Synthesis report for Processor
-Thu Feb 12 21:01:40 2015
-Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
+Fri Feb 13 12:35:01 2015
+Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Full Version
 
 
 ---------------------
@@ -43,24 +43,24 @@ agreement for further details.
 
 
 
-+---------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                    ;
-+------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Feb 12 21:01:40 2015      ;
-; Quartus II 64-Bit Version          ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
-; Revision Name                      ; Processor                                  ;
-; Top-level Entity Name              ; Processor                                  ;
-; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 111                                        ;
-;     Total combinational functions  ; 104                                        ;
-;     Dedicated logic registers      ; 26                                         ;
-; Total registers                    ; 26                                         ;
-; Total pins                         ; 66                                         ;
-; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 0                                          ;
-; Embedded Multiplier 9-bit elements ; 0                                          ;
-; Total PLLs                         ; 0                                          ;
-+------------------------------------+--------------------------------------------+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Feb 13 12:35:00 2015       ;
+; Quartus II 64-Bit Version          ; 14.0.0 Build 200 06/17/2014 SJ Full Version ;
+; Revision Name                      ; Processor                                   ;
+; Top-level Entity Name              ; Processor                                   ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 111                                         ;
+;     Total combinational functions  ; 104                                         ;
+;     Dedicated logic registers      ; 26                                          ;
+; Total registers                    ; 26                                          ;
+; Total pins                         ; 66                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------+
@@ -150,30 +150,36 @@ agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 
 
-Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
-+-------------------------------------+
-; Parallel Compilation                ;
-+----------------------------+--------+
-; Processors                 ; Number ;
-+----------------------------+--------+
-; Number detected on machine ; 8      ;
-; Maximum allowed            ; 1      ;
-+----------------------------+--------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
++----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                           ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                       ; Library ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------+---------+
-; Router.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/Router.sv        ;         ;
-; Register_unit.sv                 ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/Register_unit.sv ;         ;
-; Reg_8.sv                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/Reg_8.sv         ;         ;
-; Processor.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/Processor.sv     ;         ;
-; HexDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/HexDriver.sv     ;         ;
-; Control.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/Control.sv       ;         ;
-; compute.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/compute.sv       ;         ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                              ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                          ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------+---------+
+; Router.sv                        ; yes             ; User SystemVerilog HDL File  ; U:/ECE385/Lab4/ECE385_LogicProcessor/Router.sv        ;         ;
+; Register_unit.sv                 ; yes             ; User SystemVerilog HDL File  ; U:/ECE385/Lab4/ECE385_LogicProcessor/Register_unit.sv ;         ;
+; Reg_8.sv                         ; yes             ; User SystemVerilog HDL File  ; U:/ECE385/Lab4/ECE385_LogicProcessor/Reg_8.sv         ;         ;
+; Processor.sv                     ; yes             ; User SystemVerilog HDL File  ; U:/ECE385/Lab4/ECE385_LogicProcessor/Processor.sv     ;         ;
+; HexDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; U:/ECE385/Lab4/ECE385_LogicProcessor/HexDriver.sv     ;         ;
+; Control.sv                       ; yes             ; User SystemVerilog HDL File  ; U:/ECE385/Lab4/ECE385_LogicProcessor/Control.sv       ;         ;
+; compute.sv                       ; yes             ; User SystemVerilog HDL File  ; U:/ECE385/Lab4/ECE385_LogicProcessor/compute.sv       ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------+
@@ -299,7 +305,7 @@ Encoding Type:  One-Hot
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -308,10 +314,10 @@ Encoding Type:  One-Hot
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
-    Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Thu Feb 12 21:01:36 2015
+    Info: Version 14.0.0 Build 200 06/17/2014 SJ Full Version
+    Info: Processing started: Fri Feb 13 12:34:57 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Processor -c Processor
-Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file testbench.sv
     Info (12023): Found entity 1: testbench
 Info (12021): Found 1 design units, including 1 entities, in source file router.sv
@@ -355,23 +361,23 @@ Warning (13004): Presettable and clearable registers converted to equivalent cir
     Warning (13310): Register "register_unit:reg_unit|reg_8:reg_B|Data_Out[7]" is converted into an equivalent circuit using register "register_unit:reg_unit|reg_8:reg_B|Data_Out[7]~_emulated" and latch "register_unit:reg_unit|reg_8:reg_B|Data_Out[7]~36"
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 4 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.map.smsg
+Info (144001): Generated suppressed messages file U:/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Info (21057): Implemented 177 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 48 output pins
     Info (21061): Implemented 111 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 18 warnings
-    Info: Peak virtual memory: 522 megabytes
-    Info: Processing ended: Thu Feb 12 21:01:40 2015
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 17 warnings
+    Info: Peak virtual memory: 560 megabytes
+    Info: Processing ended: Fri Feb 13 12:35:01 2015
     Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Total CPU time (on all processors): 00:00:01
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.map.smsg.
+The suppressed messages can be found in U:/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.map.smsg.
 
 

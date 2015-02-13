@@ -15,9 +15,9 @@
 
 // VENDOR "Altera"
 // PROGRAM "Quartus II 64-Bit"
-// VERSION "Version 14.0.0 Build 200 06/17/2014 SJ Web Edition"
+// VERSION "Version 14.0.0 Build 200 06/17/2014 SJ Full Version"
 
-// DATE "02/12/2015 21:03:21"
+// DATE "02/13/2015 12:35:47"
 
 // 
 // Device: Altera EP4CE115F29C7 Package FBGA780
@@ -45,21 +45,21 @@ module Processor (
 	AhexU,
 	BhexL,
 	BhexU);
-input 	Clk;
-input 	Reset;
-input 	LoadA;
-input 	LoadB;
-input 	Execute;
-input 	[7:0] Din;
-input 	[2:0] F;
-input 	[1:0] R;
-output 	[3:0] LED;
-output 	[7:0] Aval;
-output 	[7:0] Bval;
-output 	[6:0] AhexL;
-output 	[6:0] AhexU;
-output 	[6:0] BhexL;
-output 	[6:0] BhexU;
+input 	reg Clk ;
+input 	reg Reset ;
+input 	reg LoadA ;
+input 	reg LoadB ;
+input 	reg Execute ;
+input 	logic [7:0] Din ;
+input 	logic [2:0] F ;
+input 	logic [1:0] R ;
+output 	logic [3:0] LED ;
+output 	logic [7:0] Aval ;
+output 	logic [7:0] Bval ;
+output 	logic [6:0] AhexL ;
+output 	logic [6:0] AhexU ;
+output 	logic [6:0] BhexL ;
+output 	logic [6:0] BhexU ;
 
 // Design Ports Information
 // LED[0]	=>  Location: PIN_E21,	 I/O Standard: 2.5 V,	 Current Strength: Default

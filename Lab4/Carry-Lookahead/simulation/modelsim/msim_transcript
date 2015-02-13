@@ -1,0 +1,111 @@
+# Reading C:/altera/14.0/modelsim_ase/tcl/vsim/pref.tcl 
+# do carry_lookahead_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\14.0\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\14.0\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -sv -work work +incdir+U:/Carry-Lookahead {U:/Carry-Lookahead/HexDriver.sv}
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module HexDriver
+# 
+# Top level modules:
+# 	HexDriver
+# vlog -sv -work work +incdir+U:/Carry-Lookahead {U:/Carry-Lookahead/full_adder.sv}
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module full_adder
+# 
+# Top level modules:
+# 	full_adder
+# vlog -sv -work work +incdir+U:/Carry-Lookahead {U:/Carry-Lookahead/control.sv}
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module control
+# 
+# Top level modules:
+# 	control
+# vlog -sv -work work +incdir+U:/Carry-Lookahead {U:/Carry-Lookahead/reg_17.sv}
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module reg_17
+# 
+# Top level modules:
+# 	reg_17
+# vlog -sv -work work +incdir+U:/Carry-Lookahead {U:/Carry-Lookahead/lookahead4.sv}
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module lookahead4
+# 
+# Top level modules:
+# 	lookahead4
+# vlog -sv -work work +incdir+U:/Carry-Lookahead {U:/Carry-Lookahead/carry_lookahead.sv}
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module carry_lookahead
+# 
+# Top level modules:
+# 	carry_lookahead
+# 
+vsim work.carry_lookahead
+# vsim work.carry_lookahead 
+# Loading sv_std.std
+# Loading work.carry_lookahead
+# Loading work.reg_17
+# Loading work.lookahead4
+# Loading work.full_adder
+# Loading work.control
+# Loading work.HexDriver
+# ** Warning: (vsim-3015) U:/Carry-Lookahead/carry_lookahead.sv(49): [PCDPC] - Port size (1 or 1) does not match connection size (32) for port 'c_in'. The port definition is at: U:/Carry-Lookahead/lookahead4.sv(1).
+# 
+#         Region: /carry_lookahead/CLA
+# ** Warning: (vsim-3017) U:/Carry-Lookahead/lookahead4.sv(23): [TFMPC] - Too few port connections. Expected 5, found 4.
+# 
+#         Region: /carry_lookahead/CLA/FA0
+# ** Warning: (vsim-3722) U:/Carry-Lookahead/lookahead4.sv(23): [TFMPC] - Missing connection for port 'c'.
+# 
+# ** Warning: (vsim-3017) U:/Carry-Lookahead/lookahead4.sv(24): [TFMPC] - Too few port connections. Expected 5, found 4.
+# 
+#         Region: /carry_lookahead/CLA/FA1
+# ** Warning: (vsim-3722) U:/Carry-Lookahead/lookahead4.sv(24): [TFMPC] - Missing connection for port 'c'.
+# 
+# ** Warning: (vsim-3017) U:/Carry-Lookahead/lookahead4.sv(25): [TFMPC] - Too few port connections. Expected 5, found 4.
+# 
+#         Region: /carry_lookahead/CLA/FA14
+# ** Warning: (vsim-3722) U:/Carry-Lookahead/lookahead4.sv(25): [TFMPC] - Missing connection for port 'c'.
+# 
+wave create -driver freeze -pattern counter -startvalue 0000000000000000 -endvalue 1111111111111111 -type Range -direction Up -period 50ns -step 1 -repeat forever -range 15 0 -starttime 0ns -endtime 1000ns sim:/carry_lookahead/Switches
+wave create -pattern constant -value 000000000000000 -range 16 0 -starttime 0ns -endtime 1000ns sim:/carry_lookahead/R
+add wave -position end  sim:/carry_lookahead/Sum
+add wave -position end  sim:/carry_lookahead/Overflow
+add wave -position end  sim:/carry_lookahead/Run
+wave create -driver freeze -pattern constant -value 1 -starttime 0ps -endtime 1000ps sim:/carry_lookahead/Run
+wave modify -driver freeze -pattern constant -value St1 -starttime 0ns -endtime 1000ns Edit:/carry_lookahead/Run
+run -all
+# ** Warning: (vsim-8315) U:/Carry-Lookahead/control.sv(17): No condition is true in the unique/priority if/case statement.
+# 
+# ** Warning: (vsim-8315) U:/Carry-Lookahead/control.sv(17): No condition is true in the unique/priority if/case statement.
+# 
+# A time value could not be extracted from the current line
+# A time value could not be extracted from the current line
+wave create -driver freeze -pattern clock -initialvalue HiZ -period 50ns -dutycycle 50 -starttime 0ns -endtime 1000ns sim:/carry_lookahead/Clk
+wave create -driver freeze -pattern constant -value 0 -starttime 0ps -endtime 1000ps sim:/carry_lookahead/Reset
+wave modify -driver freeze -pattern constant -value St0 -starttime 0ns -endtime 50ns Edit:/carry_lookahead/Reset
+wave modify -driver freeze -pattern constant -value 0 -starttime 0ns -endtime 1000ns Edit:/carry_lookahead/Run
+run -all
+# ** Warning: (vsim-8315) U:/Carry-Lookahead/control.sv(17): No condition is true in the unique/priority if/case statement.
+# 
+wave modify -driver freeze -pattern counter -startvalue 0 -endvalue 1 -type Range -direction Up -period 50ns -step 1 -repeat forever -starttime 0ns -endtime 1000ns Edit:/carry_lookahead/Run
+run -all
+# 
+# Internal Error: In tclprim_ApplyStimulus for /carry_lookahead/Clk "Time value must be greater than "now": 1000000 ps
+# ** Error: (vsim-4004) The -cancel option requires a time period argument.
+# Usage: force [-deposit | -drive | -freeze] [-cancel <period>] [-repeat <period>] <item_name> <value> [<time>] [, <value> <time> ...]"
+# Internal Error: In tclprim_ApplyStimulus for /carry_lookahead/Reset ""
+run -all
+# 
+# Internal Error: In tclprim_ApplyStimulus for /carry_lookahead/Clk "Time value must be greater than "now": 1000000 ps
+# ** Error: (vsim-4004) The -cancel option requires a time period argument.
+# Usage: force [-deposit | -drive | -freeze] [-cancel <period>] [-repeat <period>] <item_name> <value> [<time>] [, <value> <time> ...]"
+# Internal Error: In tclprim_ApplyStimulus for /carry_lookahead/Reset ""
+run

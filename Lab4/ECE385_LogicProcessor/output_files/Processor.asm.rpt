@@ -1,6 +1,6 @@
 Assembler report for Processor
-Thu Feb 12 21:03:02 2015
-Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
+Fri Feb 13 12:35:33 2015
+Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Full Version
 
 
 ---------------------
@@ -10,8 +10,8 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.sof
-  6. Assembler Device Options: C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.pof
+  5. Assembler Device Options: U:/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.sof
+  6. Assembler Device Options: U:/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.pof
   7. Assembler Messages
 
 
@@ -39,7 +39,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Thu Feb 12 21:03:02 2015 ;
+; Assembler Status      ; Successful - Fri Feb 13 12:35:33 2015 ;
 ; Revision Name         ; Processor                             ;
 ; Top-level Entity Name ; Processor                             ;
 ; Family                ; Cyclone IV E                          ;
@@ -54,37 +54,37 @@ agreement for further details.
 +--------+---------+---------------+
 
 
-+----------------------------------------------------------------------------------------------+
-; Assembler Generated Files                                                                    ;
-+----------------------------------------------------------------------------------------------+
-; File Name                                                                                    ;
-+----------------------------------------------------------------------------------------------+
-; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.sof ;
-; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.pof ;
-+----------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------+
+; Assembler Generated Files                                       ;
++-----------------------------------------------------------------+
+; File Name                                                       ;
++-----------------------------------------------------------------+
+; U:/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.sof ;
+; U:/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.pof ;
++-----------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.sof ;
-+----------------+-------------------------------------------------------------------------------------------------------+
-; Option         ; Setting                                                                                               ;
-+----------------+-------------------------------------------------------------------------------------------------------+
-; Device         ; EP4CE115F29C7                                                                                         ;
-; JTAG usercode  ; 0x005798A5                                                                                            ;
-; Checksum       ; 0x005798A5                                                                                            ;
-+----------------+-------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------+
+; Assembler Device Options: U:/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.sof ;
++----------------+--------------------------------------------------------------------------+
+; Option         ; Setting                                                                  ;
++----------------+--------------------------------------------------------------------------+
+; Device         ; EP4CE115F29C7                                                            ;
+; JTAG usercode  ; 0x005798A5                                                               ;
+; Checksum       ; 0x005798A5                                                               ;
++----------------+--------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.pof ;
-+--------------------+---------------------------------------------------------------------------------------------------+
-; Option             ; Setting                                                                                           ;
-+--------------------+---------------------------------------------------------------------------------------------------+
-; Device             ; EPCS64                                                                                            ;
-; JTAG usercode      ; 0x00000000                                                                                        ;
-; Checksum           ; 0x49AC4140                                                                                        ;
-; Compression Ratio  ; 1                                                                                                 ;
-+--------------------+---------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------+
+; Assembler Device Options: U:/ECE385/Lab4/ECE385_LogicProcessor/output_files/Processor.pof ;
++--------------------+----------------------------------------------------------------------+
+; Option             ; Setting                                                              ;
++--------------------+----------------------------------------------------------------------+
+; Device             ; EPCS64                                                               ;
+; JTAG usercode      ; 0x00000000                                                           ;
+; Checksum           ; 0x49AC4140                                                           ;
+; Compression Ratio  ; 1                                                                    ;
++--------------------+----------------------------------------------------------------------+
 
 
 +--------------------+
@@ -92,15 +92,15 @@ agreement for further details.
 +--------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
-    Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Thu Feb 12 21:02:49 2015
+    Info: Version 14.0.0 Build 200 06/17/2014 SJ Full Version
+    Info: Processing started: Fri Feb 13 12:35:26 2015
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Processor -c Processor
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 490 megabytes
-    Info: Processing ended: Thu Feb 12 21:03:02 2015
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:13
+    Info: Peak virtual memory: 507 megabytes
+    Info: Processing ended: Fri Feb 13 12:35:33 2015
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:05
 
 
