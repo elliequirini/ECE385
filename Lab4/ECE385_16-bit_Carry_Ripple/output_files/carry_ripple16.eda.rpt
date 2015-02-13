@@ -1,5 +1,5 @@
 EDA Netlist Writer report for carry_ripple16
-Wed Feb 11 14:26:32 2015
+Thu Feb 12 21:11:25 2015
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Wed Feb 11 14:26:32 2015 ;
+; EDA Netlist Writer Status ; Successful - Thu Feb 12 21:11:25 2015 ;
 ; Revision Name             ; carry_ripple16                        ;
 ; Top-level Entity Name     ; carry_ripple16                        ;
 ; Family                    ; Cyclone IV E                          ;
@@ -67,20 +67,20 @@ agreement for further details.
 +---------------------------------------------------------------------------------------------------+---------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                                    ;
-+---------------------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                               ;
-+---------------------------------------------------------------------------------------------------------------+
-; C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_7_1200mv_85c_slow.svo    ;
-; C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_7_1200mv_0c_slow.svo     ;
-; C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_min_1200mv_0c_fast.svo   ;
-; C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16.svo                      ;
-; C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_7_1200mv_85c_v_slow.sdo  ;
-; C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_7_1200mv_0c_v_slow.sdo   ;
-; C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_min_1200mv_0c_v_fast.sdo ;
-; C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_v.sdo                    ;
-+---------------------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                                                         ;
++------------------------------------------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                                                    ;
++------------------------------------------------------------------------------------------------------------------------------------+
+; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_7_1200mv_85c_slow.svo    ;
+; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_7_1200mv_0c_slow.svo     ;
+; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_min_1200mv_0c_fast.svo   ;
+; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16.svo                      ;
+; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_7_1200mv_85c_v_slow.sdo  ;
+; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_7_1200mv_0c_v_slow.sdo   ;
+; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_min_1200mv_0c_v_fast.sdo ;
+; C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/carry_ripple16_v.sdo                    ;
++------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -89,20 +89,20 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Wed Feb 11 14:26:30 2015
+    Info: Processing started: Thu Feb 12 21:11:23 2015
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off carry_ripple16 -c carry_ripple16
-Info (204019): Generated file carry_ripple16_7_1200mv_85c_slow.svo in folder "C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file carry_ripple16_7_1200mv_0c_slow.svo in folder "C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file carry_ripple16_min_1200mv_0c_fast.svo in folder "C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file carry_ripple16.svo in folder "C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file carry_ripple16_7_1200mv_85c_v_slow.sdo in folder "C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file carry_ripple16_7_1200mv_0c_v_slow.sdo in folder "C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file carry_ripple16_min_1200mv_0c_v_fast.sdo in folder "C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file carry_ripple16_v.sdo in folder "C:/altera/14.0/quartus/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file carry_ripple16_7_1200mv_85c_slow.svo in folder "C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file carry_ripple16_7_1200mv_0c_slow.svo in folder "C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file carry_ripple16_min_1200mv_0c_fast.svo in folder "C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file carry_ripple16.svo in folder "C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file carry_ripple16_7_1200mv_85c_v_slow.sdo in folder "C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file carry_ripple16_7_1200mv_0c_v_slow.sdo in folder "C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file carry_ripple16_min_1200mv_0c_v_fast.sdo in folder "C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file carry_ripple16_v.sdo in folder "C:/Users/Ellie/Documents/GitHub/ECE385/Lab4/ECE385_16-bit_Carry_Ripple/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 449 megabytes
-    Info: Processing ended: Wed Feb 11 14:26:32 2015
+    Info: Peak virtual memory: 454 megabytes
+    Info: Processing ended: Thu Feb 12 21:11:25 2015
     Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
 
 
