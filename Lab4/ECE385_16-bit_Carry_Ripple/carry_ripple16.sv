@@ -29,7 +29,8 @@ module carry_ripple16 (input
 									.*, 
 									.Reset(Reset_h), 
 									.Ld_B, 
-									.Ofl(c), 
+									.Ofl(c),
+									.Run(Run_h),
 									.Data_In(new_Data),
 									.Overflow(Overflow), 
 									.Data_Out(old_Data));
