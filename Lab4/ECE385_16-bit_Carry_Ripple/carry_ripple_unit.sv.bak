@@ -1,6 +1,7 @@
-module carry_ripple_unit(input [15:0]A, B, input c_in, output [15:0] S, output c_out);
+module carry_ripple_unit(input [15:0]A,B, input c_in, output [15:0] S, output c_out);
 
 	wire [14:0] c;
+	
 		full_adder FA0(.x(A[0]), .y(B[0]),.z(c_in), .s(S[0]),.c(c[0]));
 		full_adder FA1(.x(A[1]), .y(B[1]),.z(c[0]), .s(S[1]),.c(c[1]));
 		full_adder FA2(.x(A[2]), .y(B[2]),.z(c[1]), .s(S[2]),.c(c[2]));

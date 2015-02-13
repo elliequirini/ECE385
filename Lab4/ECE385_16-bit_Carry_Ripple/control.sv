@@ -1,49 +1,42 @@
-module control (input Reset, Load_B, Run,
+module control (input Clk, Reset, Load_B, Run,
 					 output logic Ld_B);
-					 
-	enum logic [3:0] {A,B,C,D} cur_state, next_state;
+
+	enum logic [2:0] {A, B, C} curr_state, next_state; 
 	
-	always_ff @ (posedge Reset)
+	always_ff @ (posedge Clk, posedge Reset)
 	begin
-		if(Reset)
-			cur_state = A;
+		if (Reset)
+			curr_state = A;
 		else
-			cur_state = next_state;
-		end
-		
-		always_comb
-		begin
-			next_state = cur_state;
-			
-			unique case (cur_state)
-				A:	next_state = D;
-				B: next_state = D;
-				C: next_state = D;
-				D: 
-				begin
-					if(Run)
-						next_state = B;
-					else if(Load_B)
-						next_state = C;
-					else
-						next_state = D;
-				end
-				endcase
-			end
-			
-			always_comb
-			begin
-				case (cur_state)
-					C:
-					begin
-						Ld_B <= Load_B;
-					end
-					default:
-					begin
-						Ld_B <= 1'b0;
-					end
-				endcase
-			end
+			curr_state = next_state;
+	end
+	
+	always_comb
+	begin
+		next_state = curr_state;
+		unique case (curr_state)
+			A : if (Run)
+					next_state = B;
+				else if (Load_B)
+					next_state = C;
+					
+			B : next_state = A;
+			C : next_state = A;
+		endcase
+	end
+	
+	always_comb
+	begin
+		case (curr_state)
+			A:
+				Ld_B <= 1'b0;
+			B:
+				Ld_B <= 1'b0;
+			C:
+				Ld_B <= 1'b1;
+		endcase
+				
+	end
 endmodule
 					
 						
