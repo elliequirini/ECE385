@@ -42,7 +42,7 @@ set_global_assignment -name DEVICE EP4CE115F29C7
 set_global_assignment -name TOP_LEVEL_ENTITY carry_select
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 14.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "12:22:24  FEBRUARY 13, 2015"
-set_global_assignment -name LAST_QUARTUS_VERSION 14.0
+set_global_assignment -name LAST_QUARTUS_VERSION 14.1.0
 set_global_assignment -name SYSTEMVERILOG_FILE mux21.sv
 set_global_assignment -name SYSTEMVERILOG_FILE full_adder_4.sv
 set_global_assignment -name SYSTEMVERILOG_FILE carry_select16.sv
