@@ -43,7 +43,7 @@ Temporary Items
 .apdisk
 
 # backup files and compile data
-.bak
+*.bak
 db/
 incremental_db/
 output_files/
