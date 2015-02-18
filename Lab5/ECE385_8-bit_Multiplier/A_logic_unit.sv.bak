@@ -1,0 +1,9 @@
+module A_logic_unit (input Clr_Ld, input [7:0] A, output [7:0] New_A);
+
+if(Clr_Ld)
+	New_A <= 8'b00000000;
+else
+	New_A <= A;
+
+
+endmodule

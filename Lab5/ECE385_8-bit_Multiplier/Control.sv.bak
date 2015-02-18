@@ -1,0 +1,9 @@
+module Control (input  Clk, Reset, ClearA_LoadB, Run,
+                output logic Shift_En);
+					
+enum logic [3:0] {Idle, Reset, Load, A, B, C, D, E, F, G, H} cur_state, next_state;
+
+
+
+
+endmodule
