@@ -1,4 +1,4 @@
-module A_logic (input Clr_Ld, input [8:0] A_In, output [8:0] New_A);
+module A_logic (input Clr_Ld, input [8:0] A_In, output logic [8:0] New_A);
 
 always_comb
 begin
