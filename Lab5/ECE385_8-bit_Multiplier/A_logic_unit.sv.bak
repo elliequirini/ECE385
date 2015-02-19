@@ -1,11 +1,9 @@
-module A_logic (input Clr_Ld, input [8:0] A_In, output [8:0] New_A);
+module A_logic_unit (input Clr_Ld, input [7:0] A, output [7:0] New_A);
 
-always_comb
-begin
 if(Clr_Ld)
-	assign New_A <= 9'b000000000;
+	New_A <= 8'b00000000;
 else
-	assign New_A <= A_In;
-end
+	New_A <= A;
+
 
 endmodule
