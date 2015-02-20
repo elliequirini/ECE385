@@ -1,7 +1,7 @@
 module Control (input  Clk, Reset, ClearA_LoadB, Run, M,
                 output logic Shift_En, Clr_Ld, Add, Fn, Reset_c);
 					
-enum logic [4:0] {Idle, R, Load, Start, A, B, C, D, E, F, G, H, A2, B2, C2, D2, E2, F2, G2, H2} curr_state, next_state;
+enum logic [4:0] {Idle, R, Load, Start, Done, A, B, C, D, E, F, G, H, A2, B2, C2, D2, E2, F2, G2, H2} curr_state, next_state;
 
 always_ff @ (posedge Clk or posedge Reset)  
     begin
@@ -24,7 +24,7 @@ begin
 						next_state = Load;
 						
 		Start: 	next_state = A2;
-			A2:	if (~Run) next_state = Idle;
+			A2:	next_state = A;
 			A : 	next_state = B2;
 			B2:	next_state = B;
 			B :   next_state = C2;
@@ -39,7 +39,8 @@ begin
 			G2:	next_state = G;
 			G :   next_state = H2;
 			H2:	next_state = H;
-			H : 	next_state = Idle;
+			H : 	next_state = Done;
+			Done:	if(~Run) next_state = Idle;
 	endcase
 
 end
@@ -79,7 +80,14 @@ begin
 				Add <= 1'b0;
 				Fn <= 1'b0;
 			end
-		
+		Done:
+			begin
+				Reset_c <= 1'b0;
+				Shift_En <= 1'b0;
+				Clr_Ld <= 1'b0;
+				Add <= 1'b0;
+				Fn <= 1'b0;
+			end	
 		A2, B2, C2, D2, E2, F2, G2:
 			begin
 				Reset_c <= 1'b0;

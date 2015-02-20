@@ -4,15 +4,14 @@ module Multiplier(input logic   Clk,     		// Internal
                                 Run,	  		// Push button 2
                   input  [7:0]  S,     		// input data from switches
 						output logic  X,				// sign extend bit
-						output logic  dAdd,			// for debug
+										  M,				// DEBUG
+						output [7:0]  Aval,    		// DEBUG
+                                Bval,    		// DEBUG
                   output [6:0]  AhexL,			// output values for hex displays
                                 AhexU,
 										  BhexL,
-										  BhexU,
-										  ChexL,
-										  ChexU,
-										  DhexL,
-										  DhexU);
+										  BhexU);
+										 
 
 										  
 	logic A_Out, B_Out;
@@ -84,19 +83,8 @@ module Multiplier(input logic   Clk,     		// Internal
                   .In0(B[7:4]),
                   .Out0(BhexU));
 						
-	HexDriver HexCL (
-						.In0({3'b0, Add, Fn}),
-                  .Out0(ChexL));
-	HexDriver HexCU (
-                  .In0({2'b0, Shift_En, Clr_Ld, Reset_c}),
-                  .Out0(ChexU));
-	HexDriver HexDL (
-                  .In0(S[3:0]),
-                  .Out0(DhexL));
-	HexDriver HexDU (
-                  .In0(S[7:4]),
-                  .Out0(DhexU));
-
-	assign dAdd = Add;
+	assign Aval = A;
+	assign Bval = B;
+	assign M = B_Out;
 						
 endmodule
