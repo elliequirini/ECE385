@@ -24,7 +24,7 @@ begin
 						next_state = Load;
 						
 		Start: 	next_state = A2;
-			A2:	next_state = A;
+			A2:	next_state = Done;
 			A : 	next_state = B2;
 			B2:	next_state = B;
 			B :   next_state = C2;
@@ -40,7 +40,7 @@ begin
 			G :   next_state = H2;
 			H2:	next_state = H;
 			H : 	next_state = Done;
-			Done:	if(~Run) next_state = Idle;
+		Done :	if(~Run) next_state = Idle;
 	endcase
 
 end
@@ -56,14 +56,6 @@ begin
 				Add <= 1'b0;
 				Fn <= 1'b0;
 			end
-		Idle:
-			begin
-				Reset_c <= 1'b0;
-				Shift_En <= 1'b0;
-				Clr_Ld <= 1'b0;
-				Add <= 1'b0;
-				Fn <= 1'b0;
-			end
 		Load:
 			begin
 				Reset_c <= 1'b0;
@@ -72,22 +64,7 @@ begin
 				Add <= 1'b0;
 				Fn <= 1'b0;
 			end
-		Start:
-			begin
-				Reset_c <= 1'b0;
-				Shift_En <= 1'b0;
-				Clr_Ld <= 1'b0;
-				Add <= 1'b0;
-				Fn <= 1'b0;
-			end
-		Done:
-			begin
-				Reset_c <= 1'b0;
-				Shift_En <= 1'b0;
-				Clr_Ld <= 1'b0;
-				Add <= 1'b0;
-				Fn <= 1'b0;
-			end	
+		
 		A2, B2, C2, D2, E2, F2, G2:
 			begin
 				Reset_c <= 1'b0;
@@ -104,7 +81,7 @@ begin
 		H2:
 			begin
 				Reset_c <= 1'b0;
-				Shift_En <= 1'b1;
+				Shift_En <= 1'b0;
 				Clr_Ld <= 1'b0;
 				Fn <= 1'b1;
 				
@@ -114,7 +91,7 @@ begin
 					Add <= 1'b0;
 			end
 			
-		default:
+		A, B, C, D, E, F, G, H:
 			begin
 				Reset_c <= 1'b0;
 				Shift_En <= 1'b1;
@@ -122,6 +99,24 @@ begin
 				Fn <= 1'b0;
 				Add <= 1'b0;
 			end
+			
+		Idle, Start, Done:
+			begin
+				Reset_c <= 1'b0;
+				Shift_En <= 1'b0;
+				Clr_Ld <= 1'b0;
+				Add <= 1'b0;
+				Fn <= 1'b0;
+			end
+			
+		default:
+			begin
+				Reset_c <= 1'b0;
+				Shift_En <= 1'b0;
+				Clr_Ld <= 1'b0;
+				Add <= 1'b0;
+				Fn <= 1'b0;
+			end
 	endcase
 end
-endmodule
+endmodule	
