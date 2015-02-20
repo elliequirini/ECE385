@@ -3,7 +3,7 @@ module reg_8 (input Clk, Reset, Shift_In, Load, Shift_En,
               output        Shift_Out,
               output logic [7:0]  Data_Out);
 
-    always_ff @ (posedge Clk or posedge Load or posedge Reset)
+    always_ff @ (posedge Clk)
     begin
 	 
     if (Reset) 

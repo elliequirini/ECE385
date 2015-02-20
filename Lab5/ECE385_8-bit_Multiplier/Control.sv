@@ -1,5 +1,5 @@
 module Control (input  Clk, Reset, ClearA_LoadB, Run, M,
-                output logic Shift_En, Clr_Ld, Add, Fn, Reset_c);
+                output logic Shift_En, Clr_Ld, Add, Fn, Reset_c, D_);
 					
 enum logic [4:0] {Idle, R, Load, Start, Done, A, B, C, D, E, F, G, H, A2, B2, C2, D2, E2, F2, G2, H2} curr_state, next_state;
 
@@ -24,7 +24,7 @@ begin
 						next_state = Load;
 						
 		Start: 	next_state = A2;
-			A2:	next_state = Done;
+			A2:	next_state = A;
 			A : 	next_state = B2;
 			B2:	next_state = B;
 			B :   next_state = C2;
@@ -55,6 +55,7 @@ begin
 				Clr_Ld <= 1'b0;
 				Add <= 1'b0;
 				Fn <= 1'b0;
+				D_ <= 1'b0;
 			end
 		Load:
 			begin
@@ -63,6 +64,7 @@ begin
 				Clr_Ld <= 1'b1;
 				Add <= 1'b0;
 				Fn <= 1'b0;
+				D_ <= 1'b0;
 			end
 		
 		A2, B2, C2, D2, E2, F2, G2:
@@ -71,6 +73,7 @@ begin
 				Shift_En <= 1'b0;
 				Clr_Ld <= 1'b0;
 				Fn <= 1'b0;
+				D_ <= 1'b0;
 				
 				if(M)
 					Add <= 1'b1;
@@ -84,6 +87,7 @@ begin
 				Shift_En <= 1'b0;
 				Clr_Ld <= 1'b0;
 				Fn <= 1'b1;
+				D_ <= 1'b0;
 				
 				if(M)
 					Add <= 1'b1;
@@ -98,15 +102,26 @@ begin
 				Clr_Ld <= 1'b0;
 				Fn <= 1'b0;
 				Add <= 1'b0;
+				D_ <= 1'b0;
 			end
 			
-		Idle, Start, Done:
+		Idle, Start:
 			begin
 				Reset_c <= 1'b0;
 				Shift_En <= 1'b0;
 				Clr_Ld <= 1'b0;
 				Add <= 1'b0;
 				Fn <= 1'b0;
+				D_ <= 1'b0;
+			end
+		Done:
+			begin
+				Reset_c <= 1'b0;
+				Shift_En <= 1'b0;
+				Clr_Ld <= 1'b0;
+				Add <= 1'b0;
+				Fn <= 1'b0;
+				D_ <= 1'b1;
 			end
 			
 		default:
@@ -116,6 +131,7 @@ begin
 				Clr_Ld <= 1'b0;
 				Add <= 1'b0;
 				Fn <= 1'b0;
+				D_ <= 1'b0;
 			end
 	endcase
 end

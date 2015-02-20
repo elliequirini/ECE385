@@ -9,7 +9,7 @@ timeprecision 1ns;
 logic Clk = 0;
 logic Reset, ClearA_LoadB, Run;
 logic [7:0] S;
-logic X,M;
+logic X,M,D;
 logic [7:0] Aval,
 		 Bval;
 logic [6:0] AhexL,
@@ -58,15 +58,15 @@ S = 8'b11000101;	// Specify S
 #2 Run = 0;	// Toggle Execute
    
 #22 Run = 1;
-    ans_1a = (8'b11111110); // Expected result of 1st cycle
     // Aval is expected to be 
     // Bval is expected to be 
-    if (Aval != ans_1a)
+    if (D & Aval != 8'b11111110)
 	 ErrorCnt++;
-    if (Bval != 8'b01100011)
+    if (D & Bval != 8'b01100011)
 	 ErrorCnt++;
-	 if (X != 1'b1)
+	 if (D & X != 1'b1)
 	 ErrorCnt++;
+	 if (D & M != 1'b1)
    /*
 #2 Run = 0;	// Toggle Execute
 #2 Run = 1;

@@ -5,6 +5,7 @@ module Multiplier(input logic   Clk,     		// Internal
                   input  [7:0]  S,     		// input data from switches
 						output logic  X,				// sign extend bit
 										  M,				// DEBUG
+										  D,				// test
 						output [7:0]  Aval,    		// DEBUG
                                 Bval,    		// DEBUG
                   output [6:0]  AhexL,			// output values for hex displays
@@ -19,7 +20,7 @@ module Multiplier(input logic   Clk,     		// Internal
 	logic [8:0] Sum;
 	
 	// control variables
-	logic Shift_En, Clr_Ld, Reset_c, Add, Fn;
+	logic Shift_En, Clr_Ld, Reset_c, Add, Fn, D_;
 	
 	logic Reset_h, ClearA_LoadB_h, Run_h; 
 	always_comb
@@ -44,7 +45,8 @@ module Multiplier(input logic   Clk,     		// Internal
 						.Clr_Ld, 
 						.Add, 
 						.Fn, 
-						.Reset_c);
+						.Reset_c,
+						.D_);
 						
 	Dreg     dreg1(.*,
 						.Clk,
@@ -86,5 +88,6 @@ module Multiplier(input logic   Clk,     		// Internal
 	assign Aval = A;
 	assign Bval = B;
 	assign M = B_Out;
+	assign D = D_;
 						
 endmodule
