@@ -45,6 +45,8 @@ Temporary Items
 # backup files and compile data
 *.bak
 *.rpt
+*.qdf
+*.qws
 db/
 incremental_db/
 output_files/

@@ -7,8 +7,7 @@ begin
 	
 	if(Reset)
 		Q <= 1'b0;
-	else
-		if(Load)
-			Q <= D;
+	else if(Load)
+		Q <= D;
 end				  
 endmodule
