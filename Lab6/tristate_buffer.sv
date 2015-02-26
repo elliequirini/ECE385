@@ -1,4 +1,4 @@
-module tristate_buffer(input [15:0] MDR_Data, input select, output [15:0] data);
+module tristate_buffer(input logic [15:0] buf_in, input logic select, output logic [15:0] buf_out);
 
-assign data = select ? MDR_Data : 16'bz;
+assign buf_out = select ? buf_in : 16'bz;
 endmodule
