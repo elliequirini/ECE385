@@ -21,15 +21,15 @@ module LC3_Processor(input logic   Clk,     	// Internal
 		Run_h = ~Run;
 	end
 	
-	logic [15:0] IR, MAR, MDR, PC_out, PC_inc, PC_new;
+	logic [15:0] IR, MAR, MDR, MDR_buf, PC_out, PC_inc, PC_buf;
 	logic LD_MAR, LD_MDR, LD_IR, LD_BEN, LD_CC, LD_REG, LD_PC;
-	wire GateMDR, GatePC;
-	wire [15:0] MDR_buf, PC_buf;
+	logic GatePC, GateMDR, GateALU, GateMARMUX;
+	
 	
 	reg16			regMAR(
 						.Clk,
 						.Load(LD_MAR),
-						.Data_In(PC_buf),
+						.Data_In(PC_out),
 						.Data_Out(MAR),
 						.Reset(Reset_h));
 	reg16			regMDR(
@@ -47,7 +47,7 @@ module LC3_Processor(input logic   Clk,     	// Internal
 	reg16			regPC(
 						.Clk,
 						.Load(LD_PC),
-						.Data_In(PC_new),
+						.Data_In(PC_buf),
 						.Data_Out(PC_out),
 						.Reset(Reset_h));
 	
@@ -57,24 +57,33 @@ module LC3_Processor(input logic   Clk,     	// Internal
 						.Run(Run_h),
 						.Continue(Continue_h),
 						.ContinueIR(Continue_h),
-						
-						.LD_PC,
-						.GatePC,
-						.GateMDR,
-						
 						.Mem_CE(CE),
 						.Mem_UB(UB),
 						.Mem_LB(LB),
 						.Mem_OE(OE),
-						.Mem_WE(WE));
+						.Mem_WE(WE),
+						.LD_MAR,
+						.LD_MDR,
+						.LD_IR,
+						.LD_BEN,
+						.LD_CC,
+						.LD_REG,
+						.LD_PC,
+						.GatePC,
+						.GateMDR,
+						.GateALU,
+						.GateMARMUX);
 							
 	IncPC 		NextPC(.PC(PC_out),
 							 .PC_out(PC_inc));
-							
-	test_memory MEM(.Clk,
-						 .Reset(Reset_h),
-						 .I_O(Data)						
-						 );
+
+							 
+	test_memory MEM(.*,
+						.A({4'b0, MAR}),
+						.Clk,
+						.Reset(Reset_h),
+						.I_O(Data)						
+						);
 
 	tristate_buffer MDR_gate(
 									.buf_in(MDR), 
@@ -82,22 +91,24 @@ module LC3_Processor(input logic   Clk,     	// Internal
 									.buf_out(MDR_buf));
 	
 	tristate_buffer PC_gate(
-									.buf_in(PC_out), 
+									.buf_in(PC_inc), 
 									.select(GatePC), 
 									.buf_out(PC_buf));
 						 
 	HexDriver HexAL (
-						.In0(PC_out[3:0]),
+						.In0(IR[3:0]),
                   .Out0(HEX0));
 	HexDriver HexAU (
-                  .In0(PC_out[7:4]),
+                  .In0(IR[7:4]),
                   .Out0(HEX1));
 	HexDriver HexBL (
-                  .In0(PC_out[11:8]),
+                  .In0(IR[11:8]),
                   .Out0(HEX2));
 	HexDriver HexBU (
-                  .In0(PC_out[15:12]),
+                  .In0(IR[15:12]),
                   .Out0(HEX3));
+	
+	assign LED[9:0] = PC_out[9:0];
 						
 endmodule 
 
