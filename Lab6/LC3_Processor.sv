@@ -21,7 +21,7 @@ module LC3_Processor(input logic   Clk,     	// Internal
 		Run_h = ~Run;
 	end
 	
-	logic [15:0] IR, MAR, MDR, PC_out, PC_new;
+	logic [15:0] IR, MAR, MDR, PC_out, PC_inc, PC_new;
 	logic LD_MAR, LD_MDR, LD_IR, LD_BEN, LD_CC, LD_REG, LD_PC;
 	
 	reg16			regMAR(
@@ -62,25 +62,43 @@ module LC3_Processor(input logic   Clk,     	// Internal
 						.Mem_WE(WE));
 							
 	IncPC 		NextPC(.PC(PC_out),
-							.PC_out(PC_new));
+							 .PC_out(PC_inc));
 							
-	test_memory MEM(
-						.Clk,
-						.Reset(Reset_h),
-						.I_O(Data)						
-						);
-							
+	test_memory MEM(.Clk,
+						 .Reset(Reset_h),
+						 .I_O(Data)						
+						 );
+
+	tristate_buffer MDR_gate(
+									.buf_in(), 
+									.select(l1), 
+									.buf_out(l6));
+	
+	tristate_buffer PC_gate(
+									.buf_in(PC_inc), 
+									.select(GatePC), 
+									.buf_out(Pc_new));
+						 
 	HexDriver HexAL (
-						.In0(MAR[3:0]),
+						.In0(PC_out[3:0]),
                   .Out0(HEX0));
 	HexDriver HexAU (
-                  .In0(MAR[7:4]),
+                  .In0(PC_out[7:4]),
                   .Out0(HEX1));
 	HexDriver HexBL (
-                  .In0(MAR[11:8]),
+                  .In0(PC_out[11:8]),
                   .Out0(HEX2));
 	HexDriver HexBU (
-                  .In0(MAR[15:12]),
+                  .In0(PC_out[15:12]),
                   .Out0(HEX3));
 						
 endmodule 
+
+
+
+
+
+
+
+
+
