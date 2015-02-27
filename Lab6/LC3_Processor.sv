@@ -23,11 +23,13 @@ module LC3_Processor(input logic   Clk,     	// Internal
 	
 	logic [15:0] IR, MAR, MDR, PC_out, PC_inc, PC_new;
 	logic LD_MAR, LD_MDR, LD_IR, LD_BEN, LD_CC, LD_REG, LD_PC;
+	wire GateMDR, GatePC;
+	wire [15:0] MDR_buf, PC_buf;
 	
 	reg16			regMAR(
 						.Clk,
 						.Load(LD_MAR),
-						.Data_In(PC),
+						.Data_In(PC_buf),
 						.Data_Out(MAR),
 						.Reset(Reset_h));
 	reg16			regMDR(
@@ -39,7 +41,7 @@ module LC3_Processor(input logic   Clk,     	// Internal
 	reg16			regIR(
 						.Clk,
 						.Load(LD_IR),
-						.Data_In(MDR),
+						.Data_In(MDR_buf),
 						.Reset(Reset_h),
 						.Data_Out(IR));
 	reg16			regPC(
@@ -55,6 +57,11 @@ module LC3_Processor(input logic   Clk,     	// Internal
 						.Run(Run_h),
 						.Continue(Continue_h),
 						.ContinueIR(Continue_h),
+						
+						.LD_PC,
+						.GatePC,
+						.GateMDR,
+						
 						.Mem_CE(CE),
 						.Mem_UB(UB),
 						.Mem_LB(LB),
@@ -70,14 +77,14 @@ module LC3_Processor(input logic   Clk,     	// Internal
 						 );
 
 	tristate_buffer MDR_gate(
-									.buf_in(), 
-									.select(l1), 
-									.buf_out(l6));
+									.buf_in(MDR), 
+									.select(GateMDR), 
+									.buf_out(MDR_buf));
 	
 	tristate_buffer PC_gate(
-									.buf_in(PC_inc), 
+									.buf_in(PC_out), 
 									.select(GatePC), 
-									.buf_out(Pc_new));
+									.buf_out(PC_buf));
 						 
 	HexDriver HexAL (
 						.In0(PC_out[3:0]),
