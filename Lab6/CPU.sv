@@ -2,13 +2,16 @@ module CPU(input logic		Clk,     		// Internal
 									Reset,   		// Push button 0
 									Run,				// Push button 1
 									Continue,		// Push button 2
+
 						output logic  CE, UB, LB, OE, WE,
+						output [3:0]  HEX0, HEX1, HEX2, HEX3,
                   output [11:0] LED,
 						output [19:0] ADDR,
 						inout wire [15:0]  Data);
 			
 						
 	logic Reset_h, Run_h, Continue_h; 
+	logic n, z, p;
 	always_comb
 	begin
 		Reset_h = ~Reset;
@@ -25,6 +28,7 @@ module CPU(input logic		Clk,     		// Internal
 	logic [1:0] ADDR2MUX, ALUK;
 	logic Mem_CE, Mem_UB, Mem_LB, Mem_OE, Mem_WE;	            
 	
+
 	ISDU			Ctrl(
 						.Clk,
 						.Reset(Reset_h),
@@ -63,6 +67,9 @@ module CPU(input logic		Clk,     		// Internal
 						.Mem_LB,
 						.Mem_OE,
 						.Mem_WE);
+
+	NZP_Reg		NZP(.*, .Reset(Reset_h), .Load(0), .LV(0 /* regfile DR */ ));
+
 
 	/******PC UNIT********** 
 	CONDITIONS: PCMUX, LD_PC
@@ -142,4 +149,14 @@ module CPU(input logic		Clk,     		// Internal
 									.buf_in(MDR), 
 									.select(GateMDR), 
 									.buf_out(Data));
+	
+
+	assign ADDR = {4'b0, MAR};
+	assign HEX0 = IR[3:0];
+	assign HEX1 = IR[7:4];
+	assign HEX2 = IR[11:8];
+	assign HEX3 = IR[15:12];
+	
+	assign LED = PC_out[11:0];
+
 endmodule
