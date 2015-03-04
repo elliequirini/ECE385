@@ -88,7 +88,7 @@ module ISDU ( 	input			Clk,
                 if (ContinueIR) 
                     Next_state <= PauseIR2;
                 else 
-                    Next_state <= S_18;
+                    Next_state <= S_32; //S_18
             S_32 : 
 				case (Opcode)
 					4'b0001 : 
