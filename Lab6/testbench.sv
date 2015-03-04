@@ -45,27 +45,27 @@ Continue = 1;
    
 #2 Run = 1;
 	
-#4 Continue = 0;
+#10 Continue = 0;
 
 #2 Continue = 1;
 
 	
-#4 Continue = 0;
+#10 Continue = 0;
 
 #2 Continue = 1;
 
 	
-#4 Continue = 0;
+#10 Continue = 0;
 
 #2 Continue = 1;
 
 	
-#4 Continue = 0;
+#10 Continue = 0;
 
 #2 Continue = 1;
 
 	
-#4 Continue = 0;
+#10 Continue = 0;
 
 #2 Continue = 1;
 
