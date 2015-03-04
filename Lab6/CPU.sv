@@ -2,14 +2,15 @@ module CPU(input logic		Clk,     		// Internal
 												Reset,   		// Push button 0
 												Run,				// Push button 1
 												Continue,		// Push button 2
-                  input  [15:0] S,     		// input data from switches
 						output logic  CE, UB, LB, OE, WE,
+						output [3:0]  HEX0, HEX1, HEX2, HEX3,
                   output [11:0] LED,
 						output [19:0] ADDR,
 						inout [15:0]  Data);
 			
 						
 	logic Reset_h, Run_h, Continue_h; 
+	logic n, z, p;
 	always_comb
 	begin
 		Reset_h = ~Reset;
@@ -27,17 +28,6 @@ module CPU(input logic		Clk,     		// Internal
 	reg16			regIR(.Clk, .Load(LD_IR), .Data_In(MDR_buf), .Reset(Reset_h), .Data_Out(IR));
 	reg16			regPC(.Clk, .Load(LD_PC), .Data_In(PC_buf), .Data_Out(PC_out), .Reset(Reset_h));
 
-	/*
-	reg16			regR0(.Clk, .Load(LD_PC), .Data_In(PC_buf), .Data_Out(PC_out),	.Reset(Reset_h));
-	reg16			regR1(.Clk, .Load(LD_PC), .Data_In(PC_buf), .Data_Out(PC_out),	.Reset(Reset_h));
-	reg16			regR2(.Clk, .Load(LD_PC), .Data_In(PC_buf), .Data_Out(PC_out),	.Reset(Reset_h));
-	reg16			regR3(.Clk, .Load(LD_PC), .Data_In(PC_buf), .Data_Out(PC_out),	.Reset(Reset_h));	
-	reg16			regR4(.Clk, .Load(LD_PC), .Data_In(PC_buf), .Data_Out(PC_out),	.Reset(Reset_h));
-	reg16			regR5(.Clk, .Load(LD_PC), .Data_In(PC_buf), .Data_Out(PC_out),	.Reset(Reset_h));
-	reg16			regR6(.Clk, .Load(LD_PC), .Data_In(PC_buf), .Data_Out(PC_out),	.Reset(Reset_h));
-	reg16			regR7(.Clk, .Load(LD_PC), .Data_In(PC_buf), .Data_Out(PC_out),	.Reset(Reset_h));
-	*/
-	
 
 	ISDU			Ctrl(
 						.Clk,
@@ -65,15 +55,7 @@ module CPU(input logic		Clk,     		// Internal
 	IncPC 		NextPC(.PC(PC_out),
 							 .PC_out(PC_inc));
 
-							 
-	//assign ADDR = {4'b0, MAR};
-	/*
-	test_memory MEM(.*,
-						.A({4'b0, MAR}),
-						.Clk,
-						.Reset(Reset_h),
-						.I_O(Data)						
-						);*/
+	NZP_Reg		NZP(.*, .Reset(Reset_h), .Load(0), .LV(0 /* regfile DR */ ));
 
 	tristate_buffer MDR_gate(
 									.buf_in(MDR), 
@@ -82,7 +64,15 @@ module CPU(input logic		Clk,     		// Internal
 	
 	tristate_buffer PC_gate(
 									.buf_in(PC_inc), 
-									.select(GatePC), 
+									.select(GatePC),
 									.buf_out(PC_buf));
+
+	assign ADDR = {4'b0, MAR};
+	assign HEX0 = IR[3:0];
+	assign HEX1 = IR[7:4];
+	assign HEX2 = IR[11:8];
+	assign HEX3 = IR[15:12];
+	
+	assign LED = PC_out[11:0];
 
 endmodule
