@@ -35,6 +35,7 @@ module CPU(input logic		Clk,     		// Internal
 						.Continue(Continue_h),
 						.ContinueIR(Continue_h),
 						.Opcode(IR[15:12]),
+						.IR_5(IR[5]),
 						
 						.Mem_CE(CE),
 						.Mem_UB(UB),
@@ -64,7 +65,7 @@ module CPU(input logic		Clk,     		// Internal
 						.ALUK);
 
 						
-	NZP_Reg		NZP(.*, .Reset(Reset_h), .Load(0), .LV(0 /* regfile DR */ ));
+	NZP_Reg		NZP(.*, .Reset(Reset_h), .Load(LD_CC), .LV(Data));
 
 
 	/******PC UNIT********** 
