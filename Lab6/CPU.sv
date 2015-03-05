@@ -4,7 +4,6 @@ module CPU(input logic		Clk,     		// Internal
 									Continue,		// Push button 2
 
 						output logic  CE, UB, LB, OE, WE,
-						output [3:0]  HEX0, HEX1, HEX2, HEX3,
                   output [11:0] LED,
 						output [19:0] ADDR,
 						inout [15:0]  Data);
@@ -23,8 +22,8 @@ module CPU(input logic		Clk,     		// Internal
 	logic [15:0] IR, MAR, MDR, PC_out, PC_inc, PC_buf;
 	logic LD_MAR, LD_MDR, LD_IR, LD_BEN, LD_CC, LD_REG, LD_PC;
 	logic GatePC, GateMDR, GateALU, GateMARMUX;
-	logic [1:0] PCMUX, DRMUX, SR1MUX;
-	logic SR2MUX, ADDR1MUX, MARMUX;
+	logic [1:0] PCMUX, DRMUX;
+	logic SR1MUX, SR2MUX, ADDR1MUX, MARMUX;
 	logic [1:0] ADDR2MUX, ALUK;   
 	
 
@@ -103,11 +102,17 @@ module CPU(input logic		Clk,     		// Internal
 	OUTPUT: Data Bus <- ALU
 	******************************************/
 	logic [15:0] SR1, SR2, SR2_mux, ALU_out, IMM;
+	logic [2:0] SR1_IN;
+	
+	MUX_3b21 		SR1MUXX(.IN_0(IR[8:6]),
+									.IN_1(IR[11:9]),
+									.SEL(SR1MUX),
+									.OUT(SR1_IN));
 	
 	REG_FILE			Reg_File( .*,
 									 .BUS(Data), 
 									 .DR(IR[11:9]), 
-									 .SR1(IR[8:6]), 
+									 .SR1(SR1_IN), 
 									 .SR2(IR[2:0]), 
 									 .LD_REG,
 									 .SR1_OUT(SR1), 
@@ -177,10 +182,6 @@ module CPU(input logic		Clk,     		// Internal
 	
 
 	assign ADDR = {4'b0, MAR};
-	assign HEX0 = IR[3:0];
-	assign HEX1 = IR[7:4];
-	assign HEX2 = IR[11:8];
-	assign HEX3 = IR[15:12];
 	
 	assign LED[9:0] = PC_out[9:0];
 	assign LED[10] = ADDR1MUX;

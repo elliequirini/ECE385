@@ -38,8 +38,8 @@ module ISDU ( 	input			Clk,
 									
 				output logic [1:0] 	PCMUX,
 											DRMUX,
-											SR1MUX,
-				output logic 			SR2MUX,
+				output logic 			SR1MUX,
+											SR2MUX,
 											ADDR1MUX,
 				output logic [1:0] 	ADDR2MUX,
 				output logic 			MARMUX,
@@ -53,8 +53,9 @@ module ISDU ( 	input			Clk,
 									Mem_WE
 				);
 
-    enum logic [3:0] {Halted, PauseIR1, PauseIR2, S_18, S_33_1, S_33_2, S_35, S_32, S_01,
-								S_LDR, S_LDR_2, S_LDR_3, S_LDR_4, S_AND, S_JMP}   State, Next_state;   // Internal state logic
+    enum logic [4:0] {Halted, PauseIR1, PauseIR2, S_18, S_33_1, S_33_2, S_35, S_32, S_01,
+								S_LDR, S_LDR_2, S_LDR_3, S_LDR_4, S_AND, S_JMP,
+								S_STR, S_STR_2, S_STR_3, S_STR_4, S_BR, S_BR_2}   State, Next_state;   // Internal state logic
 	    
     always_ff @ (posedge Clk or posedge Reset )
     begin : Assign_Next_State
@@ -102,6 +103,11 @@ module ISDU ( 	input			Clk,
 						Next_state <= S_AND;
 					4'b1100 : // JMP
 						Next_state <= S_JMP;
+					4'b0111 : // STR
+						Next_state <= S_STR;
+					4'b0000 : // BR
+						Next_state <= S_BR;
+						
 					
 					default : 
 					    Next_state <= S_18;
@@ -118,6 +124,17 @@ module ISDU ( 	input			Clk,
 				S_LDR_4 : Next_state <= S_18;
 				
 				S_JMP : Next_state <= S_18;
+				
+				S_STR : Next_state <= S_STR_2;
+				S_STR_2 : Next_state <= S_STR_3;
+				S_STR_3 : Next_state <= S_STR_4;
+				S_STR_4 : Next_state <= PauseIR1;
+				
+				S_BR : if (BEN) 
+							Next_state <= S_BR_2;
+						 else
+							Next_state < = S_18;
+				S_BR_2: Next_state <= S_18;
 				
 			default : ;
 
@@ -231,6 +248,38 @@ module ISDU ( 	input			Clk,
 					LD_PC = 1'b1; 
 					end
 					
+				S_STR: // same as LDR
+					begin
+					ADDR1MUX = 1'b0; 
+					ADDR2MUX = 2'b10; 
+					MARMUX = 1'b1; 
+					GateMARMUX = 1'b1;
+					LD_MAR = 1'b1;
+					end
+					
+				S_STR_2: // MDR<-SR
+					begin
+					SR1MUX = 1'b1; 
+					ALUK = 2'b11;
+					GateALU = 1'b1;
+					LD_MDR = 1'b1; 
+					end
+				S_STR_3 : // M[MAR] <- MDR
+					begin
+					Mem_WE = 1'b0; 
+					GateMDR = 1'b1; 
+					end
+				S_STR_4 :
+					begin
+					Mem_WE = 1'b0; 
+					GateMDR = 1'b1; 
+					end
+ 
+				S_BR_2 :
+					begin
+						
+					end
+				
             default : ;
            endcase
        end 
