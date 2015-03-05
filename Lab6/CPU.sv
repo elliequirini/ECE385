@@ -76,9 +76,9 @@ module CPU(input logic		Clk,     		// Internal
 	OUTPUT: Data Bus <- PC
 	***********************/ 
 	logic [15:0] ALT_ADDR;
-	MUX_16b31		PC_MUX(	 .IN_0(Data), 
+	MUX_16b31		PC_MUX(	 .IN_0(PC_inc), 
 									 .IN_1(ALT_ADDR), 
-									 .IN_2(PC_inc), 
+									 .IN_2(Data), 
 									 .SEL(PCMUX), 
 									 .OUT(PC_buf));
 	
@@ -138,7 +138,8 @@ module CPU(input logic		Clk,     		// Internal
 	SEXT_616 		SEXT3(.IN(IR[5:0]), .OUT(IMM3));
 	ZEXT_816			ZEXT1(.IN(IR[7:0]), .OUT(IMM4));
 	
-	MUX_16b41 		ADDR2MUXX(.IN_0(IMM1),
+	MUX_16b41 		ADDR2MUXX(.Clk,
+									.IN_0(IMM1),
 									.IN_1(IMM2),
 									.IN_2(IMM3),
 									.IN_3(16'b0),
@@ -150,7 +151,7 @@ module CPU(input logic		Clk,     		// Internal
 									.SEL(ADDR1MUX),
 									.OUT(ADDR1_OUT));
 	
-	assign ALT_ADDR = ADDR2_OUT + ADDR1_OUT;
+	assign ALT_ADDR = ADDR1_OUT + ADDR2_OUT;
 	
 	
 	MUX_16b21 		MARMUXX(.IN_0(IMM4),

@@ -5,21 +5,21 @@ module REG_FILE(input Clk, Reset, LD_REG,
 
 	logic [15:0] R0,R1,R2,R3,R4,R5,R6,R7;
 	
-	reg16	inputReg(.Clk, .Load(LD_REG), .Data_In(BUS), .Data_Out(DR_data), .Reset);
+	//reg16	inputReg(.Clk, .Load(LD_REG), .Data_In(BUS), .Data_Out(DR_data), .Reset);
 	//reg16 SR1_Reg(.Clk, .Load(1), .Data_In(SR1_val), .Data_Out(SR1_OUT), .Reset);
 	
 	always_ff @ (posedge Clk)
 	begin 
 		if(LD_REG)
 			case(DR)
-				3'b000: R0 <= DR_data;
-				3'b001: R1 <= DR_data;
-				3'b010: R2 <= DR_data;
-				3'b011: R3 <= DR_data;
-				3'b100: R4 <= DR_data;
-				3'b101: R5 <= DR_data;
-				3'b110: R6 <= DR_data;
-				3'b111: R7 <= DR_data;
+				3'b000: R0 <= BUS;
+				3'b001: R1 <= BUS;
+				3'b010: R2 <= BUS;
+				3'b011: R3 <= BUS;
+				3'b100: R4 <= BUS;
+				3'b101: R5 <= BUS;
+				3'b110: R6 <= BUS;
+				3'b111: R7 <= BUS;
 				default: ;
 			endcase
 			

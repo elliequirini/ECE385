@@ -54,7 +54,7 @@ module ISDU ( 	input			Clk,
 				);
 
     enum logic [3:0] {Halted, PauseIR1, PauseIR2, S_18, S_33_1, S_33_2, S_35, S_32, S_01,
-								S_LDR, S_LDR_2, S_LDR_3, S_LDR_4, S_AND}   State, Next_state;   // Internal state logic
+								S_LDR, S_LDR_2, S_LDR_3, S_LDR_4, S_AND, S_JMP}   State, Next_state;   // Internal state logic
 	    
     always_ff @ (posedge Clk or posedge Reset )
     begin : Assign_Next_State
@@ -100,6 +100,8 @@ module ISDU ( 	input			Clk,
 						Next_state <= S_LDR;
 					4'b0101 : // AND
 						Next_state <= S_AND;
+					4'b1100 : // JMP
+						Next_state <= S_JMP;
 					
 					default : 
 					    Next_state <= S_18;
@@ -114,6 +116,8 @@ module ISDU ( 	input			Clk,
 				S_LDR_2 : Next_state <= S_LDR_3;
 				S_LDR_3 : Next_state <= S_LDR_4;
 				S_LDR_4 : Next_state <= S_18;
+				
+				S_JMP : Next_state <= S_18;
 				
 			default : ;
 
@@ -196,9 +200,9 @@ module ISDU ( 	input			Clk,
 					 
 				S_LDR: // (MAR <- Breg + SEXT(off6))
 					begin
-					ADDR1MUX = 1'b1; 
-					ADDR2MUX = 1'b0; 
-					MARMUX = 1'b0; 
+					ADDR1MUX = 1'b0; 
+					ADDR2MUX = 2'b10; 
+					MARMUX = 1'b1; 
 					GateMARMUX = 1'b1;
 					LD_MAR = 1'b1;
 					end
@@ -217,6 +221,14 @@ module ISDU ( 	input			Clk,
 					GateMDR = 1'b1; 
 					LD_REG = 1'b1;
 					LD_CC = 1'b1; 
+					end
+					
+				S_JMP :
+					begin
+					ADDR1MUX = 1'b0;
+					ADDR2MUX = 2'b11;
+					PCMUX = 2'b01;
+					LD_PC = 1'b1; 
 					end
 					
             default : ;
