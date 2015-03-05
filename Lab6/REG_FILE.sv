@@ -1,11 +1,14 @@
-module REG_FILE(input Clk, Reset, input logic [15:0] BUS, input logic [2:0] DR, SR1, SR2, input logic LD_REG, output logic [15:0] SR1_OUT, SR2_OUT);
+module REG_FILE(input Clk, Reset, LD_REG,
+					input logic [15:0] BUS, 
+					input logic [2:0] DR, SR1, SR2, 
+					output logic [15:0] SR1_OUT, SR2_OUT);
 
 	logic [15:0] R0,R1,R2,R3,R4,R5,R6,R7;
 	
 	reg16	inputReg(.Clk, .Load(LD_REG), .Data_In(BUS), .Data_Out(DR_data), .Reset);
 	//reg16 SR1_Reg(.Clk, .Load(1), .Data_In(SR1_val), .Data_Out(SR1_OUT), .Reset);
 	
-	always_comb
+	always_ff @ (posedge Clk)
 	begin 
 		if(LD_REG)
 			case(DR)

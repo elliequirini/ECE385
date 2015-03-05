@@ -53,7 +53,8 @@ module ISDU ( 	input			Clk,
 									Mem_WE
 				);
 
-    enum logic [3:0] {Halted, PauseIR1, PauseIR2, S_18, S_33_1, S_33_2, S_35, S_32, S_01}   State, Next_state;   // Internal state logic
+    enum logic [3:0] {Halted, PauseIR1, PauseIR2, S_18, S_33_1, S_33_2, S_35, S_32, S_01,
+								S_LDR, S_LDR_2, S_LDR_3, S_LDR_4}   State, Next_state;   // Internal state logic
 	    
     always_ff @ (posedge Clk or posedge Reset )
     begin : Assign_Next_State
@@ -78,7 +79,8 @@ module ISDU ( 	input			Clk,
             S_33_2 : 
                 Next_state <= S_35;
             S_35 : 
-                Next_state <= PauseIR1;
+                Next_state <= S_32;
+					 
             PauseIR1 : 
                 if (~ContinueIR) 
                     Next_state <= PauseIR1;
@@ -88,16 +90,27 @@ module ISDU ( 	input			Clk,
                 if (ContinueIR) 
                     Next_state <= PauseIR2;
                 else 
-                    Next_state <= S_32; //S_18
+                    Next_state <= S_18; //S_18
+						  
             S_32 : 
 				case (Opcode)
-					4'b0001 : 
-					    Next_state <= S_01;
+					4'b0001 : // ADD
+						Next_state <= S_01;
+					4'b0110 : // LDR
+						Next_state <= S_LDR;
+					
 					default : 
 					    Next_state <= S_18;
 				endcase
-            S_01 : 
+				
+            S_01 : // ADD
 				Next_state <= S_18;
+				
+				S_LDR : Next_state <= S_LDR_2;
+				S_LDR_2 : Next_state <= S_LDR_3;
+				S_LDR_3 : Next_state <= S_LDR_4;
+				S_LDR_4 : Next_state <= PauseIR1;
+				
 			default : ;
 
 	     endcase
@@ -120,7 +133,7 @@ module ISDU ( 	input			Clk,
 	    GateALU = 1'b0;
 	    GateMARMUX = 1'b0;
 		 
-		ALUK = 2'b00;
+		 ALUK = 2'b00;
 		 
 	    PCMUX = 2'b00;
 	    DRMUX = 2'b00;
@@ -158,13 +171,42 @@ module ISDU ( 	input			Clk,
             PauseIR2: ;
             S_32 : 
                 LD_BEN = 1'b1;
-            S_01 : 
+					 
+					 
+            S_01 : // ADD
                 begin 
 					SR2MUX = IR_5;
 					ALUK = 2'b00;
 					GateALU = 1'b1;
 					LD_REG = 1'b1;
                 end
+					 
+				S_LDR: // (MAR <- Breg + SEXT(off6))
+						 
+					begin
+						ADDR1MUX = 1'b1; // set ADDR1 MUX to 1 to select baseR
+						ADDR2MUX = 1'b0; // ADDR2MUX to 0 to add 0 to ADDR1MUX,
+						MARMUX = 1'b0; // set MARMUX to 0 and gate MARMUX to high to let the result get onto the bus
+						GateMARMUX = 1'b1;
+						LD_MAR = 1'b1; //set LD_MAR to high
+					end
+
+				S_LDR_2 : //2nd step of LDR (2 cycles required..MDR<-M[MAR]), for the first step we just set OE to 0, and WE to 1
+					begin
+					Mem_OE = 1'b0;
+					end
+				S_LDR_3 : // 2nd cycle of 2nd step, we just set OE to 0 and WE to 1 again, and set LD_MDR to high (only do this once in the 2 cycles)
+					begin
+					Mem_OE = 1'b0;
+					LD_MDR = 1'b1;
+					end
+				S_LDR_4 : // 3rd step of LDR (DR<-MDR), here we set GATEMDR to 1 so the data can go out on the bus, and then LD_REG high and LD_CC high so the dr is loaded and the condition codes are set
+					begin
+					GateMDR = 1'b1; 
+					LD_REG = 1'b1;
+					LD_CC = 1'b1; 
+					end
+					
             default : ;
            endcase
        end 
