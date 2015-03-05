@@ -1,4 +1,3 @@
-/*
 module testbench();
 
 timeunit 10ns;	// Half clock cycle at 50 MHz
@@ -9,15 +8,18 @@ timeprecision 1ns;
 // instantiated as a submodule in testbench.
 logic Clk = 0;
 logic Reset, Run, Continue;
+logic [15:0] S;
+logic [11:0] LED;
 logic [15:0] IR;
 logic [6:0]  HEX0,
 				 HEX1,
 				 HEX2,
 				 HEX3;
 logic CE, UB, LB, OE, WE;
+logic [19:0] ADDR;
 wire [15:0] Data;
 
-// Instantiating the DUT
+// Instantiating 
 // Make sure the module and signal names match with those in your design
 LC3_Processor processor0(.*);	
 
@@ -38,38 +40,13 @@ end
 initial begin: TEST_VECTORS
 Reset = 0;		// Toggle Rest
 Run = 1;
-Continue = 1;
+S = 16'b0000000000000000;
 
 #2 Reset = 1;
 
 #2 Run = 0;	
    
 #2 Run = 1;
-	
-#10 Continue = 0;
-
-#2 Continue = 1;
-
-	
-#10 Continue = 0;
-
-#2 Continue = 1;
-
-	
-#10 Continue = 0;
-
-#2 Continue = 1;
-
-	
-#10 Continue = 0;
-
-#2 Continue = 1;
-
-	
-#10 Continue = 0;
-
-#2 Continue = 1;
 
 end
 endmodule
-*/

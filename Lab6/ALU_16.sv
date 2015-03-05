@@ -1,4 +1,4 @@
-module ALU_16 (input [15:0] A_In, B_In, input [1:0] F, output [15:0] F_A_B);
+module ALU_16 (input [15:0] A_In, B_In, input [1:0] F, output logic [15:0] F_A_B);
 
 always_comb
 	begin
