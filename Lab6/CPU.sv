@@ -132,7 +132,7 @@ module CPU(input logic		Clk,     		// Internal
 	
 	
 	/**** ERRTHING ELSE ****/
-	logic [15:0] IMM1, IMM2, IMM3, IMM4, ADDR2_OUT, MARMUX_buf;
+	logic [15:0] IMM1, IMM2, IMM3, IMM4, ADDR1_OUT, ADDR2_OUT, MARMUX_buf;
 	SEXT_1116 		SEXT1(.IN(IR[10:0]), .OUT(IMM1));
 	SEXT_916 		SEXT2(.IN(IR[8:0]), .OUT(IMM2));
 	SEXT_616 		SEXT3(.IN(IR[5:0]), .OUT(IMM3));
@@ -151,8 +151,9 @@ module CPU(input logic		Clk,     		// Internal
 									.SEL(ADDR1MUX),
 									.OUT(ADDR1_OUT));
 	
-	assign ALT_ADDR = ADDR1_OUT + ADDR2_OUT;
-	
+	adder 			ADDIT(.in1(ADDR1_OUT),
+								.in2(ADDR2_OUT),
+								.out(ALT_ADDR));
 	
 	MUX_16b21 		MARMUXX(.IN_0(IMM4),
 									.IN_1(ALT_ADDR),
