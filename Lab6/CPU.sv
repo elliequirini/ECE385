@@ -23,8 +23,8 @@ module CPU(input logic		Clk,     		// Internal
 	logic LD_MAR, LD_MDR, LD_IR, LD_BEN, LD_CC, LD_REG, LD_PC;
 	logic GatePC, GateMDR, GateALU, GateMARMUX;
 	logic [1:0] PCMUX, DRMUX;
-	logic SR1MUX, SR2MUX, ADDR1MUX, MARMUX;
-	logic [1:0] ADDR2MUX, ALUK;   
+	logic SR1MUX, SR2MUX, ADDR1MUX, MARMUX, BEN;
+	logic [1:0] ADDR2MUX, ALUK; 
 	
 
 	ISDU			Ctrl(
@@ -35,6 +35,7 @@ module CPU(input logic		Clk,     		// Internal
 						.ContinueIR(Continue_h),
 						.Opcode(IR[15:12]),
 						.IR_5(IR[5]),
+						.BEN,
 						
 						.Mem_CE(CE),
 						.Mem_UB(UB),
@@ -63,8 +64,7 @@ module CPU(input logic		Clk,     		// Internal
 						.MARMUX,
 						.ALUK);
 
-						
-	NZP_Reg		NZP(.*, .Reset(Reset_h), .Load(LD_CC), .LV(Data));
+	NZP_Reg		NZP(.*, .Reset(Reset_h), .Load(LD_CC), .LV(Data), .NZP(IR[11:9]), .BEN);
 
 
 	/******PC UNIT********** 
@@ -152,7 +152,7 @@ module CPU(input logic		Clk,     		// Internal
 									.OUT(ADDR2_OUT));
 									
 	MUX_16b21		ADDR1MUXX(.IN_0(SR1),
-									.IN_1(PC),
+									.IN_1(PC_out),
 									.SEL(ADDR1MUX),
 									.OUT(ADDR1_OUT));
 	

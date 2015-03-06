@@ -1,6 +1,7 @@
 module NZP_Reg(input Clk, Reset, Load,
 					input [15:0] LV,
-					output logic n, z, p);
+					input [2:0] NZP,
+					output logic n, z, p, BEN);
 					
 always_ff @ (posedge Clk or posedge Reset)
 begin	
@@ -31,6 +32,14 @@ begin
 			z <= z;
 			p <= p;
 		end
+end	
+
+always_comb
+begin
+	if ((NZP & {n, z, p}) != 0)
+		BEN <= 1;
+	else
+		BEN <= 0;
 end
-	
+
 endmodule

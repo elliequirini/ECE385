@@ -22,6 +22,7 @@ module ISDU ( 	input			Clk,
 									
 				input [3:0]  	Opcode, 
 				input        	IR_5,
+				input				BEN,
 				  
 				output logic 	LD_MAR,
 									LD_MDR,
@@ -55,7 +56,7 @@ module ISDU ( 	input			Clk,
 
     enum logic [4:0] {Halted, PauseIR1, PauseIR2, S_18, S_33_1, S_33_2, S_35, S_32, S_01,
 								S_LDR, S_LDR_2, S_LDR_3, S_LDR_4, S_AND, S_JMP,
-								S_STR, S_STR_2, S_STR_3, S_STR_4, S_BR, S_BR_2}   State, Next_state;   // Internal state logic
+								S_STR, S_STR_2, S_STR_3, S_STR_4, S_BR}   State, Next_state;   // Internal state logic
 	    
     always_ff @ (posedge Clk or posedge Reset )
     begin : Assign_Next_State
@@ -106,7 +107,10 @@ module ISDU ( 	input			Clk,
 					4'b0111 : // STR
 						Next_state <= S_STR;
 					4'b0000 : // BR
-						Next_state <= S_BR;
+						if (BEN) Next_state <= S_BR;
+						else Next_state <= S_18;
+					4'b1101 : // PSE
+						Next_state <= PauseIR1;
 						
 					
 					default : 
@@ -130,8 +134,7 @@ module ISDU ( 	input			Clk,
 				S_STR_3 : Next_state <= S_STR_4;
 				S_STR_4 : Next_state <= S_18;
 				
-				S_BR : 	Next_state <= S_BR_2;
-				S_BR_2: Next_state <= S_18;
+				S_BR : Next_state <= S_18;
 				
 			default : ;
 
@@ -272,9 +275,12 @@ module ISDU ( 	input			Clk,
 					GateMDR = 1'b1; 
 					end
  
-				S_BR_2 :
+				S_BR :
 					begin
-						
+					ADDR1MUX = 1'b1;
+					ADDR2MUX = 2'b01;
+					PCMUX = 2'b01;
+					LD_PC = 1'b1;
 					end
 				
             default : ;
