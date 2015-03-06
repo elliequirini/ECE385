@@ -76,10 +76,20 @@ module test_memory ( input 			Clk,
 			mem_array[   8 ] <=    opSTR(R1, R0, outHEX)    ;       // Output
 			mem_array[   9 ] <=    opPSE(12'hC02)           ;       // Checkpoint 2 - read output, prepare to input
 			mem_array[  10 ] <=    opBR(nzp, -4)            ;       // Repeat
-																 
+			mem_array[  11 ] <=    opPSE(12'h801)           ;       // Checkpoint 1 - prepare to input
+			mem_array[  12 ] <=    opJSR(0)                 ;       // Get PC address
+			mem_array[  13 ] <=    opLDR(R2,R7,3)           ;       // Load pause instruction as data
+			mem_array[  14 ] <=    opLDR(R1, R0, inSW)      ;       // Load switches
+			mem_array[  15 ] <=    opSTR(R1, R0, outHEX)    ;       // Output
+			mem_array[  16 ] <=    opPSE(12'hC02)           ;       // Checkpoint 2 - read output, prepare to input
+			mem_array[  17 ] <=    opINC(R2)                ;       // Increment checkpoint number
+			mem_array[  18 ] <=    opSTR(R2,R7,3)           ;       // Store new checkpoint instruction (self-modifying code)
+			mem_array[  19 ] <=    opBR(nzp, -6)            ;       // Repeat
+			mem_array[  20 ] <= 	  16'h0564;
 			
 			
-			for (integer i = 6; i <= size - 1; i = i + 1)		// Assign the rest of the memory to 0
+			
+			for (integer i = 20; i <= size - 1; i = i + 1)		// Assign the rest of the memory to 0
 			begin
 				mem_array[i] <= 16'h0;
 			end
