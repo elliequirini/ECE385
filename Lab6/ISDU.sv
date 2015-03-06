@@ -128,12 +128,9 @@ module ISDU ( 	input			Clk,
 				S_STR : Next_state <= S_STR_2;
 				S_STR_2 : Next_state <= S_STR_3;
 				S_STR_3 : Next_state <= S_STR_4;
-				S_STR_4 : Next_state <= PauseIR1;
+				S_STR_4 : Next_state <= S_18;
 				
-				S_BR : if (BEN) 
-							Next_state <= S_BR_2;
-						 else
-							Next_state < = S_18;
+				S_BR : 	Next_state <= S_BR_2;
 				S_BR_2: Next_state <= S_18;
 				
 			default : ;

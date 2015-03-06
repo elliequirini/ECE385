@@ -8,7 +8,7 @@ module REG_FILE(input Clk, Reset, LD_REG,
 	//reg16	inputReg(.Clk, .Load(LD_REG), .Data_In(BUS), .Data_Out(DR_data), .Reset);
 	//reg16 SR1_Reg(.Clk, .Load(1), .Data_In(SR1_val), .Data_Out(SR1_OUT), .Reset);
 	
-	always_ff @ (posedge Clk)
+	always_ff @ (Clk or SR1)
 	begin 
 		if(LD_REG)
 			case(DR)

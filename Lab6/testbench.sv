@@ -40,7 +40,7 @@ end
 initial begin: TEST_VECTORS
 Reset = 0;		// Toggle Rest
 Run = 1;
-S = 16'b0000000000001111;
+S = 16'b0000000000000011;
 
 #2 Reset = 1;
 
