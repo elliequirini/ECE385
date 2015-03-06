@@ -40,6 +40,7 @@ end
 initial begin: TEST_VECTORS
 Reset = 0;		// Toggle Rest
 Run = 1;
+Continue = 1;
 S = 16'b0000000000000011;
 
 #2 Reset = 1;
@@ -47,6 +48,15 @@ S = 16'b0000000000000011;
 #2 Run = 0;	
    
 #2 Run = 1;
+
+#2 S = 16'b0000000000000001;
+
+#10 Continue = 0;
+#2 Continue = 1;
+
+#2 S = 16'b0000000000000010;
+#10 S = 16'b0000000000000011;
+#10 S = 16'b0000000000000100;
 
 end
 endmodule
