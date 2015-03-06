@@ -109,6 +109,12 @@ module CPU(input logic		Clk,     		// Internal
 									.SEL(SR1MUX),
 									.OUT(SR1_IN));
 	
+	MUX_3b21			DRMUXX(.IN_0(IR[11:9]),
+									.IN_1(3'b111),
+									.SEL(DRMUX),
+									.OUT(DR_BUF));
+	
+	
 	REG_FILE			Reg_File( .*,
 									 .BUS(Data), 
 									 .DR(IR[11:9]), 
