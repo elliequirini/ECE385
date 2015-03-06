@@ -70,7 +70,15 @@ module test_memory ( input 			Clk,
 			mem_array[   3 ] <=    opLDR(R1, R0, inSW)      ;  // 16'b0110 0010 0011 1111	// Load switches
 			mem_array[   4 ] <=    opSTR(R1, R0, outHEX)    ;  // 16'b0111 0010 0011 1111	// Output
 			mem_array[   5 ] <=    opBR(nzp, -3)            ;  // 16'b0000 1111 1111 1101	// Repeat
-				
+			
+			mem_array[   6 ] <=    opPSE(12'h801)           ;       // Checkpoint 1 - prepare to input
+			mem_array[   7 ] <=    opLDR(R1, R0, inSW)      ;       // Load switches
+			mem_array[   8 ] <=    opSTR(R1, R0, outHEX)    ;       // Output
+			mem_array[   9 ] <=    opPSE(12'hC02)           ;       // Checkpoint 2 - read output, prepare to input
+			mem_array[  10 ] <=    opBR(nzp, -4)            ;       // Repeat
+																 
+			
+			
 			for (integer i = 6; i <= size - 1; i = i + 1)		// Assign the rest of the memory to 0
 			begin
 				mem_array[i] <= 16'h0;
