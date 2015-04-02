@@ -13,7 +13,8 @@
 //-------------------------------------------------------------------------
 
 
-module  ball ( input Reset, frame_clk, key,
+module  ball ( input Reset, frame_clk,
+					input [7:0] key,
                output [9:0]  BallX, BallY, BallS );
     
     logic [9:0] Ball_X_Pos, Ball_X_Motion, Ball_Y_Pos, Ball_Y_Motion, Ball_Size;
@@ -24,9 +25,9 @@ module  ball ( input Reset, frame_clk, key,
     parameter [9:0] Ball_X_Max=639;     // Rightmost point on the X axis
     parameter [9:0] Ball_Y_Min=0;       // Topmost point on the Y axis
     parameter [9:0] Ball_Y_Max=479;     // Bottommost point on the Y axis
-    var [9:0] Ball_X_Step=0;      // Step size on the X axis
-    var [9:0] Ball_Y_Step=1;      // Step size on the Y axis
-	 var [15:0] last_key_press = 0;
+    parameter [9:0] Ball_X_Step=1;      // Step size on the X axis
+    parameter [9:0] Ball_Y_Step=1;      // Step size on the Y axis
+	 //var [15:0] last_key_press = 0;
 
     assign Ball_Size = 4;  // assigns the value 4 as a 10-digit binary number, ie "0000000100"
    
@@ -42,41 +43,61 @@ module  ball ( input Reset, frame_clk, key,
         
 		  else
 			begin 
-				 if((key == 2'h1a) ^ (key == 2'h04) ^ (key == 2'h16) ^ (key == 2'h07))
-						last_key_press = key;
-				 
-				 case (last_key_press)
-						2'h1a: //up
+				 case (key)
+						8'h1a: //up
 							begin
-								Ball_Y_Step = -1;
-								Ball_X_Step = 0;
+								Ball_X_Motion <= 10'd0;
+								if(Ball_Y_Motion > 0)
+									Ball_Y_Motion <= (~ (Ball_Y_Step) + 1'b1); 
+								else
+									Ball_Y_Motion <= Ball_Y_Step;
 							end
-						2'h16: //down
+						8'h16: //down
 							begin
-								Ball_Y_Step = 1;
-								Ball_X_Step = 0;
+								Ball_X_Motion <= 10'd0;
+								if(Ball_Y_Motion < 0)
+									Ball_Y_Motion <= (~ (Ball_Y_Step) + 1'b1); 
+								else
+									Ball_Y_Motion <= Ball_Y_Step;
 							end
-						2'h04: //left
+						8'h04: //left
 							begin
-								Ball_Y_Step = 0;
-								Ball_X_Step = 1;
+								Ball_Y_Motion <= 10'd0;
+								if(Ball_X_Motion > 0)
+									Ball_X_Motion <= (~ (Ball_X_Step) + 1'b1); 
+								else
+									Ball_X_Motion <= Ball_X_Step;
 							end
-						2'h07: //right
+						8'h07: //right
 							begin
-								Ball_Y_Step = 0;
-								Ball_X_Step = -1;
+								Ball_Y_Motion <= 10'd0;
+								if(Ball_X_Motion < 0)
+									Ball_X_Motion <= (~ (Ball_X_Step) + 1'b1); 
+								else
+									Ball_X_Motion <= Ball_X_Step;
 							end
 				endcase
 				
-				 if ( ((Ball_Y_Pos + Ball_Size) >= Ball_Y_Max) ^ ((Ball_Y_Pos - Ball_Size) <= Ball_Y_Min))  // Ball is at the edge, BOUNCE!
-					   Ball_Y_Motion <= (~ (Ball_Y_Step) + 1'b1);  // 2's complement.		
-				 else 
-					  Ball_Y_Motion <= Ball_Y_Step;  // Ball is somewhere in the middle, don't bounce, just keep moving
-				 
-				 if ( ((Ball_X_Pos + Ball_Size) >= Ball_X_Max) ^ ((Ball_X_Pos - Ball_Size) <= Ball_X_Min))  // Ball is at the edge, BOUNCE!
-					   Ball_X_Motion <= (~ (Ball_X_Step) + 1'b1);  // 2's complement.
-				 else 
-					  Ball_X_Motion <= Ball_X_Step;  // Ball is somewhere in the middle, don't bounce, just keep moving
+				 if ( ((Ball_Y_Pos + Ball_Size) >= Ball_Y_Max) )
+				 begin
+						Ball_Y_Motion <= (~ (Ball_Y_Step) + 1'b1);  // 2's complement.	
+						Ball_X_Motion <= 10'd0;
+				 end
+				 else if(((Ball_Y_Pos - Ball_Size) <= Ball_Y_Min))
+				 begin
+					   Ball_Y_Motion <= Ball_Y_Step;
+						Ball_X_Motion <= 10'd0;
+				 end
+				 if ( ((Ball_X_Pos + Ball_Size) >= Ball_X_Max) )
+				 begin
+						Ball_X_Motion <= (~ (Ball_X_Step) + 1'b1);  // 2's complement.	
+						Ball_Y_Motion <= 10'd0;
+				 end
+				 else if(((Ball_X_Pos - Ball_Size) <= Ball_X_Min))
+				 begin
+					   Ball_X_Motion <= Ball_X_Step;
+						Ball_Y_Motion <= 10'd0;
+				 end
 				 
 				 Ball_Y_Pos <= (Ball_Y_Pos + Ball_Y_Motion);  // Update ball position
 				 Ball_X_Pos <= (Ball_X_Pos + Ball_X_Motion);

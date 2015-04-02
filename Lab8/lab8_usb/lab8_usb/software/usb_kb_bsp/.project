@@ -80,6 +80,6 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>com.altera.sbtgui.project.SBTGUINature</nature>
-		<nature>com.altera.sbtgui.project.SBTGUICustomAppNature</nature>
+		<nature>com.altera.sbtgui.project.SBTGUIBspNature</nature>
 	</natures>
 </projectDescription>

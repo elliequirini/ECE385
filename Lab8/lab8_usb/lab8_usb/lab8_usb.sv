@@ -73,6 +73,18 @@ module  lab8_usb 		( input         Clk,
 										 .usb_CS_N(OTG_CS_N),    
 										 .usb_RST_N(OTG_RST_N),   
 										 .usb_INT(OTG_INT) );
+										 
+	 BouncingBall		Ball( .Clk,
+									.Reset(Reset_h),
+									.keycode,
+									.Red, 
+									.Green, 
+									.Blue,
+									.vs,
+									.hs,
+									.VGA_clk,
+									.blank,
+									.sync);
 	
 										  
 	 HexDriver hex_inst_0 (keycode[3:0], HEX0);
