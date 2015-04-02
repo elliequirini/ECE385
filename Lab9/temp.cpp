@@ -24,33 +24,46 @@ uint8_t Sbox[256] = {0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01,
 0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16};
 
 
-void RotWord(uint8_t *in) {
-    uint8_t temp;
-    temp = in[0];
+void RotWord(uint32_t *in) {
+    uint32_t temp;
 
-    for(int i=0;i<3;i++) 
-            in[i] = in[i + 1];
-    in[3] = temp;
-    return;
+    // get first 8 bits and put it on the LSB
+    temp = *in & 0xF000;
+    temp >>= 24;
+
+    // shift in left 8 bits, then fill LSB with temp
+    *in <<= 8;
+    *in |= temp;
 }
 
 void SubWord(uint8_t* in) {
 	*in = Sbox[*in];
 }
 
-uint8_t* KeyExpansion(uint8_t* key_in) {
-	uint32_t* KeyS = malloc(sizeof(uint32_t) * 4 * 11);; // 11 expanded keys of 4 words (128bits) each. total of 1408 bits.
+uint32_t* KeyExpansion(uint8_t* key_in) {
+	uint32_t* KeyS = (uint32_t*)malloc(sizeof(uint32_t) * 4 * 11);; // 11 expanded keys of 4 words (128bits) each. total of 1408 bits.
 	uint32_t temp;
 
 	// fill in first row with the provided key
-	memcpy(key_in, KeyS, sizeof(uint32_t*4));
+	memcpy(KeyS, key_in, sizeof(uint32_t) * 4);
+
+
 
 	for(int i=5; i<44; i++) {
 		temp = KeyS[i-1];
-		if(i % 4 == 0)
-			temp = SubWord(RotWord(temp)) ^ Rcon[i/4];
+		if(i % 4 == 0) {
+			RotWord(&temp);
+			//SubWord((uint8_t*)&temp);
+			temp ^= Rcon[i/4];
+		}
 		KeyS[i] =  KeyS[i-1] ^ temp;
 	}
+
+	for(int q=4; q<8; q++)
+		printf("%02X ", KeyS[q]);
+		printf("\n");
+
+	return KeyS;
 }
 
 
@@ -58,16 +71,31 @@ void AddRoundKey() {
 
 }
 
-uint8_t* Encrypt(uint8_t* in, uint8_t* key) {
+void Encrypt(uint8_t* in, uint8_t* key) {
 	uint8_t state[16];
 	uint32_t* w;
 
-	// copy in into state
-	memcpy(in, &state, sizeof(state));
+
+	// copy plaintext into state
+	memcpy(&state, in, sizeof(state));
 	w = KeyExpansion(key);
 
 
 
+	// free key_schedule
+	free(w);
+}
 
-	delete key_sched;
+int main() {
+	//uint8_t* plaintext = (uint8_t*)malloc(sizeof(uint8_t) * 16);
+	//uint8_t* cipherkey = (uint8_t*)malloc(sizeof(uint8_t) * 16);
+
+	uint8_t plaintext[16] = {0xec, 0xe2, 0x98, 0xdc, 0xec, 0xe2, 0x98, 0xdc, 0xec, 0xe2, 0x98, 0xdc, 0xec, 0xe2, 0x98, 0xdc};
+	uint8_t cipherkey[16] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
+	//uint8_t cipherkey[16] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f};
+
+	Encrypt((uint8_t*)&plaintext, (uint8_t*)&cipherkey);
+
+	//free(plaintext);
+	//free(cipherkey);
 }
