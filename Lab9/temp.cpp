@@ -125,22 +125,23 @@ void ShiftRows(uint8_t* state) {
 }
 
 void MixColumns(uint8_t* state) {
-	uint8_t	 a,b,c,d;
-	/* 4x4 Box model
-		0 1 2 3
-		4 5 6 7
-		8 9 a b
-		c d e f
-	*/
+	uint8_t	a[4], b[4];
+
 	for(int i=0; i<4; i++) {
-		a=state[0+i];
-		b=state[4+i];
-		c=state[8+i];
-		d=state[12+i];
-		state[0+i] = 2*a + 3*b + c + d;
-		state[4+i] = a + 2*b + 3*c + d;
-		state[8+i] = a + b + 2*c + 3*d;
-		state[12+i] = 3*a + b + c + 2*d;
+		a[0]=state[0+i];
+		a[1]=state[4+i];
+		a[2]=state[8+i];
+		a[3]=state[12+i];
+		b[0] = (a[0] & 0x80) ? (a[0] << 1) ^ 0x1B : (a[0] << 1);
+		b[1] = (a[1] & 0x80) ? (a[1] << 1) ^ 0x1B : (a[1] << 1);
+		b[2] = (a[2] & 0x80) ? (a[2] << 1) ^ 0x1B : (a[2] << 1);
+		b[3] = (a[3] & 0x80) ? (a[3] << 1) ^ 0x1B : (a[3] << 1);
+
+        state[0+i] = b[0] ^ a[3] ^ a[2] ^ b[1] ^ a[1]; /* 2 * a0 + a3 + a2 + 3 * a1 */
+        state[4+i] = b[1] ^ a[0] ^ a[3] ^ b[2] ^ a[2]; /* 2 * a1 + a0 + a3 + 3 * a2 */
+        state[8+i] = b[2] ^ a[1] ^ a[0] ^ b[3] ^ a[3]; /* 2 * a2 + a1 + a0 + 3 * a3 */
+        state[12+i] = b[3] ^ a[2] ^ a[1] ^ b[0] ^ a[0]; /* 2 * a3 + a2 + a1 + 3 * a0 */
+
 	}
 }
 
@@ -166,7 +167,7 @@ void Encrypt(uint8_t* in, uint8_t* key) {
 
 	AddRoundKey((uint8_t*)&state, w, 0);
 
-	for(int i=1; i<2; i++) {
+	for(int i=1; i<10; i++) {
 		SubBytes((uint8_t*)&state);
 		ShiftRows((uint8_t*)&state);
 		MixColumns((uint8_t*)&state);
@@ -175,17 +176,24 @@ void Encrypt(uint8_t* in, uint8_t* key) {
 
 	SubBytes((uint8_t*)&state);
 	ShiftRows((uint8_t*)&state);
-	AddRoundKey((uint8_t*)&state, w, 11);
-	
+	AddRoundKey((uint8_t*)&state, w, 10);
+
+	// print state
+	for(int q=0; q<16; q++){
+		printf("%02X ", state[(q/4) + (q%4)*4]);
+		if((q+1)%4==0) printf("\n");
+	}
 
 	// free key_schedule
 	free(w);
 }
 
+
+
 int main() {
 	uint8_t plaintext[16] = {0xec, 0xe2, 0x98, 0xdc, 0xec, 0xe2, 0x98, 0xdc, 0xec, 0xe2, 0x98, 0xdc, 0xec, 0xe2, 0x98, 0xdc};
-	//uint8_t cipherkey[16] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f};
-	uint8_t cipherkey[16] = {0x0f, 0x15, 0x71, 0xc9, 0x47, 0xd9, 0xe8, 0x59, 0x0c, 0xb7, 0xad, 0xd6, 0xaf, 0x7f, 0x67, 0x98};
+	uint8_t cipherkey[16] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f};
+	//uint8_t cipherkey[16] = {0x0f, 0x15, 0x71, 0xc9, 0x47, 0xd9, 0xe8, 0x59, 0x0c, 0xb7, 0xad, 0xd6, 0xaf, 0x7f, 0x67, 0x98};
 	//uint8_t cipherkey[16] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 	//uint8_t cipherkey[16] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f};
 
