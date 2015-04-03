@@ -5,7 +5,9 @@
 using namespace std;
 
 
-uint8_t Rcon[10] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36};
+uint32_t Rcon[11] = {0x8d000000, 0x01000000, 0x02000000, 0x04000000, 0x08000000,
+	0x10000000, 0x20000000, 0x40000000, 0x80000000, 0x1b000000, 0x36000000};
+
 uint8_t Sbox[256] = {0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76,
 0xca, 0x82, 0xc9, 0x7d, 0xfa, 0x59, 0x47, 0xf0, 0xad, 0xd4, 0xa2, 0xaf, 0x9c, 0xa4, 0x72, 0xc0,
 0xb7, 0xfd, 0x93, 0x26, 0x36, 0x3f, 0xf7, 0xcc, 0x34, 0xa5, 0xe5, 0xf1, 0x71, 0xd8, 0x31, 0x15,
@@ -28,7 +30,7 @@ void RotWord(uint32_t *in) {
     uint32_t temp;
 
     // get first 8 bits and put it on the LSB
-    temp = *in & 0xF000;
+    temp = *in & 0xFF000000;
     temp >>= 24;
 
     // shift in left 8 bits, then fill LSB with temp
@@ -36,32 +38,39 @@ void RotWord(uint32_t *in) {
     *in |= temp;
 }
 
-void SubWord(uint8_t* in) {
-	*in = Sbox[*in];
+void SubWord(uint32_t* in) {
+	uint8_t a = *in;
+	uint8_t b = *in >> 8;
+	uint8_t c = *in >> 16;
+	uint8_t d = *in >> 24;
+
+	a = Sbox[a];
+	b = Sbox[b];
+	c = Sbox[c];
+	d = Sbox[d];
+
+	*in = (d << 24) | (c << 16) | (b << 8) | (a);
 }
 
-uint32_t* KeyExpansion(uint8_t* key_in) {
+uint32_t* KeyExpansion(uint8_t* key) {
 	uint32_t* KeyS = (uint32_t*)malloc(sizeof(uint32_t) * 4 * 11);; // 11 expanded keys of 4 words (128bits) each. total of 1408 bits.
 	uint32_t temp;
 
 	// fill in first row with the provided key
-	memcpy(KeyS, key_in, sizeof(uint32_t) * 4);
+	KeyS[0] = (key[0] << 24) | (key[1] << 16) | (key[2] << 8) | (key[3]);
+	KeyS[1] = (key[4] << 24) | (key[5] << 16) | (key[6] << 8) | (key[7]);
+	KeyS[2] = (key[8] << 24) | (key[9] << 16) | (key[10] << 8) | (key[11]);
+	KeyS[3] = (key[12] << 24) | (key[13] << 16) | (key[14] << 8) | (key[15]);
 
-
-
-	for(int i=5; i<44; i++) {
+	for(int i=4; i<44; i++) {
 		temp = KeyS[i-1];
 		if(i % 4 == 0) {
 			RotWord(&temp);
-			//SubWord((uint8_t*)&temp);
+			SubWord(&temp);
 			temp ^= Rcon[i/4];
 		}
-		KeyS[i] =  KeyS[i-1] ^ temp;
+		KeyS[i] =  KeyS[i-4] ^ temp;
 	}
-
-	for(int q=4; q<8; q++)
-		printf("%02X ", KeyS[q]);
-		printf("\n");
 
 	return KeyS;
 }
@@ -80,22 +89,20 @@ void Encrypt(uint8_t* in, uint8_t* key) {
 	memcpy(&state, in, sizeof(state));
 	w = KeyExpansion(key);
 
-
+	for(int q=0; q<44; q++) {
+		printf("%08X ", w[q]);
+		if((q+1)%4 == 0) printf("\n");
+	}
 
 	// free key_schedule
 	free(w);
 }
 
 int main() {
-	//uint8_t* plaintext = (uint8_t*)malloc(sizeof(uint8_t) * 16);
-	//uint8_t* cipherkey = (uint8_t*)malloc(sizeof(uint8_t) * 16);
-
 	uint8_t plaintext[16] = {0xec, 0xe2, 0x98, 0xdc, 0xec, 0xe2, 0x98, 0xdc, 0xec, 0xe2, 0x98, 0xdc, 0xec, 0xe2, 0x98, 0xdc};
-	uint8_t cipherkey[16] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
+	uint8_t cipherkey[16] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F};
+	//uint8_t cipherkey[16] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 	//uint8_t cipherkey[16] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f};
 
 	Encrypt((uint8_t*)&plaintext, (uint8_t*)&cipherkey);
-
-	//free(plaintext);
-	//free(cipherkey);
 }
