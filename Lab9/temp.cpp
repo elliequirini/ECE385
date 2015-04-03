@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h> 
 #include <stdint.h>
-#include <cstring> // for memcpy
+#include <cstring>
 using namespace std;
 
 
@@ -76,23 +76,33 @@ uint32_t* KeyExpansion(uint8_t* key) {
 }
 
 
-void AddRoundKey() {
+void AddRoundKey(uint8_t* state, uint32_t* w, int step) {
+	uint8_t temp;
+	int temp_shift;
+	step *= 4;
 
+	for(int i=0; i<16; i++) {
+		temp_shift = (3-(i%4)) * 8;
+		temp = (w[step + (i/4)] & ((0xFF) << temp_shift)) >> temp_shift;
+		state[i] ^= temp;
+	}
+}
+
+void SubBytes(uint8_t* state) {
+	for(int i=0; i<16; i++)
+		state[i] = Sbox[state[i]];
 }
 
 void Encrypt(uint8_t* in, uint8_t* key) {
 	uint8_t state[16];
 	uint32_t* w;
 
-
-	// copy plaintext into state
+	/* copy plaintext into state */
 	memcpy(&state, in, sizeof(state));
 	w = KeyExpansion(key);
 
-	for(int q=0; q<44; q++) {
-		printf("%08X ", w[q]);
-		if((q+1)%4 == 0) printf("\n");
-	}
+	AddRoundKey((uint8_t*)&state, w, 0);
+	SubBytes((uint8_t*)&state);
 
 	// free key_schedule
 	free(w);
@@ -100,7 +110,7 @@ void Encrypt(uint8_t* in, uint8_t* key) {
 
 int main() {
 	uint8_t plaintext[16] = {0xec, 0xe2, 0x98, 0xdc, 0xec, 0xe2, 0x98, 0xdc, 0xec, 0xe2, 0x98, 0xdc, 0xec, 0xe2, 0x98, 0xdc};
-	uint8_t cipherkey[16] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F};
+	uint8_t cipherkey[16] = {0x0f, 0x15, 0x71, 0xc9, 0x47, 0xd9, 0xe8, 0x59, 0x0c, 0xb7, 0xad, 0xd6, 0xaf, 0x7f, 0x67, 0x98};
 	//uint8_t cipherkey[16] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 	//uint8_t cipherkey[16] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f};
 
