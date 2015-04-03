@@ -138,18 +138,6 @@ void Encrypt(uint8_t* in, uint8_t* key) {
 	memcpy(&state, in, sizeof(state));
 	w = KeyExpansion(key);
 
-	// print state
-	for(int q=0; q<16; q++){
-		printf("%02X ", state[q]);
-		if((q+1)%4==0) printf("\n");
-	}
-	// print keyschedule
-	for(int q=0; q<4; q++) {
-		printf("%08X ", w[q]);
-		if((q+1)%4 == 0) printf("\n");
-	}
-
-
 	AddRoundKey((uint8_t*)&state, w, 0);
 
 	for(int i=1; i<11; i++) {
@@ -163,14 +151,7 @@ void Encrypt(uint8_t* in, uint8_t* key) {
 	ShiftRows((uint8_t*)&state);
 	AddRoundKey((uint8_t*)&state, w, 11);
 
-	// print state
-	for(int q=0; q<16; q++){
-		printf("%02X ", state[q]);
-		if((q+1)%4==0) printf("\n");
-	}
-	
-
-
+	// at this point state is ciphertext
 
 	// free key_schedule
 	free(w);
