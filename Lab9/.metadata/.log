@@ -1,0 +1,166 @@
+!SESSION 2015-04-03 12:05:38.170 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-04-03 12:10:41.674
+!MESSAGE Indexed 'lab9_app_bsp' (79 sources, 105 headers) in 4.53 sec: 2,432 declarations; 4,043 references; 76 unresolved inclusions; 176 syntax errors; 187 unresolved names (2.81%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-04-03 12:10:43.275
+!MESSAGE Indexed 'lab9_app' (0 sources, 13 headers) in 0.06 sec: 0 declarations; 0 references; 13 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:32:04.981
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:32:07.262
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-04-03 12:32:11.212
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, --sidp=0x2080, --id=0x0, --timestamp=1428002687, /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-04-03 12:32:11.212
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:42:33.839
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:42:36.399
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:49:46.886
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:49:47.636
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:49:50.201
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:51:48.397
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:51:49.146
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:51:51.710
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:54:43.633
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:54:44.335
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:54:46.909
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:56:16.156
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:56:16.928
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:56:19.196
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:59:55.672
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:59:56.375
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 12:59:58.925
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:01:26.678
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:01:27.395
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:01:29.987
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:03:03.808
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:03:04.512
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:03:07.057
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:04:12.846
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:04:13.517
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:04:15.688
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:05:58.604
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:05:59.354
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:06:01.664
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:07:17.069
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:07:17.734
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:07:19.847
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:08:58.719
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:08:59.517
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:09:02.078
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:10:23.373
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:10:25.545
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:12:28.647
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:12:29.349
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:12:31.955
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:13:33.739
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:13:34.551
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:13:36.905
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:15:11.519
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:15:14.081
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:15:49.710
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x2080 --id=0x0 --timestamp=1428002687]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-03 13:15:52.010
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x2080 --id=0x0 --timestamp=1428002687 /cygdrive/c/Users/Ellie/Documents/GitHub/ECE385/Lab9/software/lab9_app/lab9_app.elf]

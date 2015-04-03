@@ -1,0 +1,8 @@
+Info (10281): Verilog HDL Declaration information at lab9.sv(15): object "HEX0" differs only in case from object "Hex0" in the same scope
+Info (10281): Verilog HDL Declaration information at lab9.sv(15): object "HEX1" differs only in case from object "Hex1" in the same scope
+Info (10281): Verilog HDL Declaration information at lab9.sv(15): object "HEX2" differs only in case from object "Hex2" in the same scope
+Info (10281): Verilog HDL Declaration information at lab9.sv(15): object "HEX3" differs only in case from object "Hex3" in the same scope
+Info (10281): Verilog HDL Declaration information at lab9.sv(15): object "HEX4" differs only in case from object "Hex4" in the same scope
+Info (10281): Verilog HDL Declaration information at lab9.sv(15): object "HEX5" differs only in case from object "Hex5" in the same scope
+Info (10281): Verilog HDL Declaration information at lab9.sv(15): object "HEX6" differs only in case from object "Hex6" in the same scope
+Info (10281): Verilog HDL Declaration information at lab9.sv(15): object "HEX7" differs only in case from object "Hex7" in the same scope

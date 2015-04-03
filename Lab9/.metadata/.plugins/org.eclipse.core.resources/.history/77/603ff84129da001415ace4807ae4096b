@@ -1,0 +1,14 @@
+/*
+ * main.c
+ *
+ *  Created on: Apr 3, 2015
+ *      Author: Ellie
+ */
+
+#include <stdio.h>
+
+int main(){
+
+	printf("hello");
+}
+

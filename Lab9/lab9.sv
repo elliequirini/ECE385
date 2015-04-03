@@ -14,16 +14,16 @@ module lab9(  	  input			CLOCK_50,
 				  output [17:0] LEDR,
 				  output [6:0]  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7,
 				  
-				  output [12:0] sdram_wire_addr,
-				  output  [1:0] sdram_wire_ba,
-				  output        sdram_wire_cas_n,
-				  output		sdram_wire_cke,
-				  output		sdram_wire_cs_n,
-				  inout  [31:0] sdram_wire_dq,
-				  output  [3:0] sdram_wire_dqm,
-				  output		sdram_wire_ras_n,
-				  output		sdram_wire_we_n,
-				  output		sdram_wire_clk
+				  output [12:0] DRAM_ADDR,
+				  output  [1:0] DRAM_BA,
+				  output        DRAM_CAS_N,
+				  output		DRAM_CKE,
+				  output		DRAM_CS_N,
+				  inout  [31:0] DRAM_DQ,
+				  output  [3:0] DRAM_DQM,
+				  output		DRAM_RAS_N,
+				  output		DRAM_WE_N,
+				  output		DRAM_CLK
 				  
 				  );
 				  
@@ -44,16 +44,16 @@ module lab9(  	  input			CLOCK_50,
 				  
 				  lab9_soc NiosII (.clk_clk(CLOCK_50), 
 											 .reset_reset_n(KEY[0]), 
-											 .sdram_wire_addr(sdram_wire_addr),     //  sdram_wire.addr
-											 .sdram_wire_ba(sdram_wire_ba),      	//            .ba
-											 .sdram_wire_cas_n(sdram_wire_cas_n),   //            .cas_n
-											 .sdram_wire_cke(sdram_wire_cke),     	//            .cke
-											 .sdram_wire_cs_n(sdram_wire_cs_n),     //            .cs_n
-											 .sdram_wire_dq(sdram_wire_dq),      	//            .dq
-											 .sdram_wire_dqm(sdram_wire_dqm),     	//            .dqm
-											 .sdram_wire_ras_n(sdram_wire_ras_n),   //            .ras_n
-											 .sdram_wire_we_n(sdram_wire_we_n),     //            .we_n
-											 .sdram_clk_clk(sdram_wire_clk),
+											 .sdram_wire_addr(DRAM_ADDR),     //  sdram_wire.addr
+											 .sdram_wire_ba(DRAM_BA),      	//            .ba
+											 .sdram_wire_cas_n(DRAM_CAS_N),   //            .cas_n
+											 .sdram_wire_cke(DRAM_CKE),     	//            .cke
+											 .sdram_wire_cs_n(DRAM_CS_N),     //            .cs_n
+											 .sdram_wire_dq(DRAM_DQ),      	//            .dq
+											 .sdram_wire_dqm(DRAM_DQM),     	//            .dqm
+											 .sdram_wire_ras_n(DRAM_RAS_N),   //            .ras_n
+											 .sdram_wire_we_n(DRAM_WE_N),     //            .we_n
+											 .sdram_clk_clk(DRAM_CLK),
 											 .to_hw_port_wire_export(to_hw_port),
 											 .to_hw_sig_wire_export(to_hw_sig),
 											 .to_sw_port_wire_export(to_sw_port),
