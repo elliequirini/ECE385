@@ -81,6 +81,9 @@ void AddRoundKey(uint8_t* state, uint32_t* w, int step) {
 	int temp_shift;
 	step *= 4;
 
+	// w (word) contains 4 bytes of keys in one index
+	// like 0xAABBCCDD, so extract each AA and BB and etc
+	// and xor with each state
 	for(int i=0; i<16; i++) {
 		temp_shift = (3-(i%4)) * 8;
 		temp = (w[step + (i/4)] & ((0xFF) << temp_shift)) >> temp_shift;
@@ -93,6 +96,40 @@ void SubBytes(uint8_t* state) {
 		state[i] = Sbox[state[i]];
 }
 
+void ShiftRows(uint8_t* state) {
+	uint8_t temp[3];
+	/* 4x4 Box model
+		0 1 2 3
+		4 5 6 7
+		8 9 a b
+		c d e f
+	*/
+	temp[0] = state[4];
+	state[4] = state[5];
+	state[5] = state[6];
+	state[6] = state[7];
+	state[7] = temp[0];
+
+	temp[0] = state[8];
+	temp[1] = state[9];
+	state[8] = state[10];
+	state[9] = state[11];
+	state[10] = temp[0];
+	state[11] = temp[1];
+
+	temp[0] = state[12];
+	temp[1] = state[13];
+	temp[2] = state[14];
+	state[12] = state[15];
+	state[13] = temp[0];
+	state[14] = temp[1];
+	state[15] = temp[2];
+}
+
+void MixColumns(uint8_t* state) {
+	
+}
+
 void Encrypt(uint8_t* in, uint8_t* key) {
 	uint8_t state[16];
 	uint32_t* w;
@@ -101,8 +138,39 @@ void Encrypt(uint8_t* in, uint8_t* key) {
 	memcpy(&state, in, sizeof(state));
 	w = KeyExpansion(key);
 
+	// print state
+	for(int q=0; q<16; q++){
+		printf("%02X ", state[q]);
+		if((q+1)%4==0) printf("\n");
+	}
+	// print keyschedule
+	for(int q=0; q<4; q++) {
+		printf("%08X ", w[q]);
+		if((q+1)%4 == 0) printf("\n");
+	}
+
+
 	AddRoundKey((uint8_t*)&state, w, 0);
+
+	for(int i=1; i<11; i++) {
+		SubBytes((uint8_t*)&state);
+		ShiftRows((uint8_t*)&state);
+		MixColumns((uint8_t*)&state);
+		AddRoundKey((uint8_t*)&state, w, i);
+	}
+
 	SubBytes((uint8_t*)&state);
+	ShiftRows((uint8_t*)&state);
+	AddRoundKey((uint8_t*)&state, w, 11);
+
+	// print state
+	for(int q=0; q<16; q++){
+		printf("%02X ", state[q]);
+		if((q+1)%4==0) printf("\n");
+	}
+	
+
+
 
 	// free key_schedule
 	free(w);
