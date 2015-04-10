@@ -22,7 +22,7 @@ module io_module (		input			 		clk,
 						input					aes_ready
 						);
 	
-		enum logic [6:0] {	RESET, WAIT,
+		enum logic [7:0] {	RESET, WAIT,
 							READ_MSG_1_0, READ_MSG_1_1, READ_MSG_1_2, READ_MSG_1_3, READ_MSG_1_4, READ_MSG_1_5, READ_MSG_1_6, READ_MSG_1_7,
 							READ_MSG_1_8, READ_MSG_1_9, READ_MSG_1_10, READ_MSG_1_11, READ_MSG_1_12, READ_MSG_1_13, READ_MSG_1_14, READ_MSG_1_15,
 							READ_MSG_0_0, READ_MSG_0_1, READ_MSG_0_2, READ_MSG_0_3, READ_MSG_0_4, READ_MSG_0_5, READ_MSG_0_6, READ_MSG_0_7,
@@ -132,7 +132,7 @@ module io_module (		input			 		clk,
 						next_state = SEND_BACK_0_0;
 				end
 				
-				begin //READ_MSG_BLOCK
+				//begin //READ_MSG_BLOCK
 				READ_MSG_0_0: begin
 					if (to_hw_sig == 2'd2)
 						next_state = READ_MSG_1_0;
@@ -292,10 +292,10 @@ module io_module (		input			 		clk,
 					if (to_hw_sig == 2'd0)
 						next_state = WAIT;
 				end
-				end
+				//end
 				
 				
-				begin //SEND_BACK BLOCK
+				//begin //SEND_BACK BLOCK
 				SEND_BACK_0_0: begin
 					if(to_hw_sig == 2'd2)
 						next_state = SEND_BACK_1_0;
@@ -439,14 +439,11 @@ module io_module (		input			 		clk,
 					if(to_hw_sig == 2'd1)
 						next_state = WAIT;
 				end
-				end
+				//end
 				
 				
-				
-				
-				
-				
-				begin //READ_KEY BLOCK
+		
+				//begin //READ_KEY BLOCK
 				READ_KEY_0_0: begin
 					if(to_hw_sig == 2'd1)
 						next_state = READ_KEY_1_0;
@@ -591,17 +588,88 @@ module io_module (		input			 		clk,
 						next_state = WAIT;
 				end
 				
-				end
+				//end
 				
 				ACK_MSG_0: begin
 					if (to_hw_sig == 2'd1)
-						next_state = READ_MSG_1;
+						next_state = READ_MSG_0_1;
 				end
 				
 				ACK_MSG_1: begin
 					if (to_hw_sig == 2'd1)
-						next_state = READ_MSG_2;
+						next_state = READ_MSG_0_2;
 				end
+				
+				ACK_MSG_2: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_3;
+				end
+				
+				ACK_MSG_3: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_4;
+				end
+				
+				ACK_MSG_4: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_5;
+				end
+				
+				ACK_MSG_5: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_6;
+				end
+				
+				ACK_MSG_6: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_7;
+				end
+				
+				ACK_MSG_7: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_8;
+				end
+				
+				ACK_MSG_8: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_9;
+				end
+				
+				ACK_MSG_9: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_10;
+				end
+				
+				ACK_MSG_10: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_11;
+				end
+				
+				ACK_MSG_11: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_12;
+				end
+				
+				ACK_MSG_12: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_13;
+				end
+				
+				ACK_MSG_13: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_14;
+				end
+				
+				ACK_MSG_14: begin
+					if (to_hw_sig == 2'd1)
+						next_state = READ_MSG_0_15;
+				end
+				
+				ACK_MSG_15: begin
+					if (to_hw_sig == 2'd1)
+						next_state = WAIT;
+				end
+				
 				
 				// TODO
 			endcase
@@ -620,7 +688,7 @@ module io_module (		input			 		clk,
 					to_sw_sig = 2'd0;
 				end
 				
-				begin //READ_MSG_BLOCK
+				//begin //READ_MSG_BLOCK
 				READ_MSG_0_0: begin
 					to_sw_sig = 2'd1;
 				end
@@ -732,9 +800,9 @@ module io_module (		input			 		clk,
 				READ_MSG_1_15: begin
 					to_sw_sig = 2'd0;
 				end
-				end
+				//end
 				
-				begin //SEND_BACK BLOCK
+				//begin //SEND_BACK BLOCK
 				SEND_BACK_0_0: begin
 					to_sw_port[7:0] = msg_de[127:120];
 					to_sw_sig = 2'd1;
@@ -862,7 +930,7 @@ module io_module (		input			 		clk,
 				SEND_BACK_1_15: begin
 					to_sw_sig = 2'd0;
 				end
-				end
+				//end
 				
 				ACK_MSG_0: begin
 					to_sw_sig = 2'd0;
