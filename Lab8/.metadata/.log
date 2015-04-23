@@ -1,0 +1,19 @@
+!SESSION 2015-04-23 13:26:51.779 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-04-23 13:27:45.631
+!MESSAGE Indexed 'usb_kb_bsp' (79 sources, 125 headers) in 3.37 sec: 4,392 declarations; 5,474 references; 0 unresolved inclusions; 3 syntax errors; 18 unresolved names (0.18%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-04-23 13:27:46.277
+!MESSAGE Indexed 'usb_kb' (2 sources, 80 headers) in 0.63 sec: 3,354 declarations; 4,360 references; 6 unresolved inclusions; 2 syntax errors; 388 unresolved names (4.79%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-23 13:28:57.556
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-04-23 13:28:59.127
+!MESSAGE Executing: [C:/altera/14.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/u/ECE385/Lab8/lab8_usb/lab8_usb/software/usb_kb/usb_kb.elf]

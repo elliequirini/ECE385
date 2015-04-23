@@ -1,0 +1,13 @@
+!SESSION 2015-04-23 14:14:50.591 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-04-23 14:15:23.544
+!MESSAGE Indexed 'usb_kb_bsp' (79 sources, 125 headers) in 2.07 sec: 4,392 declarations; 5,474 references; 0 unresolved inclusions; 3 syntax errors; 18 unresolved names (0.18%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-04-23 14:15:24.214
+!MESSAGE Indexed 'usb_kb' (2 sources, 80 headers) in 0.65 sec: 3,354 declarations; 4,360 references; 6 unresolved inclusions; 2 syntax errors; 388 unresolved names (4.79%)
