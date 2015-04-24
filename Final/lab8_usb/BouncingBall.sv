@@ -11,23 +11,28 @@ module BouncingBall( input logic Clk,
 									 sync
 							);
 
-logic [9:0] BallX, BallY, BallS, DrawX, DrawY;
+logic [9:0] DrawX, DrawY; //BallX, BallY, BallS;
 logic [7:0] R,G,B;
 logic frame_clk, pixel_clk;
+//enum logic [4:0] {ST, IH1, IH2, IH3, IH4, IH5, IS1, IS2, IS3, IS4, IS5, F1, F2, F3, F4, P1, P2, P3, P4, D} curr_sprite;
+logic [7:0] Sprite;
 
 	
 ball 					myBall( .Reset,
 								  .frame_clk,
 								  .key(keycode),
-								  .BallX,
-								  .BallY, 
-								  .BallS);
+								  .Sprite
+								  //.BallX,
+								  //.BallY, 
+								  //.BallS
+								  );
 
-color_mapper 	 myMapper( .BallX,
-								  .BallY,
+color_mapper 	 myMapper( //.BallX,
+								  //.BallY,
 								  .DrawX, 
 								  .DrawY, 
-								  .Ball_size(BallS),
+								  //.Ball_size(BallS),
+								  .Sprite,
 								  .Red(R), 
 								  .Green(G), 
 								  .Blue(B));

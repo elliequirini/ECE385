@@ -3,7 +3,7 @@
 # Machine generated for CPU 'cpu' in SOPC Builder design 'usb_system'
 # SOPC Builder design path: ../../usb_system.sopcinfo
 #
-# Generated: Thu Apr 23 13:28:01 CDT 2015
+# Generated: Fri Apr 24 13:55:05 CDT 2015
 
 # DO NOT MODIFY THIS FILE
 #
