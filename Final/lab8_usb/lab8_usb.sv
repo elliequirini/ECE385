@@ -74,7 +74,7 @@ module  lab8_usb 		( input         Clk,
 										 .usb_RST_N(OTG_RST_N),   
 										 .usb_INT(OTG_INT) );
 										 
-	 BouncingBall		Ball( .Clk,
+	 PetGame				Game( .Clk,
 									.Reset(Reset_h),
 									.keycode,
 									.Red, 

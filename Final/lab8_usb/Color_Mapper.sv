@@ -13,36 +13,14 @@
 //-------------------------------------------------------------------------
 
 
-module  color_mapper ( input        [9:0]  DrawX, DrawY, //Ball_size, BallX, BallY,
+module  color_mapper ( input        [9:0]  DrawX, DrawY, 
 							  input 	logic	[7:0]	 Sprite,
                        output logic [7:0]  Red, Green, Blue );
     
-    logic ball_on;
-	 
- /* Old Ball: Generated square box by checking if the current pixel is within a square of length
-    2*Ball_Size, centered at (BallX, BallY).  Note that this requires unsigned comparisons.
-	 
-    if ((DrawX >= BallX - Ball_size) &&
-       (DrawX <= BallX + Ball_size) &&
-       (DrawY >= BallY - Ball_size) &&
-       (DrawY <= BallY + Ball_size))
-
-     New Ball: Generates (pixelated) circle by using the standard circle formula.  Note that while 
-     this single line is quite powerful descriptively, it causes the synthesis tool to use up three
-     of the 12 available multipliers on the chip!  Since the multiplicants are required to be signed,
-	  we have to first cast them from logic to int (signed by default) before they are multiplied). */
-	  
-    int DistX, DistY, Size;
-	 assign DistX = DrawX - 320;
-    assign DistY = DrawY - 240;
-    assign Size = 4;
-	 
-	 //enum logic [4:0] {ST, IH1, IH2, IH3, IH4, IH5, IS1, IS2, IS3, IS4, IS5, F1, F2, F3, F4, P1, P2, P3, P4, D} curr_Sprite;
-	  
-	 //assign curr_Sprite = Sprite;
-	 
+    logic sprite_on;
+	
     always_comb
-    begin:Ball_on_proc
+    begin
         if ( ( DistX*DistX + DistY*DistY) <= (Size * Size) ) 
             ball_on = 1'b1;
         else 
