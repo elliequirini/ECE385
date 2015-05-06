@@ -24,7 +24,7 @@ module game_state( input Reset, frame_clk,
 
 	 logic [5:0] h, u, a;
    
-	 enum logic [4:0] {Start, Check, Dead, Upset,
+	 enum logic [5:0] {Start, Check, Dead, Upset,
 							 IdleH1, IdleH2, IdleH3, IdleH4, IdleH5, IdleH6, IdleH7, IdleH8,
 							 IdleS1, IdleS2, IdleS3, IdleS4, IdleS5, IdleS6, IdleS7, IdleS8,
 							 Feed, Feed1, Feed2, Feed3, Feed4, Feed5, Feed6, Feed7, Feed8, 
@@ -37,7 +37,7 @@ module game_state( input Reset, frame_clk,
     begin
         if (Reset)
             curr_state = Start;
-        else if(delay)
+        else if(delay) 
             curr_state = next_state;
 			else
 				delay <= ~delay;
@@ -253,7 +253,7 @@ module game_state( input Reset, frame_clk,
 	endcase
 end
 
-always_comb
+always_ff
 begin 
 	case (curr_state)
 		Start:
@@ -319,23 +319,27 @@ begin
 				Sprite <= 8'hc8; //F8;
 				if(h<10)
 					h <= h+1;
+				else
+					h <= h-1;
 				u <= u+1;
 				a <= a-1;
 			end
 			
 		Pet:  Sprite <= 8'h00; //Neutral
-		Pet1: Sprite <= 8'hd0; //P1;
-		Pet2: Sprite <= 8'hd1; //P2;
-		Pet3: Sprite <= 8'hd2; //P3;
-		Pet4: Sprite <= 8'hd3; //P4;
-		Pet5: Sprite <= 8'hd3; //P5;
-		Pet6: Sprite <= 8'hd3; //P6;
-		Pet7: Sprite <= 8'hd3; //P7;
+		Pet1: Sprite <= 8'hd1; //P1;
+		Pet2: Sprite <= 8'hd2; //P2;
+		Pet3: Sprite <= 8'hd3; //P3;
+		Pet4: Sprite <= 8'hd4; //P4;
+		Pet5: Sprite <= 8'hd5; //P5;
+		Pet6: Sprite <= 8'hd6; //P6;
+		Pet7: Sprite <= 8'hd7; //P7;
 		Pet8: 
 			begin
-				Sprite <= 8'hd3; //P8;
+				Sprite <= 8'hd8; //P8;
 				if(h<10)
 					h <= h+1;
+				else
+					h <= h-1;
 				a <= a+1;
 				u <= u-1;
 			end

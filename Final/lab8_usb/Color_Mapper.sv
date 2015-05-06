@@ -18,127 +18,50 @@ module  color_mapper ( input        [9:0]  DrawX, DrawY,
                        output logic [7:0]  Red, Green, Blue );
     
     logic sprite_on;
-	
+	 logic [7:0] TLX, TLY, BRX, BRY, color_number, R, G, B;
+	 logic [7:0] SpriteX, SpriteY;
+	 
+	 game_entity_table 	g_table (.Sprite,
+											.TLX, 
+											.TLY, 
+											.BRX, 
+											.BRY);
+	 
+	 color_table 			c_table (.color(color_number),
+											.R, 
+											.G, 
+											.B);
+								  
+	 sprite_table 			s_table (.Sprite,
+											.Xval(SpriteX), 
+											.Yval(SpriteY),
+											.color(color_number));
+	 
     always_comb
     begin
-        if ( ( DistX*DistX + DistY*DistY) <= (Size * Size) ) 
-            ball_on = 1'b1;
+        if ( DrawX >= TLX && DrawX < BRX && DrawY >= TLY && DrawY < BRY ) 
+            sprite_on = 1'b1;
         else 
-            ball_on = 1'b0;
+            sprite_on = 1'b0;
      end 
        
-    always_comb
+    always_ff
     begin:RGB_Display
-        if ((ball_on == 1'b1)) 
+        if ((sprite_on == 1'b1)) 
         begin 
-        unique case (Sprite)
-				8'h01: begin //ST
-					Red = 8'hff;
-					Green = 8'h00;
-					Blue = 8'h00;
-					end
-				8'h02: begin //IH1
-					Red = 8'h00;
-					Green = 8'hff;
-					Blue = 8'h00;
-					end
-				8'h03: begin //IH2
-					Red = 8'h55;
-					Green = 8'hff;
-					Blue = 8'h00;
-					end
-				8'h04: begin //IH3
-					Red = 8'haa;
-					Green = 8'hff;
-					Blue = 8'h00;
-					end
-				8'h05: begin //IH4
-					Red = 8'hff;
-					Green = 8'hff;
-					Blue = 8'h00;
-					end
-				8'h06: begin //IH5
-					Red = 8'hff;
-					Green = 8'hff;
-					Blue = 8'hff;
-					end
-				8'h07: begin //IS1
-					Red = 8'h00;
-					Green = 8'h00;
-					Blue = 8'hff;
-					end
-				8'h08: begin //IS2
-					Red = 8'h55;
-					Green = 8'h00;
-					Blue = 8'hff;
-					end
-				8'h09: begin //Is3
-					Red = 8'haa;
-					Green = 8'hff;
-					Blue = 8'h00;
-					end
-				8'h0a: begin //IS4
-					Red = 8'hff;
-					Green = 8'hff;
-					Blue = 8'h00;
-					end
-				8'h0b: begin //IS5
-					Red = 8'h00;
-					Green = 8'h00;
-					Blue = 8'h00;
-					end
-				8'h0c: begin //F1
-					Red = 8'h33;
-					Green = 8'h33;
-					Blue = 8'h00;
-					end
-				8'h0d: begin //F2
-					Red = 8'h77;
-					Green = 8'h77;
-					Blue = 8'h00;
-					end
-				8'h0e: begin //F3
-					Red = 8'hcc;
-					Green = 8'hcc;
-					Blue = 8'h00;
-					end
-				8'h0f: begin //F4
-					Red = 8'hff;
-					Green = 8'hff;
-					Blue = 8'h00;
-					end
-				8'h10: begin //P1
-					Red = 8'h00;
-					Green = 8'h33;
-					Blue = 8'h33;
-					end
-				8'h11: begin //P2
-					Red = 8'h00;
-					Green = 8'h77;
-					Blue = 8'h77;
-					end
-				8'h12: begin //P3
-					Red = 8'h00;
-					Green = 8'hcc;
-					Blue = 8'hcc;
-					end
-				8'h13: begin //P4
-					Red = 8'h00;
-					Green = 8'hff;
-					Blue = 8'hff;
-					end
-				8'h14: begin //D
-					Red = 8'h00;
-					Green = 8'h00;
-					Blue = 8'h00;
-					end
-			endcase
+				SpriteX = DrawX-TLX;
+				SpriteY = DrawY-TLY;
+				
+				Red = R;
+				Green = G;
+				Blue = B;
+				
         end       
         else 
         begin 
-            Red = 8'h4f - DrawX[9:3];
+            Red = 8'h00;
             Green = 8'h00;
-            Blue = 8'h44; 
+            Blue = 8'h00; 
         end      
     end 
     

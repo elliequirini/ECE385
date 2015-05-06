@@ -1,5 +1,5 @@
 module game_entity_table(input logic [7:0] Sprite,
-								 output TLX, TLY, BRX, BRY);
+								 output logic [7:0] TLX, TLY, BRX, BRY);
 
 	always_comb
 	begin
@@ -15,6 +15,7 @@ module game_entity_table(input logic [7:0] Sprite,
 						BRX <= 344;
 						BRY <= 240;
 					end
+		endcase
 	end
 		
 endmodule
