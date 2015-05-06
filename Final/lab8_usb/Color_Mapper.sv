@@ -33,8 +33,8 @@ module  color_mapper ( input        [9:0]  DrawX, DrawY,
 											.B);
 								  
 	 sprite_table 			s_table (.Sprite,
-											.Xval(SpriteX), 
-											.Yval(SpriteY),
+											.DX(DrawX), 
+											.DY(DrawY),
 											.color(color_number));
 	 
     always_comb
@@ -49,9 +49,6 @@ module  color_mapper ( input        [9:0]  DrawX, DrawY,
     begin:RGB_Display
         if ((sprite_on == 1'b1)) 
         begin 
-				SpriteX = DrawX-TLX;
-				SpriteY = DrawY-TLY;
-				
 				Red = R;
 				Green = G;
 				Blue = B;
@@ -59,9 +56,9 @@ module  color_mapper ( input        [9:0]  DrawX, DrawY,
         end       
         else 
         begin 
-            Red = 8'h00;
-            Green = 8'h00;
-            Blue = 8'h00; 
+            Red = 8'hff;
+            Green = 8'hff;
+            Blue = 8'hff; 
         end      
     end 
     
