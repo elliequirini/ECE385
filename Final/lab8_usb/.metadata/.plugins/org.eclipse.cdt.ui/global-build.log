@@ -1493,3 +1493,148 @@ make --no-print-directory -C ../usb_kb_bsp/
 [usb_kb build complete]
 
 **** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb ****
+
+make all 
+Info: Building ../usb_kb_bsp/
+make --no-print-directory -C ../usb_kb_bsp/
+[BSP build complete]
+[usb_kb build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb_bsp ****
+
+make all 
+[BSP build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb ****
+
+make all 
+Info: Building ../usb_kb_bsp/
+make --no-print-directory -C ../usb_kb_bsp/
+[BSP build complete]
+[usb_kb build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb ****
+
+make all 
+Info: Building ../usb_kb_bsp/
+make --no-print-directory -C ../usb_kb_bsp/
+[BSP build complete]
+[usb_kb build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb_bsp ****
+
+make all 
+[BSP build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb ****
+
+make all 
+Info: Building ../usb_kb_bsp/
+make --no-print-directory -C ../usb_kb_bsp/
+[BSP build complete]
+[usb_kb build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb ****
+
+make all 
+Info: Building ../usb_kb_bsp/
+make --no-print-directory -C ../usb_kb_bsp/
+[BSP build complete]
+[usb_kb build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb_bsp ****
+
+make all 
+[BSP build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb ****
+
+make all 
+Info: Building ../usb_kb_bsp/
+make --no-print-directory -C ../usb_kb_bsp/
+[BSP build complete]
+[usb_kb build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb ****
+
+make all 
+Info: Building ../usb_kb_bsp/
+make --no-print-directory -C ../usb_kb_bsp/
+[BSP build complete]
+[usb_kb build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb ****
+
+make all 
+Info: Building ../usb_kb_bsp/
+make --no-print-directory -C ../usb_kb_bsp/
+[BSP build complete]
+[usb_kb build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb_bsp ****
+
+make all 
+[BSP build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb ****
+
+make all 
+Info: Building ../usb_kb_bsp/
+make --no-print-directory -C ../usb_kb_bsp/
+[BSP build complete]
+[usb_kb build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb ****
+
+make all 
+Info: Building ../usb_kb_bsp/
+make --no-print-directory -C ../usb_kb_bsp/
+[BSP build complete]
+[usb_kb build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb_bsp ****
+
+make all 
+[BSP build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project usb_kb ****
+
+make all 
+Info: Building ../usb_kb_bsp/
+make --no-print-directory -C ../usb_kb_bsp/
+[BSP build complete]
+[usb_kb build complete]
+
+**** Build Finished ****

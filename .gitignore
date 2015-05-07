@@ -51,3 +51,4 @@ db/
 incremental_db/
 output_files/
 simulation/
+Final/lab8_usb/Game_State.sv

@@ -23,9 +23,9 @@ module game_state( input Reset, frame_clk,
 	 parameter [7:0] S = 8'h16;
 
 	 logic [5:0] h, u, a;
-	 int frame;
+	 //int frame;
 	 int frame_count;
-	 int old_count;
+	 //int old_count;
    
 	 enum logic [5:0] {Start, Check, Dead, Upset,
 							 IdleH1, IdleH2, IdleH3, IdleH4, IdleH5, IdleH6, IdleH7, IdleH8,
@@ -42,22 +42,34 @@ module game_state( input Reset, frame_clk,
             curr_state = Start;
         else if(delay) 
             curr_state = next_state;
-			else
-				delay <= ~delay;
     end
     always_ff
 	 begin
 	 next_state = curr_state;
 	
 	 unique case (curr_state)
-		Start:	next_state = Check;
+		Start:	begin
+					if(frame_count >= 50)
+						begin
+							next_state = Check;
+							frame_count = 0;
+						end
+						else
+							frame_count = frame_count + 1;
+					end
 		Check: 	begin
-					if(h>=5 && u>=5 && a>=5)
-						next_state = IdleH1;
-					else if(h==0 || u==0 || a==0)
-						next_state = Dead;
-					else
-						next_state = IdleS1;
+					if(frame_count >= 50)
+						begin
+							if(h>=5 && u>=5 && a>=5)
+								next_state = IdleH1;
+							else if(h<=0 || u<=0 || a<=0)
+								next_state = Dead;
+							else
+								next_state = IdleS1;
+							frame_count = 0;
+						end
+						else
+							frame_count = frame_count + 1;
 					end
 						
 		IdleH1: 	begin
@@ -316,19 +328,27 @@ module game_state( input Reset, frame_clk,
 					end
 						
 		Feed: 	begin
-					if(u<10)
-						next_state = Feed1;
-					else
 						if(frame_count >= 50)
 							begin
-							next_state = Upset;							
+							if(u<10)
+								next_state = Feed1;
+							else
+								next_state = Upset;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
 					end
 					
-		Feed1:	next_state = Feed2;
+		Feed1:	begin
+					if(frame_count >= 50)
+							begin
+							next_state = Feed2;							
+							frame_count = 0;
+							end
+						else
+							frame_count = frame_count + 1;
+					end
 		Feed2:	next_state = Feed3;
 		Feed3:	next_state = Feed4;
 		Feed4:	next_state = Feed5;
@@ -338,10 +358,17 @@ module game_state( input Reset, frame_clk,
 		Feed8:	next_state = Check;
 		
 		Pet:		begin
-					if(a<10)
-						next_state = Pet1;
-					else
-						next_state = Upset;
+					if(frame_count >= 50)
+							begin
+							if(a<10)
+								next_state = Pet1;
+							else
+								next_state = Upset;						
+							frame_count = 0;
+							end
+						else
+							frame_count = frame_count + 1;
+					
 					end
 		
 		Pet1:	next_state = Pet2;
