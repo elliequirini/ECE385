@@ -24,7 +24,8 @@ module game_state( input Reset, frame_clk,
 
 	 logic [5:0] h, u, a;
 	 int frame;
-	 int next_frame;
+	 int frame_count;
+	 int old_count;
    
 	 enum logic [5:0] {Start, Check, Dead, Upset,
 							 IdleH1, IdleH2, IdleH3, IdleH4, IdleH5, IdleH6, IdleH7, IdleH8,
@@ -65,10 +66,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleH2;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleH2;							
+							frame_count = frame_count + 1;
 					end
 						
 		IdleH2: 	begin
@@ -77,10 +77,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleH3;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleH3;							
+							frame_count = frame_count + 1;
 					end
 						
 		IdleH3: 	begin
@@ -89,10 +88,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleH4;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleH4;							
+							frame_count = frame_count + 1;
 					end
 		
 		IdleH4: 	begin
@@ -101,10 +99,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleH5;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleH5;							
+							frame_count = frame_count + 1;
 					end
 		
 		IdleH5: 	begin
@@ -113,10 +110,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleH6;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleH6;							
+							frame_count = frame_count + 1;
 					end
 		
 		IdleH6: 	begin
@@ -125,10 +121,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleH7;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleH7;							
+							frame_count = frame_count + 1;
 					end
 		
 		IdleH7: 	begin
@@ -137,10 +132,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleH8;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleH8;							
+							frame_count = frame_count + 1;
 					end
 		
 		IdleH8: 	begin
@@ -149,10 +143,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = Check;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = Check;							
+							frame_count = frame_count + 1;
 					end
 						
 		IdleS1: 	begin
@@ -161,10 +154,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleS2;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleS2;							
+							frame_count = frame_count + 1;
 					end
 						
 		IdleS2: 	begin
@@ -173,10 +165,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleS3;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleS3;							
+							frame_count = frame_count + 1;
 					end
 					
 		IdleS3: 	begin
@@ -185,10 +176,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleS4;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleS4;							
+							frame_count = frame_count + 1;
 					end
 						
 		IdleS4: 	begin
@@ -197,10 +187,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleS5;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleS5;							
+							frame_count = frame_count + 1;
 					end
 					
 		IdleS4: 	begin
@@ -209,10 +198,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleS5;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleS5;							
+							frame_count = frame_count + 1;
 					end
 					
 		IdleS5: 	begin
@@ -221,10 +209,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleS6;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleS6;							
+							frame_count = frame_count + 1;
 					end
 					
 		IdleS6: 	begin
@@ -233,10 +220,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleS7;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleS7;							
+							frame_count = frame_count + 1;
 					end
 		
 		IdleS7: 	begin
@@ -245,10 +231,9 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = IdleS8;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = IdleS8;							
+							frame_count = frame_count + 1;
 					end
 					
 		IdleS8: 	begin
@@ -257,20 +242,18 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(next_frame)
-							next_state = Check;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = Check;							
+							frame_count = frame_count + 1;
 					end
 						
 		Feed: 	begin
 					if(u<10)
 						next_state = Feed1;
 					else
-						if(next_frame)
-							next_state = Upset;
-							frame <= 1'd0;
-							next_frame <= 1'd0;
+						if(frame_count != old_count)
+							next_state = Upset;							
+							frame_count = frame_count + 1;
 					end
 					
 		Feed1:	next_state = Feed2;
@@ -461,10 +444,13 @@ begin
 	endcase
 end
 
-always_comb
+always_ff
 begin
-	assign frame = frame + 1;
-	assign next_frame = (frame > 100) ? 1 : 0;
+	if (frame_count != old_count)
+		frame = 1'b0;
+	else
+		old_count = frame_count;
+		frame = frame + 1;
 end
 
 	//assign Sprite = curr_sprite;
