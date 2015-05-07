@@ -7,9 +7,9 @@ module color_table(input int color,
 	begin
 		unique case (color)
 			0:	begin //background
-				Red = 8'h00;
-				Green = 8'h00;
-				Blue = 8'h00;
+				Red = 8'hff;
+				Green = 8'hff;
+				Blue = 8'hff;
 			end
 			1: begin //black
 				Red = 8'h00;
@@ -45,6 +45,12 @@ module color_table(input int color,
 				Red = 8'h88;
 				Green = 8'h00;
 				Blue = 8'h15;
+			end
+			
+			8: begin //light red
+				Red = 8'hd9;
+				Green = 8'h00;
+				Blue = 8'h21;
 			end
 		endcase
 	end

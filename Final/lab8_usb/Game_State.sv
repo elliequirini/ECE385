@@ -55,6 +55,7 @@ module game_state( input Reset, frame_clk,
 						next_state = Dead;
 					else
 						next_state = IdleS1;
+						#1000000;
 					end
 						
 		IdleH1: 	begin
@@ -64,6 +65,7 @@ module game_state( input Reset, frame_clk,
 						next_state = Pet;
 					else
 						next_state = IdleH2;
+					#1000000;
 					end
 						
 		IdleH2: 	begin
@@ -262,58 +264,129 @@ begin
 				h <= 1'd5;
 				u <= 1'd5;
 				a <= 1'd5;
+				
 			end
 		Check:
 			begin
 				Sprite <= 8'h00; //ST (Neutral)
+				#10000000;
 			end
 		
 		Upset:
 			begin
 				Sprite <= 8'h01; //D (Sad)
 				h <= h-1;
+				#10000000;
 			end
 			
 		Dead: Sprite <= 8'h01; //D (Sad)
 		
-		IdleH1: Sprite <= 8'ha1; //IH1;
-		IdleH2: Sprite <= 8'ha2; //IH2;
-		IdleH3: Sprite <= 8'ha3; //IH3;
-		IdleH4: Sprite <= 8'ha4; //IH4;
-		IdleH5: Sprite <= 8'ha5; //IH5;
-		IdleH6: Sprite <= 8'ha6; //IH6;
-		IdleH7: Sprite <= 8'ha7; //IH7;
+		IdleH1: begin
+				Sprite <= 8'ha1; //IH1;
+				#10000000;
+				end
+		IdleH2: begin
+				Sprite <= 8'ha2; //IH2;
+				#10000000;
+				end
+		IdleH3: begin
+				Sprite <= 8'ha3; //IH3;
+				#10000000;
+				end
+		IdleH4: begin
+				Sprite <= 8'ha4; //IH4;
+				#10000000;
+				end
+		IdleH5: begin
+				Sprite <= 8'ha5; //IH5;
+				#10000000;
+				end
+		IdleH6: begin
+				Sprite <= 8'ha6; //IH6;
+				#10000000;
+				end
+		IdleH7: begin
+				Sprite <= 8'ha7; //IH7;
+				#10000000;
+				end
 		IdleH8:
 			begin
 				Sprite <= 8'ha8; //IH8;
 				h <= h-1;
 				u <= u-1;
 				a <= a-1;
+				#10000000;
 			end
 		
-		IdleS1: Sprite <= 8'hb1; //IS1;
-		IdleS2: Sprite <= 8'hb2; //IS2;
-		IdleS3: Sprite <= 8'hb3; //IS3;
-		IdleS4: Sprite <= 8'hb4; //IS4;
-		IdleS5: Sprite <= 8'hb5; //IS5;
-		IdleS6: Sprite <= 8'hb6; //IS6;
-		IdleS7: Sprite <= 8'hb7; //IS7;
+		IdleS1: begin
+				Sprite <= 8'hb1; //IS1;
+				#10000000;
+				end
+		IdleS2: begin
+				Sprite <= 8'hb2; //IS2;
+				#10000000;
+				end
+		IdleS3: begin
+				Sprite <= 8'hb3; //IS3;
+				#10000000;
+				end
+		IdleS4: begin
+				Sprite <= 8'hb4; //IS4;
+				#10000000;
+				end
+		IdleS5: begin
+				Sprite <= 8'hb5; //IS5;
+				#10000000;
+				end
+		IdleS6: begin
+				Sprite <= 8'hb6; //IS6;
+				#10000000;
+				end
+		IdleS7: begin
+				Sprite <= 8'hb7; //IS7;
+				#10000000;
+				end
 		IdleS8: 
 			begin
 				Sprite <= 8'hb8; //IS4;
 				h <= h-1;
 				u <= u-1;
 				a <= a-1;
+				#10000000;
 			end
 			
-		Feed:  Sprite <= 8'h00;  //Neutral
-		Feed1: Sprite <= 8'hc1; //F1;
-		Feed2: Sprite <= 8'hc2; //F2;
-		Feed3: Sprite <= 8'hc3; //F3;
-		Feed4: Sprite <= 8'hc4; //F4;
-		Feed5: Sprite <= 8'hc5; //F5;
-		Feed6: Sprite <= 8'hc6; //F6;
-		Feed7: Sprite <= 8'hc7; //F7;
+		Feed:  begin
+				Sprite <= 8'h00;  //Neutral
+				#10000000;
+				end
+		Feed1: begin
+				Sprite <= 8'hc1; //F1;
+				#10000000;
+				end
+		Feed2: begin
+				Sprite <= 8'hc2; //F2;
+				#10000000;
+				end
+		Feed3: begin
+				Sprite <= 8'hc3; //F3;
+				#10000000;
+				end
+		Feed4: begin
+				Sprite <= 8'hc4; //F4;
+				#10000000;
+				end
+		Feed5: begin
+				Sprite <= 8'hc5; //F5;
+				#10000000;
+				end
+		Feed6: begin
+				Sprite <= 8'hc6; //F6;
+				#10000000;
+				end
+		Feed7: begin
+				Sprite <= 8'hc7; //F7;
+				#10000000;
+				end
 		Feed8: 
 			begin
 				Sprite <= 8'hc8; //F8;
@@ -323,16 +396,38 @@ begin
 					h <= h-1;
 				u <= u+1;
 				a <= a-1;
+				#10000000;
 			end
 			
 		Pet:  Sprite <= 8'h00; //Neutral
-		Pet1: Sprite <= 8'hd1; //P1;
-		Pet2: Sprite <= 8'hd2; //P2;
-		Pet3: Sprite <= 8'hd3; //P3;
-		Pet4: Sprite <= 8'hd4; //P4;
-		Pet5: Sprite <= 8'hd5; //P5;
-		Pet6: Sprite <= 8'hd6; //P6;
-		Pet7: Sprite <= 8'hd7; //P7;
+		Pet1: begin
+				Sprite <= 8'hd1; //P1;
+				#10000000;
+				end
+		Pet2: begin
+				Sprite <= 8'hd2; //P2;
+				#10000000;
+				end
+		Pet3: begin
+				Sprite <= 8'hd3; //P3;
+				#10000000;
+				end
+		Pet4: begin
+				Sprite <= 8'hd4; //P4;
+				#10000000;
+				end
+		Pet5: begin
+				Sprite <= 8'hd5; //P5;
+				#10000000;
+				end
+		Pet6: begin
+				Sprite <= 8'hd6; //P6;
+				#10000000;
+				end
+		Pet7: begin
+				Sprite <= 8'hd7; //P7;
+				#10000000;
+				end
 		Pet8: 
 			begin
 				Sprite <= 8'hd8; //P8;
@@ -342,6 +437,7 @@ begin
 					h <= h-1;
 				a <= a+1;
 				u <= u-1;
+				#10000000;
 			end
 		
 	endcase
