@@ -8,18 +8,21 @@ module PetGame(input logic Clk,
 							 hs,
 							 VGA_clk,
 							 blank,
-							 sync);
+							 sync,
+					output [5:0] debug);
 
 logic [9:0] DrawX, DrawY;
 logic [7:0] R,G,B;
 logic frame_clk, pixel_clk;
 logic [7:0] Sprite;
+logic [5:0] debug_state;
 
 	
 game_state 			myGame( .Reset,
 								  .frame_clk,
 								  .key(keycode),
-								  .Sprite);
+								  .Sprite,
+								  .debug_state);
 
 color_mapper 	 myMapper( .DrawX, 
 								  .DrawY,
@@ -43,5 +46,6 @@ assign Red = R;
 assign Green = G;
 assign Blue = B;
 assign VGA_clk = pixel_clk;
+assign debug = debug_state;
 												  
 endmodule

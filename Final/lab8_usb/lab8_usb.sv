@@ -24,6 +24,7 @@ module  lab8_usb 		( input         Clk,
 												 blank,
 												 vs,
 												 hs,
+												
 							  // CY7C67200 Interface
 							  inout [15:0]  OTG_DATA,						//	CY7C67200 Data bus 16 Bits
 							  output [1:0]  OTG_ADDR,						//	CY7C67200 Address 2 Bits
@@ -47,6 +48,7 @@ module  lab8_usb 		( input         Clk,
     
     logic Reset_h;
 	 logic [7:0] keycode;
+	 logic [5:0] debug;
     
     assign {Reset_h}=~ (Reset);  // The push buttons are active low
 	 assign OTG_FSPEED = 1'bz;
@@ -84,11 +86,14 @@ module  lab8_usb 		( input         Clk,
 									.hs,
 									.VGA_clk,
 									.blank,
-									.sync);
+									.sync,
+									.debug);
 	
 										  
 	 HexDriver hex_inst_0 (keycode[3:0], HEX0);
 	 HexDriver hex_inst_1 (keycode[7:4], HEX1);
+	 
+	 assign LEDR = debug;
     
 
 	 /**************************************************************************************

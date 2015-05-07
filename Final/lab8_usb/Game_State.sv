@@ -15,50 +15,52 @@
 
 module game_state( input Reset, frame_clk,
 					input [7:0] key,
-					output logic [7:0] Sprite);
+					output logic [7:0] Sprite,
+					output logic [5:0] debug_state);
     
 
 	 parameter [7:0] Q = 8'h14;
 	 parameter [7:0] W = 8'h1a;
 	 parameter [7:0] S = 8'h16;
 
-	 logic [5:0] h, u, a;
-	 //int frame;
+	 int h, u, a;
 	 int frame_count;
-	 //int old_count;
    
-	 enum logic [5:0] {Start, Check, Dead, Upset,
-							 IdleH1, IdleH2, IdleH3, IdleH4, IdleH5, IdleH6, IdleH7, IdleH8,
+	 enum logic [5:0] {Start,  
+							Check, 
+							Dead, 
+							Upset,
+							IdleH1, IdleH2, IdleH3, IdleH4, IdleH5, IdleH6, IdleH7, IdleH8,
 							 IdleS1, IdleS2, IdleS3, IdleS4, IdleS5, IdleS6, IdleS7, IdleS8,
 							 Feed, Feed1, Feed2, Feed3, Feed4, Feed5, Feed6, Feed7, Feed8, 
 							 Pet, Pet1, Pet2, Pet3, Pet4, Pet5, Pet6, Pet7, Pet8} curr_state, next_state;
 	 
-    logic delay;
-	 
+ 	 
 	 
 	 always_ff @ (posedge Reset or posedge frame_clk )
     begin
         if (Reset)
             curr_state = Start;
-        else if(delay) 
+        else
             curr_state = next_state;
     end
-    always_ff
+	 
+    always_ff @ (posedge frame_clk)
 	 begin
 	 next_state = curr_state;
 	
 	 unique case (curr_state)
 		Start:	begin
-					if(frame_count >= 50)
+					if(frame_count >= 100)
 						begin
 							next_state = Check;
 							frame_count = 0;
 						end
-						else
-							frame_count = frame_count + 1;
+					else
+						frame_count = frame_count + 1;
 					end
 		Check: 	begin
-					if(frame_count >= 50)
+					if(frame_count >= 100)
 						begin
 							if(h>=5 && u>=5 && a>=5)
 								next_state = IdleH1;
@@ -68,8 +70,8 @@ module game_state( input Reset, frame_clk,
 								next_state = IdleS1;
 							frame_count = 0;
 						end
-						else
-							frame_count = frame_count + 1;
+					else
+						frame_count = frame_count + 1;
 					end
 						
 		IdleH1: 	begin
@@ -78,13 +80,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleH2;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 						
 		IdleH2: 	begin
@@ -93,13 +97,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleH3;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 						
 		IdleH3: 	begin
@@ -108,13 +114,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleH4;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 		
 		IdleH4: 	begin
@@ -123,13 +131,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleH5;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 		
 		IdleH5: 	begin
@@ -138,13 +148,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleH6;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 		
 		IdleH6: 	begin
@@ -153,13 +165,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleH7;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 		
 		IdleH7: 	begin
@@ -168,13 +182,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleH8;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 		
 		IdleH8: 	begin
@@ -183,13 +199,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = Check;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 						
 		IdleS1: 	begin
@@ -198,13 +216,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleS2;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 						
 		IdleS2: 	begin
@@ -213,13 +233,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleS3;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 					
 		IdleS3: 	begin
@@ -228,13 +250,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleS4;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 						
 		IdleS4: 	begin
@@ -243,13 +267,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleS5;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 					
 		IdleS4: 	begin
@@ -258,13 +284,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleS5;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 					
 		IdleS5: 	begin
@@ -273,13 +301,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleS6;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 					
 		IdleS6: 	begin
@@ -288,13 +318,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleS7;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 		
 		IdleS7: 	begin
@@ -303,13 +335,15 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = IdleS8;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 					
 		IdleS8: 	begin
@@ -318,17 +352,19 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						if(frame_count >= 50)
+						begin
+						if(frame_count >= 100)
 							begin
 							next_state = Check;							
 							frame_count = 0;
 							end
 						else
 							frame_count = frame_count + 1;
+						end
 					end
 						
 		Feed: 	begin
-						if(frame_count >= 50)
+						if(frame_count >= 100)
 							begin
 							if(u<10)
 								next_state = Feed1;
@@ -338,10 +374,10 @@ module game_state( input Reset, frame_clk,
 							end
 						else
 							frame_count = frame_count + 1;
-					end
+				end
 					
 		Feed1:	begin
-					if(frame_count >= 50)
+					if(frame_count >= 100)
 							begin
 							next_state = Feed2;							
 							frame_count = 0;
@@ -349,16 +385,72 @@ module game_state( input Reset, frame_clk,
 						else
 							frame_count = frame_count + 1;
 					end
-		Feed2:	next_state = Feed3;
-		Feed3:	next_state = Feed4;
-		Feed4:	next_state = Feed5;
-		Feed5:	next_state = Feed6;
-		Feed6:	next_state = Feed7;
-		Feed7:	next_state = Feed8;
-		Feed8:	next_state = Check;
+		Feed2:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Feed3;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Feed3:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Feed4;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Feed4:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Feed5;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Feed5:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Feed6;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Feed6:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Feed7;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Feed7:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Feed8;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Feed8:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Check;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
 		
 		Pet:		begin
-					if(frame_count >= 50)
+					if(frame_count >= 100)
 							begin
 							if(a<10)
 								next_state = Pet1;
@@ -371,16 +463,88 @@ module game_state( input Reset, frame_clk,
 					
 					end
 		
-		Pet1:	next_state = Pet2;
-		Pet2:	next_state = Pet3;
-		Pet3:	next_state = Pet4;
-		Pet4:	next_state = Pet5;
-		Pet5:	next_state = Pet6;
-		Pet6:	next_state = Pet7;
-		Pet7:	next_state = Pet8;
-		Pet8:	next_state = Check;
+		Pet1:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Pet2;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Pet2:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Pet3;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Pet3:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Pet4;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Pet4:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Pet5;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Pet5:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Pet6;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Pet6:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Pet7;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Pet7:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Pet8;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
+		Pet8:	begin
+					if(frame_count >= 100)
+						begin
+						next_state = Check;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
 		
-		Upset: next_state = Check;
+		Upset: begin
+					if(frame_count >= 100)
+						begin
+						next_state = Check;
+						frame_count = 0;
+						end
+					else
+						frame_count = frame_count + 1;
+				end
 		
 		Dead: begin	
 					if(key == S)
@@ -391,15 +555,15 @@ module game_state( input Reset, frame_clk,
 	endcase
 end
 
-always_ff
+always
 begin 
 	case (curr_state)
 		Start:
 			begin
 				Sprite <= 8'h00; //ST (Neutral)
-				h <= 1'd5;
-				u <= 1'd5;
-				a <= 1'd5;
+				h <= 5;
+				u <= 5;
+				a <= 5;
 			end
 		Check:
 			begin
@@ -543,7 +707,7 @@ begin
 	endcase
 end
 
+	assign debug_state = curr_state;
 
 	//assign Sprite = curr_sprite;
 endmodule	
-		  
