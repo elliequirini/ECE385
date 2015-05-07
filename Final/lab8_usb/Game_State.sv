@@ -23,6 +23,8 @@ module game_state( input Reset, frame_clk,
 	 parameter [7:0] S = 8'h16;
 
 	 logic [5:0] h, u, a;
+	 int frame;
+	 int next_frame;
    
 	 enum logic [5:0] {Start, Check, Dead, Upset,
 							 IdleH1, IdleH2, IdleH3, IdleH4, IdleH5, IdleH6, IdleH7, IdleH8,
@@ -42,7 +44,7 @@ module game_state( input Reset, frame_clk,
 			else
 				delay <= ~delay;
     end
-    always_comb
+    always_ff
 	 begin
 	 next_state = curr_state;
 	
@@ -55,7 +57,6 @@ module game_state( input Reset, frame_clk,
 						next_state = Dead;
 					else
 						next_state = IdleS1;
-						#1000000;
 					end
 						
 		IdleH1: 	begin
@@ -64,8 +65,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleH2;
-					#1000000;
+						if(next_frame)
+							next_state = IdleH2;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 						
 		IdleH2: 	begin
@@ -74,7 +77,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleH3;
+						if(next_frame)
+							next_state = IdleH3;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 						
 		IdleH3: 	begin
@@ -83,7 +89,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleH4;
+						if(next_frame)
+							next_state = IdleH4;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 		
 		IdleH4: 	begin
@@ -92,7 +101,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleH5;
+						if(next_frame)
+							next_state = IdleH5;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 		
 		IdleH5: 	begin
@@ -101,7 +113,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleH6;
+						if(next_frame)
+							next_state = IdleH6;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 		
 		IdleH6: 	begin
@@ -110,7 +125,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleH7;
+						if(next_frame)
+							next_state = IdleH7;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 		
 		IdleH7: 	begin
@@ -119,7 +137,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleH8;
+						if(next_frame)
+							next_state = IdleH8;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 		
 		IdleH8: 	begin
@@ -128,7 +149,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = Check;
+						if(next_frame)
+							next_state = Check;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 						
 		IdleS1: 	begin
@@ -137,7 +161,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleS2;
+						if(next_frame)
+							next_state = IdleS2;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 						
 		IdleS2: 	begin
@@ -146,7 +173,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleS3;
+						if(next_frame)
+							next_state = IdleS3;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 					
 		IdleS3: 	begin
@@ -155,7 +185,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleS4;
+						if(next_frame)
+							next_state = IdleS4;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 						
 		IdleS4: 	begin
@@ -164,7 +197,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleS5;
+						if(next_frame)
+							next_state = IdleS5;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 					
 		IdleS4: 	begin
@@ -173,7 +209,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleS5;
+						if(next_frame)
+							next_state = IdleS5;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 					
 		IdleS5: 	begin
@@ -182,7 +221,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleS6;
+						if(next_frame)
+							next_state = IdleS6;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 					
 		IdleS6: 	begin
@@ -191,7 +233,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleS7;
+						if(next_frame)
+							next_state = IdleS7;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 		
 		IdleS7: 	begin
@@ -200,7 +245,10 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = IdleS8;
+						if(next_frame)
+							next_state = IdleS8;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 					
 		IdleS8: 	begin
@@ -209,14 +257,20 @@ module game_state( input Reset, frame_clk,
 					else if(key == W)
 						next_state = Pet;
 					else
-						next_state = Check;
+						if(next_frame)
+							next_state = Check;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 						
 		Feed: 	begin
 					if(u<10)
 						next_state = Feed1;
 					else
-						next_state = Upset;
+						if(next_frame)
+							next_state = Upset;
+							frame <= 1'd0;
+							next_frame <= 1'd0;
 					end
 					
 		Feed1:	next_state = Feed2;
@@ -264,50 +318,40 @@ begin
 				h <= 1'd5;
 				u <= 1'd5;
 				a <= 1'd5;
-				
 			end
 		Check:
 			begin
 				Sprite <= 8'h00; //ST (Neutral)
-				#10000000;
 			end
 		
 		Upset:
 			begin
 				Sprite <= 8'h01; //D (Sad)
 				h <= h-1;
-				#10000000;
 			end
 			
 		Dead: Sprite <= 8'h01; //D (Sad)
 		
 		IdleH1: begin
 				Sprite <= 8'ha1; //IH1;
-				#10000000;
 				end
 		IdleH2: begin
 				Sprite <= 8'ha2; //IH2;
-				#10000000;
 				end
 		IdleH3: begin
 				Sprite <= 8'ha3; //IH3;
-				#10000000;
 				end
 		IdleH4: begin
 				Sprite <= 8'ha4; //IH4;
-				#10000000;
 				end
 		IdleH5: begin
 				Sprite <= 8'ha5; //IH5;
-				#10000000;
 				end
 		IdleH6: begin
 				Sprite <= 8'ha6; //IH6;
-				#10000000;
 				end
 		IdleH7: begin
 				Sprite <= 8'ha7; //IH7;
-				#10000000;
 				end
 		IdleH8:
 			begin
@@ -315,36 +359,28 @@ begin
 				h <= h-1;
 				u <= u-1;
 				a <= a-1;
-				#10000000;
 			end
 		
 		IdleS1: begin
 				Sprite <= 8'hb1; //IS1;
-				#10000000;
 				end
 		IdleS2: begin
 				Sprite <= 8'hb2; //IS2;
-				#10000000;
 				end
 		IdleS3: begin
 				Sprite <= 8'hb3; //IS3;
-				#10000000;
 				end
 		IdleS4: begin
 				Sprite <= 8'hb4; //IS4;
-				#10000000;
 				end
 		IdleS5: begin
 				Sprite <= 8'hb5; //IS5;
-				#10000000;
 				end
 		IdleS6: begin
 				Sprite <= 8'hb6; //IS6;
-				#10000000;
 				end
 		IdleS7: begin
 				Sprite <= 8'hb7; //IS7;
-				#10000000;
 				end
 		IdleS8: 
 			begin
@@ -352,40 +388,31 @@ begin
 				h <= h-1;
 				u <= u-1;
 				a <= a-1;
-				#10000000;
 			end
 			
 		Feed:  begin
 				Sprite <= 8'h00;  //Neutral
-				#10000000;
 				end
 		Feed1: begin
 				Sprite <= 8'hc1; //F1;
-				#10000000;
 				end
 		Feed2: begin
 				Sprite <= 8'hc2; //F2;
-				#10000000;
 				end
 		Feed3: begin
 				Sprite <= 8'hc3; //F3;
-				#10000000;
 				end
 		Feed4: begin
 				Sprite <= 8'hc4; //F4;
-				#10000000;
 				end
 		Feed5: begin
 				Sprite <= 8'hc5; //F5;
-				#10000000;
 				end
 		Feed6: begin
 				Sprite <= 8'hc6; //F6;
-				#10000000;
 				end
 		Feed7: begin
 				Sprite <= 8'hc7; //F7;
-				#10000000;
 				end
 		Feed8: 
 			begin
@@ -396,37 +423,29 @@ begin
 					h <= h-1;
 				u <= u+1;
 				a <= a-1;
-				#10000000;
 			end
 			
 		Pet:  Sprite <= 8'h00; //Neutral
 		Pet1: begin
 				Sprite <= 8'hd1; //P1;
-				#10000000;
 				end
 		Pet2: begin
 				Sprite <= 8'hd2; //P2;
-				#10000000;
 				end
 		Pet3: begin
 				Sprite <= 8'hd3; //P3;
-				#10000000;
 				end
 		Pet4: begin
 				Sprite <= 8'hd4; //P4;
-				#10000000;
 				end
 		Pet5: begin
 				Sprite <= 8'hd5; //P5;
-				#10000000;
 				end
 		Pet6: begin
 				Sprite <= 8'hd6; //P6;
-				#10000000;
 				end
 		Pet7: begin
 				Sprite <= 8'hd7; //P7;
-				#10000000;
 				end
 		Pet8: 
 			begin
@@ -437,11 +456,17 @@ begin
 					h <= h-1;
 				a <= a+1;
 				u <= u-1;
-				#10000000;
 			end
 		
 	endcase
 end
-//assign Sprite = curr_sprite;
+
+always_comb
+begin
+	assign frame = frame + 1;
+	assign next_frame = (frame > 100) ? 1 : 0;
+end
+
+	//assign Sprite = curr_sprite;
 endmodule	
 		  
