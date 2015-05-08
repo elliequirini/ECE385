@@ -47,665 +47,771 @@ module game_state( input Reset, frame_clk,
 	 
     always_ff @ (posedge frame_clk)
 	 begin
-	 next_state = curr_state;
-	
-	 unique case (curr_state)
-		Start:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-							next_state = Check;							
-						end
-					else
-						frame_count = frame_count + 1;
-					end
-		Check: 	begin
-					if(frame_count >= 50)
-						begin
-							if(h>=5 && u>=5 && a>=5)
-								next_state = IdleH1;
-							else if(h<=0 || u<=0 || a<=0)
-								next_state = Dead;
+		 //next_state = curr_state;
+		
+		 unique case (curr_state)
+			Start:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+								next_state = Check;							
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
 							else
-							frame_count = 0;
-								next_state = IdleS1;							
+								frame_count = frame_count + 1;
 						end
-					else
-						frame_count = frame_count + 1;
-					end
-						
-		IdleH1: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
+			Check: 	begin
+						if(frame_count >= 25)
 							begin
-							frame_count = 0;
-							next_state = IdleH2;														
+								if(h>=5 && u>=5 && a>=5)
+									next_state = IdleH1;
+								else if(h<=0 || u<=0 || a<=0)
+									next_state = Dead;
+								else
+								frame_count = 0;
+									next_state = IdleS1;							
 							end
 						else
-							frame_count = frame_count + 1;
-						end
-					end
-						
-		IdleH2: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleH3;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-						
-		IdleH3: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleH4;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-		
-		IdleH4: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleH5;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-		
-		IdleH5: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleH6;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-		
-		IdleH6: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleH7;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-		
-		IdleH7: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleH8;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-		
-		IdleH8: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = Check;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-						
-		IdleS1: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleS2;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-						
-		IdleS2: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleS3;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-					
-		IdleS3: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleS4;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-						
-		IdleS4: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleS5;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-					
-		IdleS4: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleS5;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-					
-		IdleS5: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleS6;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-					
-		IdleS6: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleS7;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-		
-		IdleS7: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = IdleS8;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-					
-		IdleS8: 	begin
-					if(key == Q)
-						next_state = Feed;
-					else if(key == W)
-						next_state = Pet;
-					else
-						begin
-						if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = Check;														
-							end
-						else
-							frame_count = frame_count + 1;
-						end
-					end
-						
-		Feed: 	begin
-						if(frame_count >= 50)
-							begin
-							if(u<10)
-								next_state = Feed1;
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
 							else
-							frame_count = 0;
-								next_state = Upset;														
-							end
-						else
-							frame_count = frame_count + 1;
-				end
-					
-		Feed1:	begin
-					if(frame_count >= 50)
-							begin
-							frame_count = 0;
-							next_state = Feed2;														
-							end
-						else
-							frame_count = frame_count + 1;
-					end
-		Feed2:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Feed3;						
+								frame_count = frame_count + 1;
 						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Feed3:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Feed4;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Feed4:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Feed5;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Feed5:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Feed6;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Feed6:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Feed7;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Feed7:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Feed8;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Feed8:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Check;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		
-		Pet:		begin
-					if(frame_count >= 50)
-							begin
-							if(a<10)
-								next_state = Pet1;
+							
+			IdleH1: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleH2;														
+								end
 							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+							
+			IdleH2: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleH3;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+							
+			IdleH3: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleH4;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+			
+			IdleH4: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleH5;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+			
+			IdleH5: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleH6;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+			
+			IdleH6: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleH7;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+			
+			IdleH7: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleH8;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+			
+			IdleH8: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = Check;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+							
+			IdleS1: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleS2;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+							
+			IdleS2: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleS3;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+						
+			IdleS3: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleS4;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+							
+			IdleS4: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleS5;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+						
+			IdleS4: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleS5;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+						
+			IdleS5: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleS6;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+						
+			IdleS6: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleS7;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+			
+			IdleS7: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = IdleS8;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+						
+			IdleS8: 	begin
+						
+							if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = Check;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+							
+						end
+							
+			Feed: 	begin
+							if(frame_count >= 25)
+								begin
+								if(u<10)
+									next_state = Feed1;
+								else
+								frame_count = 0;
+									next_state = Upset;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+					end
+						
+			Feed1:	begin
+						if(frame_count >= 25)
+								begin
+								frame_count = 0;
+								next_state = Feed2;														
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+						end
+			Feed2:	begin
+						if(frame_count >= 25)
+							begin
 							frame_count = 0;
-								next_state = Upset;													
+							next_state = Feed3;						
 							end
 						else
-							frame_count = frame_count + 1;
-					
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
 					end
-		
-		Pet1:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Pet2;						
+			Feed3:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Feed4;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			Feed4:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Feed5;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			Feed5:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Feed6;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			Feed6:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Feed7;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			Feed7:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Feed8;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			Feed8:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Check;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			
+			Pet:		begin
+						if(frame_count >= 25)
+								begin
+								if(a<10)
+									next_state = Pet1;
+								else
+								frame_count = 0;
+									next_state = Upset;													
+								end
+							else
+								if(key == Q)
+									next_state = Feed;
+								else if (key == W)
+									next_state = Pet;
+								else
+									frame_count = frame_count + 1;
+						
 						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Pet2:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Pet3;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Pet3:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Pet4;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Pet4:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Pet5;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Pet5:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Pet6;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Pet6:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Pet7;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Pet7:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Pet8;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		Pet8:	begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Check;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		
-		Upset: begin
-					if(frame_count >= 50)
-						begin
-						frame_count = 0;
-						next_state = Check;						
-						end
-					else
-						frame_count = frame_count + 1;
-				end
-		
-		Dead: begin	
-					if(key == S)
-						next_state = Start;
-					else
-						next_state = Dead;
-				end
-	endcase
-end
+			
+			Pet1:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Pet2;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			Pet2:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Pet3;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			Pet3:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Pet4;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			Pet4:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Pet5;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			Pet5:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Pet6;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			Pet6:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Pet7;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			Pet7:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Pet8;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			Pet8:	begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Check;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			
+			Upset: begin
+						if(frame_count >= 25)
+							begin
+							frame_count = 0;
+							next_state = Check;						
+							end
+						else
+							if(key == Q)
+								next_state = Feed;
+							else if (key == W)
+								next_state = Pet;
+							else
+								frame_count = frame_count + 1;
+					end
+			
+			Dead: begin	
+						if(key == S)
+							next_state = Start;
+						else
+							next_state = Dead;
+					end
+		endcase
+	end
 
-always
-begin 
-	case (curr_state)
-		Start:
-			begin
-				Sprite <= 8'h00; //ST (Neutral)
-				h <= 5;
-				u <= 5;
-				a <= 5;
-			end
-		Check:
-			begin
-				Sprite <= 8'h00; //ST (Neutral)
-			end
-		
-		Upset:
-			begin
-				Sprite <= 8'h01; //D (Sad)
-				h <= h-1;
-			end
+
+	always_ff @ (posedge frame_clk)
+	begin 
+		case (curr_state)
+			Start:
+				begin
+					Sprite <= 8'h00; //ST (Neutral)
+					h <= 5;
+					u <= 5;
+					a <= 5;
+				end
+			Check:
+				begin
+					Sprite <= 8'h00; //ST (Neutral)
+				end
 			
-		Dead: Sprite <= 8'h01; //D (Sad)
-		
-		IdleH1: begin
-				Sprite <= 8'ha1; //IH1;
-				end
-		IdleH2: begin
-				Sprite <= 8'ha2; //IH2;
-				end
-		IdleH3: begin
-				Sprite <= 8'ha3; //IH3;
-				end
-		IdleH4: begin
-				Sprite <= 8'ha4; //IH4;
-				end
-		IdleH5: begin
-				Sprite <= 8'ha5; //IH5;
-				end
-		IdleH6: begin
-				Sprite <= 8'ha6; //IH6;
-				end
-		IdleH7: begin
-				Sprite <= 8'ha7; //IH7;
-				end
-		IdleH8:
-			begin
-				Sprite <= 8'ha8; //IH8;
-				h <= h-1;
-				u <= u-1;
-				a <= a-1;
-			end
-		
-		IdleS1: begin
-				Sprite <= 8'hb1; //IS1;
-				end
-		IdleS2: begin
-				Sprite <= 8'hb2; //IS2;
-				end
-		IdleS3: begin
-				Sprite <= 8'hb3; //IS3;
-				end
-		IdleS4: begin
-				Sprite <= 8'hb4; //IS4;
-				end
-		IdleS5: begin
-				Sprite <= 8'hb5; //IS5;
-				end
-		IdleS6: begin
-				Sprite <= 8'hb6; //IS6;
-				end
-		IdleS7: begin
-				Sprite <= 8'hb7; //IS7;
-				end
-		IdleS8: 
-			begin
-				Sprite <= 8'hb8; //IS4;
-				h <= h-1;
-				u <= u-1;
-				a <= a-1;
-			end
-			
-		Feed:  begin
-				Sprite <= 8'h00;  //Neutral
-				end
-		Feed1: begin
-				Sprite <= 8'hc1; //F1;
-				end
-		Feed2: begin
-				Sprite <= 8'hc2; //F2;
-				end
-		Feed3: begin
-				Sprite <= 8'hc3; //F3;
-				end
-		Feed4: begin
-				Sprite <= 8'hc4; //F4;
-				end
-		Feed5: begin
-				Sprite <= 8'hc5; //F5;
-				end
-		Feed6: begin
-				Sprite <= 8'hc6; //F6;
-				end
-		Feed7: begin
-				Sprite <= 8'hc7; //F7;
-				end
-		Feed8: 
-			begin
-				Sprite <= 8'hc8; //F8;
-				if(h<10)
-					h <= h+1;
-				else
+			Upset:
+				begin
+					Sprite <= 8'h01; //D (Sad)
 					h <= h-1;
-				u <= u+1;
-				a <= a-1;
-			end
+				end
+				
+			Dead: Sprite <= 8'h01; //D (Sad)
 			
-		Pet:  Sprite <= 8'h00; //Neutral
-		Pet1: begin
-				Sprite <= 8'hd1; //P1;
-				end
-		Pet2: begin
-				Sprite <= 8'hd2; //P2;
-				end
-		Pet3: begin
-				Sprite <= 8'hd3; //P3;
-				end
-		Pet4: begin
-				Sprite <= 8'hd4; //P4;
-				end
-		Pet5: begin
-				Sprite <= 8'hd5; //P5;
-				end
-		Pet6: begin
-				Sprite <= 8'hd6; //P6;
-				end
-		Pet7: begin
-				Sprite <= 8'hd7; //P7;
-				end
-		Pet8: 
-			begin
-				Sprite <= 8'hd8; //P8;
-				if(h<10)
-					h <= h+1;
-				else
+			IdleH1: begin
+					Sprite <= 8'ha1; //IH1;
+					end
+			IdleH2: begin
+					Sprite <= 8'ha2; //IH2;
+					end
+			IdleH3: begin
+					Sprite <= 8'ha3; //IH3;
+					end
+			IdleH4: begin
+					Sprite <= 8'ha4; //IH4;
+					end
+			IdleH5: begin
+					Sprite <= 8'ha5; //IH5;
+					end
+			IdleH6: begin
+					Sprite <= 8'ha6; //IH6;
+					end
+			IdleH7: begin
+					Sprite <= 8'ha7; //IH7;
+					end
+			IdleH8:
+				begin
+					Sprite <= 8'ha8; //IH8;
 					h <= h-1;
-				a <= a+1;
-				u <= u-1;
-			end
-		
-	endcase
-end
+					u <= u-1;
+					a <= a-1;
+				end
+			
+			IdleS1: begin
+					Sprite <= 8'hb1; //IS1;
+					end
+			IdleS2: begin
+					Sprite <= 8'hb2; //IS2;
+					end
+			IdleS3: begin
+					Sprite <= 8'hb3; //IS3;
+					end
+			IdleS4: begin
+					Sprite <= 8'hb4; //IS4;
+					end
+			IdleS5: begin
+					Sprite <= 8'hb5; //IS5;
+					end
+			IdleS6: begin
+					Sprite <= 8'hb6; //IS6;
+					end
+			IdleS7: begin
+					Sprite <= 8'hb7; //IS7;
+					end
+			IdleS8: 
+				begin
+					Sprite <= 8'hb8; //IS4;
+					h <= h-1;
+					u <= u-1;
+					a <= a-1;
+				end
+				
+			Feed:  begin
+					Sprite <= 8'h00;  //Neutral
+					end
+			Feed1: begin
+					Sprite <= 8'hc1; //F1;
+					end
+			Feed2: begin
+					Sprite <= 8'hc2; //F2;
+					end
+			Feed3: begin
+					Sprite <= 8'hc3; //F3;
+					end
+			Feed4: begin
+					Sprite <= 8'hc4; //F4;
+					end
+			Feed5: begin
+					Sprite <= 8'hc5; //F5;
+					end
+			Feed6: begin
+					Sprite <= 8'hc6; //F6;
+					end
+			Feed7: begin
+					Sprite <= 8'hc7; //F7;
+					end
+			Feed8: 
+				begin
+					Sprite <= 8'hc8; //F8;
+					if(h<10)
+						h <= h+1;
+					else
+						h <= h-1;
+					u <= u+1;
+					a <= a-1;
+				end
+				
+			Pet:  Sprite <= 8'h00; //Neutral
+			Pet1: begin
+					Sprite <= 8'hd1; //P1;
+					end
+			Pet2: begin
+					Sprite <= 8'hd2; //P2;
+					end
+			Pet3: begin
+					Sprite <= 8'hd3; //P3;
+					end
+			Pet4: begin
+					Sprite <= 8'hd4; //P4;
+					end
+			Pet5: begin
+					Sprite <= 8'hd5; //P5;
+					end
+			Pet6: begin
+					Sprite <= 8'hd6; //P6;
+					end
+			Pet7: begin
+					Sprite <= 8'hd7; //P7;
+					end
+			Pet8: 
+				begin
+					Sprite <= 8'hd8; //P8;
+					if(h<10)
+						h <= h+1;
+					else
+						h <= h-1;
+					a <= a+1;
+					u <= u-1;
+				end
+			
+		endcase
+	end
 
 	assign debug_state = curr_state;
 
