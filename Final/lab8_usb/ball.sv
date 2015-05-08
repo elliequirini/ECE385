@@ -19,9 +19,9 @@ module  ball ( input Reset, frame_clk,
     
     logic [9:0] Ball_X_Pos, Ball_X_Motion, Ball_Y_Pos, Ball_Y_Motion, Ball_Size;
 	 
-    parameter [9:0] Ball_X_Center=450;  // Center position on the X axis
+    parameter [9:0] Ball_X_Center=400;  // Center position on the X axis
     parameter [9:0] Ball_Y_Center=250;  // Center position on the Y axis
-    parameter [9:0] Ball_X_Min=300;       // Leftmost point on the X axis
+    parameter [9:0] Ball_X_Min=270;       // Leftmost point on the X axis
     parameter [9:0] Ball_X_Max=600;     // Rightmost point on the X axis
     parameter [9:0] Ball_Y_Min=50;       // Topmost point on the Y axis
     parameter [9:0] Ball_Y_Max=400;     // Bottommost point on the Y axis
@@ -35,8 +35,8 @@ module  ball ( input Reset, frame_clk,
     begin: Move_Ball
         if (Reset)  // Asynchronous Reset
         begin 
-            Ball_Y_Motion <= 10'd0; //Ball_Y_Step;
-				Ball_X_Motion <= 10'd0; //Ball_X_Step;
+            Ball_Y_Motion <= 10'd0; 
+				Ball_X_Motion <= 10'd0; 
 				Ball_Y_Pos <= Ball_Y_Center;
 				Ball_X_Pos <= Ball_X_Center;
         end
