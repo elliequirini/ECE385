@@ -13,13 +13,19 @@
 //-------------------------------------------------------------------------
 
 
-module  color_mapper ( input        [9:0]  DrawX, DrawY, 
+module  color_mapper ( input        [9:0]  BallX, BallY, DrawX, DrawY, Ball_size, 
 							  input 	logic	[7:0]	 Sprite,
                        output logic [7:0]  Red, Green, Blue );
     
     logic sprite_on;
+	 logic ball_on;
 	 logic [7:0] TLX, TLY, BRX, BRY, color_number, R, G, B;
 	 logic [7:0] SpriteX, SpriteY;
+	 
+	 int DistX, DistY, Size;
+	 assign DistX = DrawX - BallX;
+    assign DistY = DrawY - BallY;
+    assign Size = Ball_size;
 	 
 	 game_entity_table 	g_table (.Sprite,
 											.TLX, 
@@ -43,18 +49,27 @@ module  color_mapper ( input        [9:0]  DrawX, DrawY,
             sprite_on = 1'b1;
         else 
             sprite_on = 1'b0;
+		  if ( ( DistX*DistX + DistY*DistY) <= (Size * Size) ) 
+            ball_on = 1'b1;
+        else 
+            ball_on = 1'b0;
      end 
        
     always_ff
     begin:RGB_Display
-        if ((sprite_on == 1'b1)) 
+        if (sprite_on == 1'b1) 
         begin 
 				Red = R;
 				Green = G;
 				Blue = B;
-				
         end       
-        else 
+        if(ball_on == 1'b1)
+		  begin
+				Red = 8'h00;
+				Green = 8'h00;
+				Blue = 8'h00;
+		  end
+		  else 
         begin 
             Red = 8'hff;
             Green = 8'hff;

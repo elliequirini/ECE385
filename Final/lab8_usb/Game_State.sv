@@ -579,7 +579,7 @@ module game_state( input Reset, frame_clk,
 			//			else
 			//				frame_count = frame_count + 1;
 			//		end
-			Pet8:	begin
+			Pet1:	begin
 						//if(key == Q)
 							//next_state = Feed;
 						if(frame_count >= 20)
