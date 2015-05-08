@@ -24,8 +24,11 @@ game_state 			myGame( .Reset,
 								  .Sprite,
 								  .debug_state);
 
-color_mapper 	 myMapper( .DrawX, 
+color_mapper 	 myMapper( .BallX,
+								  .BallY
+								  .DrawX, 
 								  .DrawY,
+								  .BallS,
 								  .Sprite,
 								  .Red(R), 
 								  .Green(G), 
@@ -40,6 +43,13 @@ vga_controller myControl( .Clk,
 								  .sync,      // Composite Sync signal.  Active low.  We don't use it in this lab,
 								  .DrawX,     // horizontal coordinate
 								  .DrawY);
+								  
+ball 					myBall( .Reset,
+								  .frame_clk,
+								  .key(keycode),
+								  .BallX,
+								  .BallY, 
+								  .BallS);
 
 assign vs = frame_clk;
 assign Red = R;

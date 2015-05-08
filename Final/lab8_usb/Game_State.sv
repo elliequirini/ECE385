@@ -473,12 +473,7 @@ module game_state( input Reset, frame_clk,
 							next_state = Check;						
 							end
 						else
-							if(key == Q)
-								next_state = Feed;
-							else if (key == W)
-								next_state = Pet;
-							else
-								frame_count = frame_count + 1;
+							frame_count = frame_count + 1;
 					end
 			
 			Pet:		begin
@@ -579,7 +574,7 @@ module game_state( input Reset, frame_clk,
 			//			else
 			//				frame_count = frame_count + 1;
 			//		end
-			Pet8:	begin
+			Pet1:	begin
 						//if(key == Q)
 							//next_state = Feed;
 						if(frame_count >= 20)
@@ -592,11 +587,7 @@ module game_state( input Reset, frame_clk,
 					end
 			
 			Upset: begin
-						if(key == Q)
-							next_state = Feed;
-						else if (key == W)
-							next_state = Pet;
-						else if(frame_count >= 20)
+						if(frame_count >= 20)
 							begin
 							frame_count = 0;
 							next_state = Check;						
@@ -623,7 +614,7 @@ module game_state( input Reset, frame_clk,
 					Sprite <= 8'h00; //ST (Neutral)
 					h <= 5;
 					u <= 5;
-					a <= 5;
+					//a <= 5;
 				end
 			Check:
 				begin
@@ -666,7 +657,7 @@ module game_state( input Reset, frame_clk,
 					if (frame_count == 0) begin
 						h <= h-1;
 						u <= u-1;
-						a <= a-1;
+						//a <= a-1;
 					end
 				end
 			
@@ -697,7 +688,7 @@ module game_state( input Reset, frame_clk,
 					if (frame_count == 0) begin
 						h <= h-1;
 						u <= u-1;
-						a <= a-1;
+						//a <= a-1;
 					end
 				end
 				
@@ -734,7 +725,7 @@ module game_state( input Reset, frame_clk,
 					end
 				end
 				
-			Pet:  Sprite <= 8'h00; //Neutral
+			//Pet:  Sprite <= 8'h00; //Neutral
 			//Pet1: begin
 			//		Sprite <= 8'hd1; //P1;
 			//		end
@@ -756,14 +747,14 @@ module game_state( input Reset, frame_clk,
 			//Pet7: begin
 			//		Sprite <= 8'hd7; //P7;
 			//		end
-			Pet1: 
-				begin
-					Sprite <= 8'hd1; //P8;
-					if (frame_count == 0) begin
-						h <= h+1;
-						a <= a+1;
-					end
-				end
+			//Pet1: 
+			//	begin
+			//		Sprite <= 8'hd1; //P8;
+			//		if (frame_count == 0) begin
+			//			h <= h+1;
+			//			a <= a+1;
+			//		end
+			//	end
 			
 		endcase
 	end
