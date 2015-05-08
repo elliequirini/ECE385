@@ -538,29 +538,29 @@ module sprite_table(input logic [7:0] Sprite,
 			8'hb3: color = S07[Yval][Xval];
 			8'hb4: color = S08[Yval][Xval];
 			8'hb5: color = S07[Yval][Xval];
-			8'hb6: color = S08[Yval][Xval];
-			8'hb7: color = S07[Yval][Xval];
+			8'hb6: color = S06[Yval][Xval];
+			8'hb7: color = S05[Yval][Xval];
 			8'hb8: color = S06[Yval][Xval];
 
 			//Eating
 			8'hc1: color = S04[Yval][Xval];
-			//8'hc2: color = S04[Yval][Xval];
-			//8'hc3: color = S04[Yval][Xval];
-			//8'hc4: color = S04[Yval][Xval];
-			//8'hc5: color = S04[Yval][Xval];
-			//8'hc6: color = S04[Yval][Xval];
-			//8'hc7: color = S04[Yval][Xval];
-			//8'hc8: color = S04[Yval][Xval];
+			8'hc2: color = S04[Yval][Xval];
+			8'hc3: color = S04[Yval][Xval];
+			8'hc4: color = S04[Yval][Xval];
+			8'hc5: color = S04[Yval][Xval];
+			8'hc6: color = S04[Yval][Xval];
+			8'hc7: color = S04[Yval][Xval];
+			8'hc8: color = S04[Yval][Xval];
 
 			//Petting
-			8'hd1: color = S04[Yval][Xval];
-			//8'hd2: color = S01[Yval][Xval];
-			//8'hd3: color = S01[Yval][Xval];
-			//8'hd4: color = S01[Yval][Xval];
-			//8'hd5: color = S01[Yval][Xval];
-			//8'hd6: color = S01[Yval][Xval];
-			//8'hd7: color = S01[Yval][Xval];
-			//8'hd8: color = S01[Yval][Xval];
+			8'hd1: color = S01[Yval][Xval];
+			8'hd2: color = S01[Yval][Xval];
+			8'hd3: color = S01[Yval][Xval];
+			8'hd4: color = S01[Yval][Xval];
+			8'hd5: color = S01[Yval][Xval];
+			8'hd6: color = S01[Yval][Xval];
+			8'hd7: color = S01[Yval][Xval];
+			8'hd8: color = S01[Yval][Xval];
 		endcase 
 	end
 
