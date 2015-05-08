@@ -71,7 +71,7 @@ module  color_mapper ( input Reset, frame_clk,
 				end
         else 
             sprite_on = 1'b0;
-		  if ( DrawX >= 75 && DrawX < 134 && DrawY >= 250 && DrawY < 274 )
+		  if ( DrawX >= 75 && DrawX < 174 && DrawY >= 250 && DrawY < 274 )
             begin
 				S = 8'haa;
 				bar1_on = 1'b1;
@@ -79,7 +79,7 @@ module  color_mapper ( input Reset, frame_clk,
 				end
         else 
             bar1_on = 1'b0;
-		  if ( DrawX >= 75 && DrawX < 134 && DrawY >= 300 && DrawY < 324 )
+		  if ( DrawX >= 75 && DrawX < 174 && DrawY >= 300 && DrawY < 324 )
             begin
 				S = 8'hbb;
 				bar2_on = 1'b1;
