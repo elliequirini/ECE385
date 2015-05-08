@@ -19,9 +19,9 @@ module  ball ( input Reset, frame_clk,
     
     logic [9:0] Ball_X_Pos, Ball_X_Motion, Ball_Y_Pos, Ball_Y_Motion, Ball_Size;
 	 
-    parameter [9:0] Ball_X_Center=500;  // Center position on the X axis
+    parameter [9:0] Ball_X_Center=450;  // Center position on the X axis
     parameter [9:0] Ball_Y_Center=250;  // Center position on the Y axis
-    parameter [9:0] Ball_X_Min=400;       // Leftmost point on the X axis
+    parameter [9:0] Ball_X_Min=300;       // Leftmost point on the X axis
     parameter [9:0] Ball_X_Max=600;     // Rightmost point on the X axis
     parameter [9:0] Ball_Y_Min=50;       // Topmost point on the Y axis
     parameter [9:0] Ball_Y_Max=400;     // Bottommost point on the Y axis
@@ -44,7 +44,7 @@ module  ball ( input Reset, frame_clk,
 		  else
 			begin 
 				 case (key)
-						8'h1a: //up
+						8'h52: //up
 							begin
 								Ball_X_Motion <= 10'd0;
 								if(Ball_Y_Motion > 0)
@@ -52,7 +52,7 @@ module  ball ( input Reset, frame_clk,
 								else
 									Ball_Y_Motion <= Ball_Y_Step;
 							end
-						8'h16: //down
+						8'h51: //down
 							begin
 								Ball_X_Motion <= 10'd0;
 								if(Ball_Y_Motion < 0)
@@ -60,7 +60,7 @@ module  ball ( input Reset, frame_clk,
 								else
 									Ball_Y_Motion <= Ball_Y_Step;
 							end
-						8'h04: //left
+						8'h50: //left
 							begin
 								Ball_Y_Motion <= 10'd0;
 								if(Ball_X_Motion > 0)
@@ -68,7 +68,7 @@ module  ball ( input Reset, frame_clk,
 								else
 									Ball_X_Motion <= Ball_X_Step;
 							end
-						8'h07: //right
+						8'h4f: //right
 							begin
 								Ball_Y_Motion <= 10'd0;
 								if(Ball_X_Motion < 0)

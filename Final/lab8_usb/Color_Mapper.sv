@@ -69,7 +69,7 @@ module  color_mapper ( input        [9:0]  BallX, BallY, DrawX, DrawY, Ball_size
 				Green = 8'h00;
 				Blue = 8'h00;
 		  end
-		  else 
+		  else if(sprite_on == 1'b0 && ball_on == 1'b0) 
         begin 
             Red = 8'hff;
             Green = 8'hff;
