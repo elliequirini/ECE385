@@ -1,4 +1,5 @@
 module color_table(input int color,
+							input logic [9:0] DrawX,
 						 output logic [7:0]  R, G, B);
 
 	logic [7:0] Red, Green, Blue;
@@ -7,9 +8,9 @@ module color_table(input int color,
 	begin
 		unique case (color)
 			0:	begin //background
-				Red = 8'hff;
-				Green = 8'hff;
-				Blue = 8'hff;
+				Red = 8'h00;
+				Green = 8'hff - DrawX[9:3];
+				Blue = 8'h00 + DrawX[9:3];
 			end
 			1: begin //black
 				Red = 8'h00;
@@ -51,6 +52,11 @@ module color_table(input int color,
 				Red = 8'hd9;
 				Green = 8'h00;
 				Blue = 8'h21;
+			end
+			9: begin // yellow
+				Red = 8'hff;
+				Green = 8'hff;
+				Blue = 8'h00;
 			end
 		endcase
 	end

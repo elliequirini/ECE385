@@ -54,9 +54,9 @@ module game_state( input Reset, frame_clk, eaten, hurt,
 		 unique case (curr_state)
 			Start:	next_state = Check;
 			Check: 	begin
-							if(h>=5 && u>=5 && a>=5)
+							if(h>=5 && u>=5)
 								next_state = IdleH1;
-							else if(h==0 || u==0 || a==0)
+							else if(h==0 || u==0)
 								next_state = Dead;
 							else
 								begin
@@ -799,7 +799,7 @@ module game_state( input Reset, frame_clk, eaten, hurt,
 					Sprite <= 8'hd1; //P8;
 					if (frame_count == 0) begin
 						h <= h+1;
-						a <= a+1;
+						//a <= a+1;
 					end
 				end
 			
