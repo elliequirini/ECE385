@@ -30,7 +30,7 @@ module game_entity_table(input Reset, frame_clk,
 				Enemy_X_Motion <= 10'd0;
 				Enemy_Y_Pos <= Enemy_Y_Center;
 				Enemy_X_Pos <= Enemy_X_Center;
-				Food_X_Pos <= 500;
+				Food_X_Pos <= 300;
 				Food_Y_Pos <= 100;
 				randcount = 0;
         end
@@ -107,7 +107,7 @@ module game_entity_table(input Reset, frame_clk,
 				 if(BallX >= (Food_X_Pos-Food_Size) && BallX < (Food_X_Pos+Food_Size) && BallY >= (Food_Y_Pos-Food_Size) && BallY < (Food_Y_Pos+Food_Size))
 					begin
 						eaten = 1'b1;
-						Food_X_Pos <= random ;
+						Food_X_Pos <= randseed[randcount] ;
 						Food_Y_Pos <= randseed2[randcount] ;
 					end
 				 else

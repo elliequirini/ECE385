@@ -775,13 +775,13 @@ H9 = '{'{4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4
 		end
 	always_ff
 	begin
-			Xval <= DX-500;
+			Xval <= DX-100;
 			Yval <= DY-187;
 		
-			B1X <= DX - 500;
+			B1X <= DX - 75;
 			B1Y <= DY - 250;
 			
-			B2X <= DX - 500;
+			B2X <= DX - 75;
 			B2Y <= DY - 300;
 			
 		unique case(Sprite)

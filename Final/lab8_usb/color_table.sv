@@ -9,8 +9,8 @@ module color_table(input int color,
 		unique case (color)
 			0:	begin //background
 				Red = 8'h00;
-				Green = 8'hff - DrawX[9:3];
-				Blue = 8'h00 + DrawX[9:3];
+            Green = 8'hff - DrawX[9:3];
+            Blue = 8'ha0 + DrawX[9:3]; 
 			end
 			1: begin //black
 				Red = 8'h00;

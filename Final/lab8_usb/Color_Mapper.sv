@@ -101,11 +101,11 @@ module  color_mapper ( input Reset, frame_clk,
 			//	Bell_on = 1'b1;
 		  //else
 			//	Bell_on = 1'b0;
-		  Entity = 2;
-		  if( DrawX >= TLX && DrawX < BRX && DrawY >= TLY && DrawY < BRY )
-				Enemy_on = 1'b1;
-		  else
-				Enemy_on = 1'b0;
+		  //Entity = 2;
+		  //if( DrawX >= TLX && DrawX < BRX && DrawY >= TLY && DrawY < BRY )
+			//	Enemy_on = 1'b1;
+		  //else
+			//	Enemy_on = 1'b0;
      end 
        
     always_ff
