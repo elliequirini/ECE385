@@ -18,26 +18,33 @@ logic frame_clk, pixel_clk;
 logic [7:0] Sprite;
 logic [5:0] debug_state;
 int debug_h, debug_u, debug_a;
+logic eaten, hurt;
 
 	
 game_state 			myGame( .Reset,
 								  .frame_clk,
 								  .key(keycode),
+								  .eaten,
+								  .hurt,
 								  .Sprite,
 								  .debug_state,
 								  .debug_h,
 								  .debug_u,
 								  .debug_a);
 
-color_mapper 	 myMapper( .BallX,
-								  .BallY,
+color_mapper 	 myMapper( .Reset, 
+								  .frame_clk,
+								  .BallX, 
+								  .BallY, 
 								  .DrawX, 
-								  .DrawY,
+								  .DrawY, 
 								  .Ball_size(BallS),
 								  .Sprite,
 								  .Red(R), 
 								  .Green(G), 
-								  .Blue(B));
+								  .Blue(B),
+								  .eaten, 
+								  .hurt);
 
 vga_controller myControl( .Clk,
 								  .Reset,

@@ -13,7 +13,7 @@
 //-------------------------------------------------------------------------
 
 
-module game_state( input Reset, frame_clk,
+module game_state( input Reset, frame_clk, eaten, hurt,
 					input [7:0] key,
 					output logic [7:0] Sprite,
 					output logic [5:0] debug_state,
@@ -67,10 +67,12 @@ module game_state( input Reset, frame_clk,
 							
 			IdleH1: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -83,10 +85,12 @@ module game_state( input Reset, frame_clk,
 							
 			IdleH2: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -99,10 +103,12 @@ module game_state( input Reset, frame_clk,
 							
 			IdleH3: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -115,10 +121,12 @@ module game_state( input Reset, frame_clk,
 			
 			IdleH4: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -131,10 +139,12 @@ module game_state( input Reset, frame_clk,
 			
 			IdleH5: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -147,10 +157,12 @@ module game_state( input Reset, frame_clk,
 			
 			IdleH6: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -163,10 +175,12 @@ module game_state( input Reset, frame_clk,
 			
 			IdleH7: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -179,10 +193,12 @@ module game_state( input Reset, frame_clk,
 			
 			IdleH8: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -195,10 +211,12 @@ module game_state( input Reset, frame_clk,
 							
 			IdleS1: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -211,10 +229,12 @@ module game_state( input Reset, frame_clk,
 							
 			IdleS2: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -227,10 +247,12 @@ module game_state( input Reset, frame_clk,
 						
 			IdleS3: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -243,10 +265,12 @@ module game_state( input Reset, frame_clk,
 							
 			IdleS4: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -259,10 +283,12 @@ module game_state( input Reset, frame_clk,
 						
 			IdleS4: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -275,10 +301,12 @@ module game_state( input Reset, frame_clk,
 						
 			IdleS5: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -291,10 +319,12 @@ module game_state( input Reset, frame_clk,
 						
 			IdleS6: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -307,10 +337,12 @@ module game_state( input Reset, frame_clk,
 			
 			IdleS7: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -323,10 +355,12 @@ module game_state( input Reset, frame_clk,
 						
 			IdleS8: 	begin
 						
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else if(frame_count >= 20)
 								begin
 								frame_count = 0;
@@ -377,7 +411,7 @@ module game_state( input Reset, frame_clk,
 			//				next_state = Feed3;						
 			//				end
 			//			else
-			//				if(key == Q)
+			//				if(eaten)
 			//					next_state = Feed;
 			//				else if (key == W)
 			//					next_state = Pet;
@@ -393,7 +427,7 @@ module game_state( input Reset, frame_clk,
 			//				next_state = Feed4;						
 			//				end
 			//			else
-			//				if(key == Q)
+			//				if(eaten)
 			//					next_state = Feed;
 			//				else if (key == W)
 			//					next_state = Pet;
@@ -409,7 +443,7 @@ module game_state( input Reset, frame_clk,
 			//				next_state = Feed5;						
 			//				end
 			//			else
-			//				if(key == Q)
+			//				if(eaten)
 			//					next_state = Feed;
 			//				else if (key == W)
 			//					next_state = Pet;
@@ -425,7 +459,7 @@ module game_state( input Reset, frame_clk,
 			//				next_state = Feed6;						
 			//				end
 			//			else
-			//				if(key == Q)
+			//				if(eaten)
 			//					next_state = Feed;
 			//				else if (key == W)
 			//					next_state = Pet;
@@ -441,7 +475,7 @@ module game_state( input Reset, frame_clk,
 			//				next_state = Feed7;						
 			//				end
 			//			else
-			//				if(key == Q)
+			//				if(eaten)
 			//					next_state = Feed;
 			//				else if (key == W)
 			//					next_state = Pet;
@@ -457,7 +491,7 @@ module game_state( input Reset, frame_clk,
 			//				next_state = Feed8;						
 			//				end
 			//			else
-			//				if(key == Q)
+			//				if(eaten)
 			//					next_state = Feed;
 			//				else if (key == W)
 			//					next_state = Pet;
@@ -473,16 +507,18 @@ module game_state( input Reset, frame_clk,
 							next_state = Check;						
 							end
 						else
-							if(key == Q)
+							if(eaten)
 								next_state = Feed;
 							else if (key == W)
 								next_state = Pet;
+							else if (hurt)
+								next_state = Upset;
 							else
 								frame_count = frame_count + 1;
 					end
 			
 			Pet:		begin
-							//if(key == Q)
+							//if(eaten)
 								//next_state = Feed;
 							if(frame_count >= 20)
 								begin
@@ -503,7 +539,7 @@ module game_state( input Reset, frame_clk,
 						end
 			
 			//Pet1:	begin
-			//			if(key == Q)
+			//			if(eaten)
 			//				next_state = Feed;
 			//			else if(frame_count >= 20)
 			//				begin
@@ -514,7 +550,7 @@ module game_state( input Reset, frame_clk,
 			//				frame_count = frame_count + 1;
 			//		end
 			//Pet2:	begin
-			//			if(key == Q)
+			//			if(eaten)
 			//				next_state = Feed;
 			//			else if(frame_count >= 20)
 			//				begin
@@ -525,7 +561,7 @@ module game_state( input Reset, frame_clk,
 			//				frame_count = frame_count + 1;
 			//		end
 			//Pet3:	begin
-			//			if(key == Q)
+			//			if(eaten)
 			//				next_state = Feed;
 			//			else if(frame_count >= 20)
 			//				begin
@@ -536,7 +572,7 @@ module game_state( input Reset, frame_clk,
 			//				frame_count = frame_count + 1;
 			//		end
 			//Pet4:	begin
-			//			if(key == Q)
+			//			if(eaten)
 			//				next_state = Feed;
 			//			else if(frame_count >= 20)
 			//				begin
@@ -547,7 +583,7 @@ module game_state( input Reset, frame_clk,
 			//				frame_count = frame_count + 1;
 			//		end
 			//Pet5:	begin
-			//			if(key == Q)
+			//			if(eaten)
 			//				next_state = Feed;
 			//			else if(frame_count >= 20)
 			//				begin
@@ -558,7 +594,7 @@ module game_state( input Reset, frame_clk,
 			//				frame_count = frame_count + 1;
 			//		end
 			//Pet6:	begin
-			//			if(key == Q)
+			//			if(eaten)
 			//				next_state = Feed;
 			//			else if(frame_count >= 20)
 			//				begin
@@ -569,7 +605,7 @@ module game_state( input Reset, frame_clk,
 			//				frame_count = frame_count + 1;
 			//		end
 			//Pet7:	begin
-			//			if(key == Q)
+			//			if(eaten)
 			//				next_state = Feed;
 			//			else if(frame_count >= 20)
 			//				begin
@@ -580,7 +616,7 @@ module game_state( input Reset, frame_clk,
 			//				frame_count = frame_count + 1;
 			//		end
 			Pet1:	begin
-						//if(key == Q)
+						//if(eaten)
 							//next_state = Feed;
 						if(frame_count >= 20)
 							begin
@@ -592,10 +628,12 @@ module game_state( input Reset, frame_clk,
 					end
 			
 			Upset: begin
-						if(key == Q)
+						if(eaten)
 							next_state = Feed;
 						else if (key == W)
 							next_state = Pet;
+						else if (hurt)
+								next_state = Upset;
 						else if(frame_count >= 20)
 							begin
 							frame_count = 0;
@@ -623,7 +661,7 @@ module game_state( input Reset, frame_clk,
 					Sprite <= 8'h00; //ST (Neutral)
 					h <= 5;
 					u <= 5;
-					a <= 5;
+					//a <= 5;
 				end
 			Check:
 				begin
@@ -666,7 +704,7 @@ module game_state( input Reset, frame_clk,
 					if (frame_count == 0) begin
 						h <= h-1;
 						u <= u-1;
-						a <= a-1;
+						//a <= a-1;
 					end
 				end
 			
@@ -697,7 +735,7 @@ module game_state( input Reset, frame_clk,
 					if (frame_count == 0) begin
 						h <= h-1;
 						u <= u-1;
-						a <= a-1;
+						//a <= a-1;
 					end
 				end
 				

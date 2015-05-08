@@ -13,21 +13,33 @@
 //-------------------------------------------------------------------------
 
 
-module  color_mapper ( input        [9:0]  BallX, BallY, DrawX, DrawY, Ball_size, 
+module  color_mapper ( input Reset, frame_clk,
+							  input        [9:0]  BallX, BallY, DrawX, DrawY, Ball_size, 
 							  input 	logic	[7:0]	 Sprite,
-                       output logic [7:0]  Red, Green, Blue );
+                       output logic [7:0]  Red, Green, Blue, 
+							  output logic eaten, hurt);
     
     logic sprite_on;
 	 logic ball_on;
+	 logic Enemy_on;
+	 logic Food_on;
+	 //logic bell_on;
 	 logic [7:0] TLX, TLY, BRX, BRY, color_number, R, G, B;
 	 logic [7:0] SpriteX, SpriteY;
+	 logic [9:0] Entity;
 	 
 	 int DistX, DistY, Size;
 	 assign DistX = DrawX - BallX;
     assign DistY = DrawY - BallY;
     assign Size = Ball_size;
 	 
-	 game_entity_table 	g_table (.Sprite,
+	 game_entity_table 	g_table (.Reset,
+											.frame_clk,
+										   .Entity,
+											.BallX, 
+											.BallY,
+											.eaten,
+											.hurt,
 											.TLX, 
 											.TLY, 
 											.BRX, 
@@ -45,7 +57,7 @@ module  color_mapper ( input        [9:0]  BallX, BallY, DrawX, DrawY, Ball_size
 	 
     always_comb
     begin
-        if ( DrawX >= TLX && DrawX < BRX && DrawY >= TLY && DrawY < BRY ) 
+        if ( DrawX >= 296 && DrawX < 344 && DrawY >= 187 && DrawY < 240 )
             sprite_on = 1'b1;
         else 
             sprite_on = 1'b0;
@@ -53,6 +65,21 @@ module  color_mapper ( input        [9:0]  BallX, BallY, DrawX, DrawY, Ball_size
             ball_on = 1'b1;
         else 
             ball_on = 1'b0;
+		  Entity = 0;
+		  if( DrawX >= TLX && DrawX < BRX && DrawY >= TLY && DrawY < BRY )
+				Food_on = 1'b1;
+		  else
+				Food_on = 1'b0;
+		  //Entity = 1;
+		  //if( DrawX >= TLX && DrawX < BRX && DrawY >= TLY && DrawY < BRY )
+			//	Bell_on = 1'b1;
+		  //else
+			//	Bell_on = 1'b0;
+		  Entity = 2;
+		  if( DrawX >= TLX && DrawX < BRX && DrawY >= TLY && DrawY < BRY )
+				Enemy_on = 1'b1;
+		  else
+				Enemy_on = 1'b0;
      end 
        
     always_ff
@@ -69,7 +96,19 @@ module  color_mapper ( input        [9:0]  BallX, BallY, DrawX, DrawY, Ball_size
 				Green = 8'h00;
 				Blue = 8'h00;
 		  end
-		  else if(sprite_on == 1'b0 && ball_on == 1'b0) 
+		  if(Food_on == 1'b1)
+		  begin
+				Red = 8'hff;
+				Green = 8'h00;
+				Blue = 8'hff;
+		  end
+		  if(Enemy_on == 1'b1)
+		  begin
+				Red = 8'hff;
+				Green = 8'h00;
+				Blue = 8'h00;
+		  end
+		  else if(sprite_on == 1'b0 && ball_on == 1'b0 && Food_on == 1'b0 && Enemy_on == 1'b0) 
         begin 
             Red = 8'hff;
             Green = 8'hff;
