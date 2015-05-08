@@ -49,6 +49,7 @@ module  lab8_usb 		( input         Clk,
     logic Reset_h;
 	 logic [7:0] keycode;
 	 logic [5:0] debug;
+	 int h,u,a;
     
     assign {Reset_h}=~ (Reset);  // The push buttons are active low
 	 assign OTG_FSPEED = 1'bz;
@@ -87,11 +88,19 @@ module  lab8_usb 		( input         Clk,
 									.VGA_clk,
 									.blank,
 									.sync,
-									.debug);
+									.debug,
+									.h,
+									.u,
+									.a);
 	
 										  
 	 HexDriver hex_inst_0 (keycode[3:0], HEX0);
 	 HexDriver hex_inst_1 (keycode[7:4], HEX1);
+	 
+	 HexDriver hex_inst_7 (h, HEX7);
+	 HexDriver hex_inst_6 (u, HEX6);
+	 HexDriver hex_inst_5 (a, HEX5);
+	 HexDriver hex_inst_4 (0, HEX4);
 	 
 	 assign LEDR = debug;
     
