@@ -27,8 +27,8 @@ module  color_mapper ( input Reset, frame_clk,
 	 logic bar1_on,bar2_on;
 	 //int hunger, happiness;
 	 //logic bell_on;
-	 logic [7:0] TLX, TLY, BRX, BRY, color_number, R, G, B;
-	 logic [7:0] SpriteX, SpriteY;
+	 logic [9:0] TLX, TLY, BRX, BRY;
+	 logic [7:0] SpriteX, SpriteY, color_number, R, G, B;
 	 logic [9:0] Entity;
 	 logic [7:0] S;
 	 
@@ -64,14 +64,14 @@ module  color_mapper ( input Reset, frame_clk,
 	 
     always_ff
     begin
-        if ( DrawX >= 500 && DrawX < 549 && DrawY >= 187 && DrawY < 240 )
+        if ( DrawX >= 100 && DrawX < 149 && DrawY >= 187 && DrawY < 240 )
             begin
 				sprite_on = 1'b1;
 				S = Sprite;
 				end
         else 
             sprite_on = 1'b0;
-		  if ( DrawX >= 500 && DrawX < 599 && DrawY >= 250 && DrawY < 274 )
+		  if ( DrawX >= 75 && DrawX < 134 && DrawY >= 250 && DrawY < 274 )
             begin
 				S = 8'haa;
 				bar1_on = 1'b1;
@@ -79,7 +79,7 @@ module  color_mapper ( input Reset, frame_clk,
 				end
         else 
             bar1_on = 1'b0;
-		  if ( DrawX >= 500 && DrawX < 599 && DrawY >= 300 && DrawY < 324 )
+		  if ( DrawX >= 75 && DrawX < 134 && DrawY >= 300 && DrawY < 324 )
             begin
 				S = 8'hbb;
 				bar2_on = 1'b1;
@@ -92,7 +92,7 @@ module  color_mapper ( input Reset, frame_clk,
         else 
             ball_on = 1'b0;
 		  Entity = 0;
-		  if( DrawX >= 400 && DrawX < 405 && DrawY >= 100 && DrawY < 105 )
+		  if( DrawX >= TLX && DrawX < BRX && DrawY >= TLY && DrawY < BRY )
 				Food_on = 1'b1;
 		  else
 				Food_on = 1'b0;
@@ -101,11 +101,11 @@ module  color_mapper ( input Reset, frame_clk,
 			//	Bell_on = 1'b1;
 		  //else
 			//	Bell_on = 1'b0;
-		  //Entity = 2;
-		 // if( DrawX >= TLX && DrawX < BRX && DrawY >= TLY && DrawY < BRY )
-			//	Enemy_on = 1'b1;
-		  //else
-			//	Enemy_on = 1'b0;
+		  Entity = 2;
+		  if( DrawX >= TLX && DrawX < BRX && DrawY >= TLY && DrawY < BRY )
+				Enemy_on = 1'b1;
+		  else
+				Enemy_on = 1'b0;
      end 
        
     always_ff
@@ -138,7 +138,7 @@ module  color_mapper ( input Reset, frame_clk,
         begin 
             Red = 8'h00;
             Green = 8'hff - DrawX[9:3];
-            Blue = 8'h00 + DrawX[9:3]; 
+            Blue = 8'ha0 + DrawX[9:3]; 
         end      
     end 
     
